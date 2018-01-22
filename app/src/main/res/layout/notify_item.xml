@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp">
+
+    <ImageView
+        android:id="@+id/notify_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@id/notify_icon">
+
+        <TextView
+            android:id="@+id/notify_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:text="图吧汽车卫士"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/notify_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="10dp"
+            android:text="下载完成,点击安装!"
+            android:textColor="#90000000"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/notify_pb"
+            style="@android:style/Widget.DeviceDefault.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="60dp" />
+
+        <TextView
+            android:id="@+id/notify_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/notify_title"
+            android:layout_alignRight="@id/notify_pb"
+            android:text="0%" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/btn_pause"
+                android:layout_width="20dip"
+                android:layout_height="20dip"
+                android:layout_gravity="center|right"
+                android:background="?android:listChoiceBackgroundIndicator"
+                android:scaleType="fitXY"
+                android:src="@drawable/btn_notify_play" />
+
+            <ImageButton
+                android:id="@+id/btn_cancel"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center|right"
+                android:layout_marginLeft="5dp"
+                android:background="?android:listChoiceBackgroundIndicator"
+                android:scaleType="fitXY"
+                android:src="@drawable/btn_notify_close" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

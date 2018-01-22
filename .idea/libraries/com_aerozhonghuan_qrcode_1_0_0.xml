@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="com.aerozhonghuan:qrcode-1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/eff61a262583dfef909a64fe8a91d45029b242f0/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/eff61a262583dfef909a64fe8a91d45029b242f0/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/eff61a262583dfef909a64fe8a91d45029b242f0/output/jars/libs/zxing.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.aerozhonghuan/qrcode/1.0.0/b667f3f55b9e052aa9a17a8fc79e8f4cec1745e1/qrcode-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

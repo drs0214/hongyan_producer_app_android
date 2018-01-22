@@ -1,0 +1,31 @@
+{
+    "resultCode": 200,
+    "message": "成功",
+    "data": {
+        "page_size": 20,
+        "page_total": 1,
+        "list": [
+            {
+                "messageId": 123,
+                "readFlag": 1,
+                "messageExtra": "{'woCode':'3201710161032320005'}",
+                "isUserVisible ": 1,
+                "messageCode": 1,
+                "title": "救援出发",
+                "content": "救援出发救援出发救援出发救援出发救援出发救援出发救援出发救援出发救援出发救援出发",
+                "sevTime": 1508239937224
+            },
+            {
+                "messageId": 200,
+                "readFlag": 2,
+                "messageExtra": "{'woCode':'4201710161032320005'}",
+                "isUserVisible ": 1,
+                "messageCode": 1,
+                "title": "救援出发11111",
+                "content": "救援出发救援出发救援出发救援出发救援出发救援出发救援出发救援出发救援出发救援出发",
+                "sevTime": 15082399372243
+            }
+            
+        ]
+    }
+}

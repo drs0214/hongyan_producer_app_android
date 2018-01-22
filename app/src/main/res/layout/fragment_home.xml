@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.aerozhonghuan.hongyan.producer.modules.home.fragment.HomeFragment">
+
+    <com.aerozhonghuan.hongyan.producer.widget.TitleBarView
+        android:id="@+id/titlebarview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/rel_banner"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/img_big_height">
+
+        <ImageView
+            android:id="@+id/img_oneornoBanner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <com.aerozhonghuan.hongyan.producer.widget.BannerViewPager
+            android:id="@+id/vp_banner"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:clipChildren="false" />
+
+        <LinearLayout
+            android:id="@+id/ll_dots"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/vp_banner"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="@dimen/margin10"
+            android:gravity="right"
+            android:orientation="horizontal" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/gv_hometab"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1" />
+</LinearLayout>

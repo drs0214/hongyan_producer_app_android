@@ -1,0 +1,348 @@
+apply plugin: 'com.android.application'
+
+boolean IS_ON_DEVELOP = rootProject.ext.IS_ON_DEVELOP;
+
+int version_code = 1;//默认版本号。
+String version_name = "1.1";//默认版本标识
+if (project.IS_CUSTOM_VERSION) {
+    version_code = project.VERSION_CODE != null ? project.VERSION_CODE : version_code
+    version_name = project.VERSION_NAME != null ? project.VERSION_NAME : version_name
+}
+//version_name += " build " + project.BUILD_NUMBER //配置 版本号里的build number
+
+android {
+    compileSdkVersion rootProject.COMPILE_SDK_VERSION
+    buildToolsVersion rootProject.BUILD_TOOLS_VERSION
+
+    signingConfigs {
+        release {
+            storeFile file('../zhonghuan_release_key.jks')
+            keyAlias 'zhonghuan'
+            keyPassword 'HelloZhongHuan'
+            storePassword 'HelloZhongHuan'
+        }
+        debug {
+            storeFile file('../debug.keystore')
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storePassword 'android'
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    defaultConfig {
+        applicationId "com.aerozhonghuan.hongyan.producer"
+        minSdkVersion rootProject.ext.MIN_SDK_VERSION
+        targetSdkVersion rootProject.ext.TARGET_SDK_VERSION
+        versionCode version_code
+        versionName version_name
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: 'zhonghuan']
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "HOST_BUSINESS", "\"http://59.46.97.115:8071/hyapipro/hongyan\""
+            buildConfigField "String", "HOST_USER_CENTER", "\"http://59.46.97.115:8071/hyapipro/hongyan/usercenter\""
+            buildConfigField "String", "HOST_FILE_UPLOAD", "\"http://59.46.97.115:8071/fsm\""
+            buildConfigField "String", "HOST_HTML5", "\"http://211.145.49.130:85/hongyan_dev/driver\""
+            buildConfigField "String", "HOST_DRIVER_BBS", "\"http://59.46.97.115:8071/hongyan/yqlt.php\""
+            buildConfigField "String", "Branch_Name", "\"${BRANCH_NAME}\""
+            buildConfigField "String", "AUTO_LOGIN_BY_ZYF", "\"${AUTO_LOGIN_BY_ZYF}\""
+            buildConfigField "Boolean", "IS_ON_DEVELOP", "${IS_ON_DEVELOP}"
+            buildConfigField "Integer", "BUILD_NUMBER", "${BUILD_NUMBER}"
+            buildConfigField "Integer", "PUSH_APPKEY", "2120440432"
+            buildConfigField "String", "WEDRIVE_CK", "\"cc47841113ea4d3196fb81b1fe84cac1\""
+            manifestPlaceholders = [yunxin_app_key: "96586ac3d3c447882194835d2095016a", umeng_app_key: "5a2f639da40fa32b4900056c"]
+        }
+        if (project.IS_JENKINS) {
+            beta {
+                debuggable true
+                minifyEnabled false
+                zipAlignEnabled true
+                signingConfig signingConfigs.release
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+                buildConfigField "String", "HOST_BUSINESS", "\"${SERVER_URL}\""
+                buildConfigField "String", "HOST_USER_CENTER", "\"${USERCENTER_URL}\""
+                buildConfigField "String", "HOST_FILE_UPLOAD", "\"${HOST_FILE_UPLOAD}\""
+                buildConfigField "String", "HOST_HTML5", "\"${HOST_HTML5}\""
+                buildConfigField "String", "HOST_DRIVER_BBS", "\"${HOST_DRIVER_BBS}\""
+                buildConfigField "String", "Branch_Name", "\"${BRANCH_NAME}\""
+                buildConfigField "Boolean", "IS_ON_DEVELOP", "${IS_ON_DEVELOP}"
+                buildConfigField "Integer", "BUILD_NUMBER", "${BUILD_NUMBER}"
+                buildConfigField "Integer", "PUSH_APPKEY", "1164925026"
+                buildConfigField "String", "WEDRIVE_CK", "\"cc47841113ea4d3196fb81b1fe84cac1\""
+                manifestPlaceholders = [yunxin_app_key: "96586ac3d3c447882194835d2095016a", umeng_app_key: "5a2f639da40fa32b4900056c"]
+            }
+        }
+
+        qa {
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "HOST_BUSINESS", "\"http://59.46.97.115:8071/hyapipro/hongyan\""
+            buildConfigField "String", "HOST_USER_CENTER", "\"http://59.46.97.115:8071/hyapipro/hongyan/usercenter\""
+            buildConfigField "String", "HOST_FILE_UPLOAD", "\"http://59.46.97.115:8071/fsm\""
+            buildConfigField "String", "HOST_HTML5", "\"http://211.145.49.130:85/hongyan_dev/driver\""
+            buildConfigField "String", "HOST_DRIVER_BBS", "\"http://59.46.97.115:8071/hongyan/yqlt.php\""
+            buildConfigField "String", "Branch_Name", "\"${BRANCH_NAME}\""
+            buildConfigField "String", "AUTO_LOGIN_BY_ZYF", "\"${AUTO_LOGIN_BY_ZYF}\""
+            buildConfigField "Boolean", "IS_ON_DEVELOP", "${IS_ON_DEVELOP}"
+            buildConfigField "Integer", "BUILD_NUMBER", "${BUILD_NUMBER}"
+            buildConfigField "Integer", "PUSH_APPKEY", "2120440432"
+            buildConfigField "String", "WEDRIVE_CK", "\"cc47841113ea4d3196fb81b1fe84cac1\""
+            manifestPlaceholders = [yunxin_app_key: "96586ac3d3c447882194835d2095016a", umeng_app_key: "5a2f639da40fa32b4900056c"]
+        }
+
+        uat {
+            debuggable true
+            minifyEnabled false
+            zipAlignEnabled true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "HOST_BUSINESS", "\"http://uat.tls.sih.cq.cn:8000/api/hongyan\""
+            buildConfigField "String", "HOST_USER_CENTER", "\"http://uat.tls.sih.cq.cn:8000/api/hongyan/usercenter\""
+            buildConfigField "String", "HOST_FILE_UPLOAD", "\"http://uat.tls.sih.cq.cn:8000/fsm\""
+            buildConfigField "String", "HOST_HTML5", "\"http://uat.tls.sih.cq.cn:8000/driverh5\""
+            buildConfigField "String", "HOST_DRIVER_BBS", "\"http://uat.tls.sih.cq.cn:8000/forum/yqlt.php\""
+            buildConfigField "String", "Branch_Name", "\"${BRANCH_NAME}\""
+            buildConfigField "Boolean", "IS_ON_DEVELOP", "${IS_ON_DEVELOP}"
+            buildConfigField "Integer", "BUILD_NUMBER", "${BUILD_NUMBER}"
+            buildConfigField "Integer", "PUSH_APPKEY", "1164925026"
+            buildConfigField "String", "WEDRIVE_CK", "\"e4008802cb5c4c7b8d8a9153a14429d5\""
+            manifestPlaceholders = [yunxin_app_key: "96586ac3d3c447882194835d2095016a", umeng_app_key: "5a2f639da40fa32b4900056c"]
+        }
+
+        release {
+            debuggable false
+            minifyEnabled false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "HOST_BUSINESS", "\"http://itg.sih.cq.cn/api/hongyan\""
+            buildConfigField "String", "HOST_USER_CENTER", "\"http://itg.sih.cq.cn/api/hongyan/usercenter\""
+            buildConfigField "String", "HOST_FILE_UPLOAD", "\"http://itg.sih.cq.cn/fsm\""
+            buildConfigField "String", "HOST_HTML5", "\"http://itg.sih.cq.cn/driverh5\""
+            buildConfigField "String", "HOST_DRIVER_BBS", "\"http://itg.sih.cq.cn/forum/yqlt.php\""
+            buildConfigField "String", "Branch_Name", "\"${BRANCH_NAME}\""
+            buildConfigField "Boolean", "IS_ON_DEVELOP", "${IS_ON_DEVELOP}"
+            buildConfigField "Integer", "BUILD_NUMBER", "${BUILD_NUMBER}"
+            buildConfigField "Integer", "PUSH_APPKEY", "1164925026"
+            buildConfigField "String", "WEDRIVE_CK", "\"52b376899aaf4714a4e40e902a1f5aa5\""
+            manifestPlaceholders = [yunxin_app_key: "34742e4968884821fb3f14160545c512", umeng_app_key: "59ba1079e88bad7e5300005e"]
+
+
+        }
+    }
+    flavors()
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testCompile 'junit:junit:4.12'
+    //附加 leakcanary
+//    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+//    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+//    if (project.IS_JENKINS) {
+//        betaCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+//    }
+    compile files('libs/logback-android-1.1.1-6.jar')
+    compile files('libs/slf4j-api-1.7.12.jar')
+    compile project(':dao')
+    compile 'com.aerozhonghuan:loglibrary:1.0.3'
+    compile 'com.aerozhonghuan:push:1.0.0'
+    compile 'com.aerozhonghuan:oknet_json:1.1.7'
+    compile 'com.aerozhonghuan:foundation:1.0.7'
+    compile 'com.aerozhonghuan:hybrid:1.1.4'
+    compile 'com.aerozhonghuan:pullToRefresh:1.0.1'
+    compile 'com.aerozhonghuan:qrcode:1.0.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:support-v4:25.3.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.joanzapata.android:base-adapter-helper:1.1.11'
+    compile 'com.google.code.gson:gson:2.8.0'
+    compile 'com.github.chrisbanes:PhotoView:1.2.6'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'com.prolificinteractive:material-calendarview:1.4.0'
+
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'io.reactivex:rxandroid:1.2.0'
+}
+
+
+def flavors() {
+    if (!project.IS_JENKINS)
+        return
+    def channels = project.CHANNELS
+    if (channels) {
+        println "#环境变量 Channels = ${channels}"
+        channels.toString().tokenize(';').each { channelItem ->
+            println "==================== Channel Start ====================="
+            println "# channelItem is ${channelItem}"
+            //动态创建productFlavor
+            android.productFlavors.create(channelItem, {
+                // 替换渠道号
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: channelItem]
+                println "# create productFlavors [${channelItem}] success"
+            })
+            println "==================== Channel End ====================="
+        }
+//        def log = project.logger
+    }
+    println "# 环境变量 构建类型 BUILD_TYPE = ${BUILD_TYPE}"
+    if (!project.BUILD_TYPE)
+        return
+    android.variantFilter { varian ->
+        println "# 遍历 " + varian.buildType.name
+        //如果不是这个指定的 BUILD_TYPE,那个其他构建将被 忽略执行
+        if (!varian.buildType.name.equals(project.BUILD_TYPE)) {
+            varian.setIgnore(true)
+        }
+    }
+}
+
+android.applicationVariants.all { variant ->
+    // 将打包的目录指定出去，对齐生成的apk
+    variant.outputs.each { output ->
+        if (!project.IS_JENKINS) {
+            return
+        }
+        def outputFile = output.outputFile
+        if (outputFile != null && outputFile.name.endsWith('.apk')) {
+            //开始准备 存放输出文件的文件夹路径
+            String outPath = System.getProperty('user.dir') + File.separator + 'apk'
+            File dir = file(outPath)
+            if (!dir.exists()) {
+                dir.mkdirs();
+            } else {
+                // 如果不需要编译时删除掉历史apk，注释掉以下代码即可
+                dir.list().each { fileName ->
+                    file(outPath + File.separator + fileName).delete()
+                }
+            }
+            //开始拼接文件名
+//            String outPath = System.getProperty('user.dir') + File.separator + 'app'+ File.separator +"build/outputs/apk"
+            StringBuilder fileNameBuilder = new StringBuilder()
+            //文件名前加： 前缀 PREFIX_NAME
+            fileNameBuilder.append(project.PREFIX_NAME).append('_')
+            //文件名前加： 分支名
+            if (project.BRANCH_NAME) {
+                fileNameBuilder.append(project.BRANCH_NAME).append('_')
+            }
+            /*if (project.GET_VERSION) {
+                fileNameBuilder.append(project.GET_VERSION).append('_')
+            }*/
+            //文件名前加： channel 渠道名
+            if (variant.flavorName) {
+                println '# variant.flavorName:' + variant.flavorName
+                fileNameBuilder.append(variant.flavorName).append('_')
+            }
+            //文件名前加： buildType
+            if (variant.buildType.name) {
+                println '# variant.buildType.name:' + variant.buildType.name
+                fileNameBuilder.append(variant.buildType.name).append('_')
+            }
+            //${BRANCH_NAME}
+            if (project.BRANCH_NAME) {
+                fileNameBuilder.append(project.BRANCH_NAME).append('_')
+            }
+            //文件名前加： versionName
+            if (project.VERSION_NAME) {
+                fileNameBuilder.append("V").append(version_name)
+                fileNameBuilder.append("_Build").append(project.BUILD_NUMBER)
+                fileNameBuilder.append('_')
+            }
+            //文件名前加： 月日时分秒
+            fileNameBuilder.append(getBuildTimeStr()).append('.apk')
+            output.outputFile = new File(dir, fileNameBuilder.toString())
+            println "# 最终产出物文件名：" + output.outputFile
+        }
+    }
+}
+
+def getBuildTimeStr() {
+    return new Date().format('MMddHHmm')
+}
+
+def appenAppSettingsToJsHostFile(hostFilePath, lstConfigItems) {//lstConfigItems is List<Object>
+    StringBuilder sb = new StringBuilder();
+    sb.append("var __buildConfig={\n");
+    int i = 0;
+    for (item in lstConfigItems) {
+        if (item instanceof com.android.builder.model.ClassField) {
+            com.android.builder.model.ClassField f = (com.android.builder.model.ClassField) item;
+            if (i++ != 0)
+                sb.append(",\n");
+            String name = f.getName()
+            String val = f.getValue()
+            if (val.startsWith("\""))
+                val = val.substring(1);
+            if (val.endsWith("\""))
+                val = val.substring(0, val.size() - 1);
+            sb.append(String.format("\"%s\":\"%s\"", name, val));
+        }
+    }
+    sb.append("}\n");
+    String configStr = sb.toString();
+    println "开始自动生成js config file. hostFilePath = $hostFilePath"
+    println "开始自动生成js config file. configStr = $configStr"
+    File f = new File(hostFilePath);
+    String fllePath = f.getPath()
+    if (!f.exists()) {
+        println "开始自动生成js build config file. $fllePath not exist"
+        throw new Exception("无法找到hostFilePath，无法生成js config file");
+    } else {
+        println "开始自动生成js build config file. $fllePath 存在"
+        byte[] fileBytes = f.readBytes();
+        if (fileBytes != null) {
+            String fileContent = new String(fileBytes, "utf-8");
+            if (!fileContent.startsWith("//开始自动生成")) {
+                f.write("//开始自动生成的 host url **************")
+                f.append("\n")
+                f.append(configStr);
+                f.append("\n")
+                f.append("//结束自动生成的 host url **************")
+                f.append(fileContent);
+            }
+        }
+    }
+}
+
+//截获 mergeDebugAssets task，在这之后处理 H5 host 内的 H5_API_HOST_URL
+android.applicationVariants.all { variant ->
+    String suffix = variant.variantData.name.capitalize()
+    String buildType_name = variant.buildType.name;
+    String flavorName1 = variant.flavorName;
+    Task mergeAssetsTask = tasks.findByName("merge${suffix}Assets")
+    println "mergeAssetsTask.name is $mergeAssetsTask.name, suffix is $suffix, flavorName is $flavorName1, buildType_name is $buildType_name"
+    mergeAssetsTask.doLast {
+        String suf = suffix.toLowerCase();
+        println "projectDir = $projectDir"
+        String hostFilePath = "$projectDir/build/intermediates/assets/";
+        if (flavorName1 != null && flavorName1 != "") {
+            hostFilePath += "$flavorName1/"
+        }
+        hostFilePath += "$buildType_name/www/comment_js/host.js";
+        //String hostFilePath = "$projectDir/build/intermediates/assets/$suf/www/comment_js/host.js";
+        List<Object> lstConfigItems = variant.getGenerateBuildConfig().getItems();
+        appenAppSettingsToJsHostFile(hostFilePath, lstConfigItems);
+    }
+}

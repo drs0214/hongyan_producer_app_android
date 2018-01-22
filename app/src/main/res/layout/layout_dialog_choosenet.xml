@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/line_all"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="@dimen/dialog_width"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_alert"
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:text="提示"
+            android:textColor="@color/important_text_color"
+            android:textSize="@dimen/navigation_textsize" />
+
+        <TextView
+            android:id="@+id/tv_context"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:lineSpacingExtra="3dp"
+            android:text="您当前为移动网络环境，继续下载会消耗流量，是否继续下载？"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/content_textsize" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <Button
+                android:id="@+id/tv_cancel"
+                android:layout_width="100dp"
+                android:layout_height="@dimen/btn_small_height"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/selector_small_cancel_button"
+                android:text="取消"
+                android:textColor="@color/main_text_color"
+                android:textSize="15sp" />
+
+
+            <Button
+                android:id="@+id/tv_yes"
+                android:layout_width="100dp"
+                android:layout_height="@dimen/btn_small_height"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/selector_small_confirm_button"
+                android:text="继续下载"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

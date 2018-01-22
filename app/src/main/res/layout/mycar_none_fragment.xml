@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="目前没有车辆\n车主添加您为司机后才会显示车辆"
+        android:textColor="#555555" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="我只有一辆车，我是车主也是司机\n你可以在此添加车辆"
+        android:textColor="#333333"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btn_height_normal"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/selector_login_button"
+        android:text="添加车辆"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/login_textsize" />
+
+    <TextView
+        android:id="@+id/textview_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:gravity="center"
+        android:text="要体验更多的管理功能建议您下载车主端"
+        android:textColor="#888888" />
+</LinearLayout>

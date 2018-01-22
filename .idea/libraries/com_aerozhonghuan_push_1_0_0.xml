@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="com.aerozhonghuan:push-1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.android/build-cache/9a1d3515cd7fb744af4feab1e5722e950fcdb13f/output/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/9a1d3515cd7fb744af4feab1e5722e950fcdb13f/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/9a1d3515cd7fb744af4feab1e5722e950fcdb13f/output/jars/libs/ixintui_pushsdk_v1.9.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.aerozhonghuan/push/1.0.0/6e3ed65ff34672315510a9646a2cc170ae6cbefa/push-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

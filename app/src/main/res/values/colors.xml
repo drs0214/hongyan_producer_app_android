@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--  主色 -->
+    <color name="colorPrimary">#169ADA</color>
+    <color name="colorPrimaryDark">#007DB9</color>
+    <!--  辅色 -->
+    <color name="color2">#FF9C00</color>
+    <color name="colorAccent">#FF4081</color>
+    <!--  分割线 -->
+    <color name="colorSplitLine">#E5E5E5</color>
+    <color name="divider_line">#E5E5E5</color>
+    <!--  背景 -->
+    <color name="colorBackgroud">#F5F5F5</color>
+
+    <!--  标题栏 -->
+    <color name="titlebar_bg">#169ADA</color>
+    <color name="titlebar_text_color">#ffffffff</color>
+    <color name="tab_text_pressed_color">#169ada</color>
+    <color name="tab_text_pressed_color_tab">#2A5BD8</color>
+    <color name="tab_text_nomal_color">#999999</color>
+    <!--  文本字体文本颜色 -->
+    <color name="black_text_color">#000000</color>
+    <!--  文本字体文本颜色 -->
+    <color name="main_text_color">#666666</color>
+    <!-- 注释字体文本颜色 -->
+    <color name="desc_text_color">#999999</color>
+    <!-- 重要信息文本颜色 -->
+    <color name="important_text_color">#333333</color>
+
+    <color name="text_red_color">#FF5247</color>
+    <color name="text_red_color2">#FF1111</color>
+    <!-- hint -->
+    <color name="hint_text_color">#cccccc</color>
+    <color name="home_gridview_line">#F0F0F0</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="text_orange_color">#FF6000</color>
+
+    <color name="btn_orange_color">#FF9C00</color>
+    <color name="btn_red_color">#FF0000</color>
+    <!--日期控件颜色值-->
+    <color name="calendar_bg_week_title">#ffffff</color>
+    <color name="calendar_tx_week_title">#555555</color>
+    <color name="calendar_tx_this_month_day">#aa564b4b</color>
+    <color name="calendar_tx_other_month_day">#ffcccccc</color>
+    <color name="calendar_tx_this_day">#ffFF0000</color>
+    <color name="calendar_bg_this_day">#ffFFFFFF</color>
+    <color name="calendar_bg">#3FDDEDEA</color>
+    <color name="calendar_bg_trip_data">#1ebaab</color>
+    <color name="calendar_tx_select">#5AD6D7</color>
+    <color name="title_color">#ffffffff</color>
+
+    <!--  列表项-主色 -->
+    <color name="list_item_text_color_main">#666666</color>
+    <!--  列表项-辅助色，描述文本色 -->
+    <color name="list_item_text_color_desc">#999999</color>
+    <!--  列表项-标题，加重 -->
+    <color name="list_item_text_color_title">#333333</color>
+
+    <!--行程-->
+    <color name="trip_text_sum">#ff9c00</color>
+    <color name="trip_text_score">#169ada</color>
+    <color name="trip_text_hint">#999999</color>
+    <color name="trip_text_normal">#666666</color>
+    <color name="trip_text_important">#333333</color>
+    <color name="red_alert">#FC0D1B</color>
+    <color name="red">#FF0000</color>
+    <color name="blue">#0000FF</color>
+    <!-- 认证状态 -->
+    <color name="auth_none">#FF999999</color>
+    <color name="auth_authing">#FFFF9000</color>
+    <color name="auth_error">#FFFF0000</color>
+    <color name="auth_via">#FF58DD00</color>
+    <!-- 优惠券 -->
+    <color name="coupon_title_color">#4f77db</color>
+    <color name="coupon_name_color">#ffb400</color>
+    <color name="coupon_unusednum_color">#ff4730</color>
+    <color name="qrcode_desc_text_color">#ffff0000</color>
+    <color name="coupon_station_nocoupon">#C2C2C2</color>
+    <color name="coupon_listitem_top_color">#43AAED</color>
+
+    <color name="fault_diagnose_processing">#169ada</color>
+    <color name="fault_diagnose_has_error">#ff7800</color>
+    <color name="fault_diagnose_has_fault_code">#ff9c00</color>
+
+</resources>

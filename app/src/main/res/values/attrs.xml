@@ -1,0 +1,44 @@
+<resources>
+    <declare-styleable name="TabButton">
+        <!--初始显示的图标-->
+        <attr name="image" format="reference" />
+        <!--选中之后显示的图标-->
+        <attr name="clickimage" format="reference" />
+        <!--选中之后显示的颜色-->
+        <attr name="clickcolor" format="color" />
+        <!--图标下显示的文字，不要太长！-->
+        <attr name="text" format="string" />
+        <!--文字的大小-->
+        <attr name="text_size" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="CouponDisPlayView">
+        <attr name="topSawtooth" format="boolean" />
+        <attr name="blowSawtooth" format="boolean" />
+        <attr name="leftSawtooth" format="boolean" />
+        <attr name="rightSawtooth" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="LabelView">
+        <attr name="label_distance" format="dimension" />
+        <attr name="label_height" format="dimension" />
+        <attr name="label_strokeWidth" format="dimension" />
+        <attr name="label_backgroundColor" format="color" />
+        <attr name="label_strokeColor" format="color" />
+        <attr name="label_text" format="string" />
+        <attr name="label_textSize" format="dimension" />
+        <attr name="label_textStyle" format="enum">
+            <enum name="NORMAL" value="0" />
+            <enum name="BOLD" value="1" />
+            <enum name="ITALIC" value="2" />
+            <enum name="BOLD_ITALIC" value="3" />
+        </attr>
+        <attr name="label_textColor" format="color" />
+        <attr name="label_visual" format="boolean" />
+        <attr name="label_orientation" format="enum">
+            <enum name="LEFT_TOP" value="1" />
+            <enum name="RIGHT_TOP" value="2" />
+            <enum name="LEFT_BOTTOM" value="3" />
+            <enum name="RIGHT_BOTTOM" value="4" />
+        </attr>
+    </declare-styleable>
+</resources>

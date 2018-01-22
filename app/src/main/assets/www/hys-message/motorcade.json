@@ -1,0 +1,28 @@
+{
+    "resultCode":200,
+    "message":"成功",
+    "data":{
+        "list":[
+            {
+                "readFlag":1,
+                "carId":12345,
+                "count":1,
+                "carNo":"辽A12345",
+                "mainDriverName":"孙悟空",
+                "subDriverName":"齐天大圣",
+                "content":"在北京市停车熄火",
+                "sendTime":1508239937224
+            },
+             {
+                "readFlag":2,
+                "carId":34555,
+                "count":1,
+                "carNo":"辽A12345",
+                "mainDriverName":"孙悟空",
+                "subDriverName":"齐天大圣",
+                "content":"在北京市停车熄火",
+                "sendTime":1508239937224
+            }
+        ]
+    }
+}

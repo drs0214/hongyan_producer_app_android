@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+
+    </style>
+
+    <style name="AnimationActivity" parent="@android:style/Animation">
+        <item name="android:activityOpenEnterAnimation">@anim/push_right_in</item>
+        <item name="android:activityOpenExitAnimation">@anim/push_left_out</item>
+        <item name="android:activityCloseEnterAnimation">@anim/push_left_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/push_right_out</item>
+    </style>
+
+    <style name="tabTextApp" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/main_text_color</item>
+    </style>
+
+    <style name="SpalshTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- 隐藏状态栏 -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
+    <!-- 主页标签卡 -->
+    <style name="main_tabbutton">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/bg_click_ripple</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="dialog1" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item><!--边框-->
+        <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
+        <item name="android:windowIsTranslucent">false</item><!--半透明-->
+        <item name="android:windowNoTitle">true</item><!--无标题-->
+        <item name="android:windowBackground">@color/transparent</item><!--背景透明-->
+        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
+    </style>
+
+    <style name="splitLine_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/colorSplitLine</item>
+    </style>
+
+    <style name="serverstation_list_tab_style">
+        <item name="android:textSize">@dimen/content_textsize</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">#ffffffff</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/selector_tab_textcolor</item>
+        <item name="android:drawableRight">@drawable/selector_tab_drawableright</item>
+    </style>
+
+    <style name="serverstation_map_tab_style">
+        <item name="android:textSize">@dimen/content_textsize</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/selector_tab_textcolor</item>
+        <item name="android:drawableRight">@drawable/selector_tab_drawableright</item>
+    </style>
+
+    <style name="serverstation_item_rel_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/serverstation_info_item_height</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:paddingLeft">15dp</item>
+        <item name="android:paddingRight">15dp</item>
+    </style>
+
+    <style name="serverstation_item_name_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/title_textsize</item>
+        <item name="android:textColor">@color/desc_text_color</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="serverstation_item_content_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/serverstation_info_item_height</item>
+        <item name="android:textSize">@dimen/title_textsize</item>
+        <item name="android:textColor">@color/important_text_color</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="serverstation_item_img_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="myDialog" parent="@android:style/Theme.Dialog">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <!--设置dialog的背景-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--设置Dialog的windowFrame框为无-->
+        <item name="android:windowFrame">@null</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--设置窗口内容不覆盖-->
+        <item name="android:windowContentOverlay">@null</item>
+        <!--设置动画，在这里使用让它继承系统的Animation.Dialog-->
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <!--背景是否模糊显示-->
+        <item name="android:backgroundDimEnabled">true</item>
+
+    </style>
+
+    <style name="style_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:scrollHorizontally">true</item>
+    </style>
+
+    <style name="AutoCompleteStyle" parent="@android:style/Widget.AutoCompleteTextView">
+        <item name="android:popupLayout">@color/white</item>
+        <item name="android:popupBackground">@color/white</item>
+        <item name="android:dropDownVerticalOffset">0dip</item>
+    </style>
+
+    <style name="Calendar_HeaderTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/main_text_color</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+    </style>
+
+    <style name="Calendar_WeekDayTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/main_text_color</item>
+        <item name="android:textSize">@dimen/text_size_14</item>
+
+    </style>
+
+    <style name="Calendar_DayTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textColor">@color/main_text_color</item>
+        <item name="android:textSize">@dimen/text_size_12</item>
+    </style>
+
+</resources>

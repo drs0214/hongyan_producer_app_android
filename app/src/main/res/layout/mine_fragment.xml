@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorBackgroud"
+    android:orientation="vertical"
+    tools:context="com.aerozhonghuan.hongyan.producer.modules.home.fragment.MineFragment">
+
+    <com.aerozhonghuan.hongyan.producer.widget.TitleBarView
+        android:id="@+id/titlebarview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+
+    <RelativeLayout
+        android:id="@+id/row_userinfo"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@drawable/mine_bg"
+        android:clickable="true"
+        android:focusable="false">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/margin15"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageview_pic"
+                android:layout_width="@dimen/mine_pic_wh"
+                android:layout_height="@dimen/mine_pic_wh"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/margin10"
+                android:src="@mipmap/ic_default_user" />
+
+            <TextView
+                android:id="@+id/textview_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin15"
+                android:text="--"
+                android:textColor="@color/black_text_color"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/textview_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textColor="@color/important_text_color"
+                android:textSize="@dimen/text_size_16" />
+
+            <TextView
+                android:id="@+id/tv_jifen_scoretotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/margin10"
+                android:background="@drawable/bg_round_message3"
+                android:drawableLeft="@drawable/ic_jifen"
+                android:drawablePadding="10dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/margin20"
+                android:paddingRight="@dimen/margin15"
+                android:text="0"
+                android:textColor="#ffb15e"
+                android:textSize="@dimen/text_size_14" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/colorSplitLine" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingBottom="15dp"
+                android:paddingTop="10dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_jifenstore"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_jifen_store" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="积分商城"
+                        android:textSize="@dimen/text_size_small" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorSplitLine" />
+
+                <LinearLayout
+                    android:id="@+id/ll_jifentask"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="3dp"
+                            android:src="@drawable/ic_jifen_task" />
+
+                        <TextView
+                            android:id="@+id/tv_jifen_tasknum"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_alignRight="@id/img"
+                            android:background="@drawable/dots_red"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:textSize="10sp"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="任务中心"
+                        android:textSize="@dimen/text_size_small" />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/section1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="#FFF"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/section2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:background="#FFF"
+                android:orientation="vertical">
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

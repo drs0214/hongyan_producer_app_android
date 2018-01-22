@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>tets</title>
+		<style type="text/css">
+			*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
+html,body{
+	width: 100%;
+	background-color: #F5F5F5;
+}
+nav{
+	width: 100%;
+	font-size: .32rem;
+	background-color: #FFFFFF;
+	
+}
+.tab-news{
+	width: 100%;
+	height:.9rem;
+	line-height: .9rem;
+	text-align: center;
+	/*position: fixed;
+	top: .4rem;
+	left: 0;*/
+}
+.motorcade-new{
+	width: 50%;
+	color: #4F77DB;
+	float: left;
+	/*border-right: .01rem dashed #b7bec3;*/
+	padding-top: .01rem;
+	padding-bottom: .01rem;
+	border-bottom: .05rem solid #4F77DB;
+	box-sizing: border-box;
+}
+.person-new{
+	width: 50%;
+	float: left;
+	color: #333333;
+	
+}
+section{
+	width: 100%;
+	background-color: #fff;
+	margin-top: .2rem;
+	position: absolute;
+	top: .8rem;
+}
+.car-lists,.per-info-lists{
+	width: 100%;
+	
+	
+}
+button{
+	width: 30%;
+	height: .6rem;
+	font-size: .28rem;
+}
+
+		</style>
+	</head>
+	<body>
+		<button onclick="readAll();">全部已读</button>
+		<nav>
+		<div class="tab-news">
+			<div class="motorcade-new" id="J_motorcadeNew" data-num="1">
+				<p>车队消息</p><span class="cir-moto"></span>
+			</div>
+			<div class="person-new" id="J_personNews" data-num="2">
+				<p>个人消息</p><span class="cir-per"></span>
+			</div>
+		</div>
+	</nav>
+	<section>
+		<div class="car-lists">
+			
+			<!--<div class="car-lists-item">
+				<div class="item-icon">
+					<img src="img/controller_03.png"/>
+				</div>
+				<div class="item-info">
+					<div class="item-first">
+						<div class="item-car-num">
+							京N12344
+						</div>
+						<div class="item-sendtime">
+							19:00
+						</div>
+					</div>
+					<div class="item-second">
+						<div class="maindriver-name">
+							<img src="img/main-driver.png" alt="" />
+							<span>航三</span>
+						</div>
+						<div class="subdriver-name">
+							<img src="img/sub-driver.png" alt="" />
+							<span>李四</span>
+						</div>
+					</div>
+					<div class="item-content">
+						在北京市停车熄火
+					</div>
+				</div>
+			</div>-->
+		</div>
+		
+		<div class="per-info-lists" style="display: none;">
+			
+			<!--<div class="per-info-item">
+				<div class="per-item-lt">
+					<img src="img/controller_03.png"/>
+				</div>
+				<div class="per-item-rt">
+					<div class="per-item-first">
+						<div class="per-item-title">
+							救援出发
+						</div>
+						<div class="per-item-sendtime">
+							19:10
+						</div>
+					</div>
+					<div class="per-item-content">
+						救援出发救援出发救援出发救援出发救援出发救援出发救援出发救援出发救援出发救援出发救援出发援出发救援出发救援出发援出发救援出发救援出发
+					</div>
+				</div>
+			</div>-->
+		</div>
+	</section>
+	</body>
+</html>
+<script src="../comment_js/jquery-1.11.1.js" type="text/javascript">
+	
+</script>
+<script type="text/javascript">
+	var push_num = 1;
+	
+	$("#J_motorcadeNew").click(function(){
+     	$(".per-info-lists").hide();
+		$(".car-lists").show().html("车队消息列表");
+		push_num =$(this).data("num");
+      /* push_num = 1;
+		*/
+	});
+	$("#J_personNews").click(function(){
+		$(".car-lists").hide();
+		$(".per-info-lists").show().html("个人消息列表");
+		push_num = $(this).data("num");
+       /* push_num =2;*/
+   
+		
+	})
+	
+	//全部已读 
+
+function readAll(){
+
+	//var push_num_val = sessionStorage.getItem("push_num_val");
+    console.log(push_num+"函数内部全局");
+	
+    readAllNum(push_num);
+
+}
+ 
+function readAllNum(push_num){
+	
+	/*alert(push_num+"全部已读");*/
+	if (push_num==1) {
+		console.log("车队消息"+push_num);
+		
+
+	} else if(push_num==2){
+		//个人消息
+   		console.log("个人消息"+push_num);
+	   
+
+	}
+	
+		
+}
+</script>
+<script type="text/javascript">
+	// 控制rem值       
+	document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.2 + 'px';
+	/*var width = document.documentElement.clientWidth!=0?document.documentElement.clientWidth:window.screen.availWidth;
+	 document.documentElement.style.fontSize=width/7.2+'px';*/
+</script>

@@ -1,0 +1,146 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
+html,body{
+	width: 100%;
+	background-color: #F5F5F5;
+}
+/*nav{
+	width: 100%;
+	font-size: .32rem;
+	background-color: #FFFFFF;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}*/
+/*.tab-news{
+	width: 100%;
+	height: .8rem;
+	line-height: .8rem;
+	text-align: center;
+	/*position: fixed;
+	top: .4rem;
+	left: 0;*/
+}*/
+/*.motorcade-new{
+	width: 50%;
+	color: #4F77DB;
+	float: left;
+	/*border-right: .01rem dashed #b7bec3;*/
+	padding-top: .01rem;
+	padding-bottom: .01rem;
+	border-bottom: .05rem solid #4F77DB;
+	box-sizing: border-box;
+}*/
+/*.person-new{
+	width: 50%;
+	float: left;
+	color: #333333;
+	
+}*/
+section{
+	width: 100%;
+	background-color: #fff;
+	/*margin-top: .2rem;*/
+	/*position: absolute;
+	top: .8rem;*/
+}
+.car-lists,.per-info-lists{
+	width: 100%;
+	
+	
+}
+.per-info-item{
+	width: 100%;
+	padding-left: .3rem;
+	padding-right: .3rem;
+	box-sizing: border-box;
+	
+}
+.per-item-sendtime{
+	width: 100%;
+	font-size: .24rem;
+	text-align: center;
+}
+.per-sendtime{
+	display: inline-block;
+	margin: 0 auto;
+	padding-left: .1rem;
+	padding-right: .1rem;
+	background: #ddd;
+	color: #fff;
+	border-radius: .06rem;
+	margin-top: .3rem;
+	margin-bottom: .1rem;
+	box-sizing: border-box;
+	
+}
+.per-item-rt{
+	width: 100%;
+	/*height:1.7rem;*/
+	background-color: #FFFFFF;
+	padding-left: .3rem;
+	padding-right: .3rem;
+	box-sizing: border-box;
+}
+.per-item-title{
+	width: 100%;
+	padding-top: .2rem;
+	padding-bottom: .2rem;
+	font-weight: bold;
+	font-size: .25rem;
+}
+.per-item-content{
+	width: 100%;
+	color: #666;
+	font-size: .24rem;
+	padding-bottom: .2rem;
+	/*display: -webkit-box; 
+	display: -moz-box;  */
+	/* white-space: pre-wrap; */
+	/*word-wrap: break-word;
+	 overflow: hidden; 
+	text-overflow: ellipsis; 
+	-webkit-box-orient: vertical; 
+	-webkit-line-clamp:2;*/   /*显示行数*/
+}
+
+
+
+.loading-more{
+	width: 100%;
+	height: .9rem;
+	line-height: .9rem;
+	text-align: center;
+	font-size: .26rem;
+	color: #999;
+}
+
+.car-lists,.per-info-lists{
+	/*position: relative;*/
+
+}
+.tips-img{
+    width: 2rem;
+    height: 2.5rem;
+	text-align: center;
+	font-size: .26rem;
+	box-sizing: border-box;
+	/*display: table-cell;
+	vertical-align: middle;*/
+	position: fixed;
+	left:50%;
+	top: 50%;
+	margin-left: -1rem;
+	margin-top: -1.25rem;
+
+}
+
+.tips-img>img{
+	width: 2rem;
+	height: 2rem;
+	background-size: 100%;
+}

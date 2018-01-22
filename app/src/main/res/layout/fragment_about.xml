@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroud">
+
+
+    <LinearLayout
+        android:id="@+id/ll_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_web"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_logo">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/titlebar_paddingLeft"
+                android:text="官方网址"
+                android:textColor="@color/important_text_color"
+                android:textSize="@dimen/title_textsize" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:padding="@dimen/titlebar_paddingLeft"
+                android:text="http://www.truckgogo.com"
+                android:textColor="@color/desc_text_color"
+                android:textSize="@dimen/title_textsize" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorSplitLine" />
+
+        <RelativeLayout
+            android:id="@+id/rl_tel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/titlebar_paddingLeft"
+                android:text="全国服务热线"
+                android:textColor="@color/important_text_color"
+                android:textSize="@dimen/title_textsize" />
+
+            <TextView
+                android:id="@+id/tv_tel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:padding="@dimen/titlebar_paddingLeft"
+                android:text="400-811-7766"
+                android:textColor="@color/desc_text_color"
+                android:textSize="@dimen/title_textsize" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorSplitLine" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="@dimen/titlebar_paddingLeft"
+                android:text="版本信息"
+                android:textColor="@color/important_text_color"
+                android:textSize="@dimen/title_textsize" />
+
+            <TextView
+                android:id="@+id/tv_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:padding="@dimen/titlebar_paddingLeft"
+                android:text="v1.0"
+                android:textColor="@color/desc_text_color"
+                android:textSize="@dimen/title_textsize" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_text">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ic_about" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:gravity="center"
+        android:paddingLeft="@dimen/titlebar_paddingLeft"
+        android:paddingRight="@dimen/titlebar_paddingRight"
+        android:text="重卡汇"
+        android:textColor="@color/main_text_color"
+        android:textSize="@dimen/alert_textsize" />
+
+    <TextView
+        android:id="@+id/tv_law"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_app"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="@string/strin_login_law2"
+        android:textColor="@color/titlebar_bg"
+        android:textSize="@dimen/alert_textsize" />
+</RelativeLayout>

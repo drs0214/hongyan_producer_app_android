@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/split_line" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/home_tab_height"
+        android:gravity="center"
+        android:paddingLeft="@dimen/titlebar_paddingLeft"
+        android:paddingRight="@dimen/titlebar_paddingRight"
+        android:text="选择车牌号"
+        android:textColor="@color/important_text_color"
+        android:textSize="@dimen/login_textsize" />
+
+    <GridView
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:numColumns="6" />
+</LinearLayout>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.aerozhonghuan:pullToRefresh-1.0.1">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/3ebe5859a489dc11a2004d6f4f0c2bfc31a9c96b/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/3ebe5859a489dc11a2004d6f4f0c2bfc31a9c96b/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.aerozhonghuan/pullToRefresh/1.0.1/54f4a1600883ae2cb6708677d10da898a5a17792/pullToRefresh-1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="com.aerozhonghuan:hybrid-1.1.4">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.android/build-cache/c0a0fd2ed060089c213fc304fdcb667ecd83420e/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/c0a0fd2ed060089c213fc304fdcb667ecd83420e/output/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.aerozhonghuan/hybrid/1.1.4/6c2cff17e90391714bea15dc2be1df845cd82894/hybrid-1.1.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

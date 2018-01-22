@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="titlebar_height">52dp</dimen>
+    <dimen name="titlebar_title_text_size">20sp</dimen>
+
+    <!-- home页 -->
+    <dimen name="titlebar_left_textsize">20sp</dimen>
+    <dimen name="titlebar_right_textsize">16sp</dimen>
+    <dimen name="home_tab_height">52dp</dimen>
+    <dimen name="home_tab_textsize">12sp</dimen>
+    <dimen name="img_big_height">171dp</dimen>
+    <dimen name="img_serverinfo_height">171dp</dimen>
+    <dimen name="home_item_bottom">20dp</dimen>
+    <dimen name="home_item_height">114dp</dimen>
+    <dimen name="home_item_margintop">30dp</dimen>
+    <dimen name="home_item_img_weight">50dp</dimen>
+    <dimen name="dots_weight">17dp</dimen>
+
+    <!-- 规定文本大小 -->
+    <!-- 提示文字 -->
+    <dimen name="alert_textsize">12sp</dimen>
+
+    <!-- 文本内容字体 -->
+    <dimen name="content_textsize">14sp</dimen>
+    <!-- 文本标题字体 -->
+    <dimen name="title_textsize">16sp</dimen>
+    <!-- 按钮字体 -->
+    <dimen name="btn_textsize">18sp</dimen>
+
+    <!-- 字体大小，一般大小，大，更小 -->
+    <dimen name="text_size_small_small">12sp</dimen>
+    <dimen name="text_size_small">14sp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_big">18sp</dimen>
+    <dimen name="text_size_big_big">22sp</dimen>
+
+    <dimen name="import_textsize">20sp</dimen>
+    <!-- 导航标题 -->
+    <dimen name="navigation_textsize">20sp</dimen>
+    <dimen name="dialog_width">320dp</dimen>
+
+    <!-- 一键呼救 item -->
+    <dimen name="sos_item_height">63dp</dimen>
+    <dimen name="sos_item_img_wh">39dp</dimen>
+
+    <!-- 按钮大小 -->
+    <dimen name="btn_small_width">134dp</dimen>
+    <dimen name="btn_small_height">36dp</dimen>
+
+    <dimen name="mine_pic_wh">68dp</dimen>
+
+    <!-- 我的车辆 -->
+    <dimen name="mycar_item_top_margin">19dp</dimen>
+    <dimen name="mycar_item_end_margin">17dp</dimen>
+    <dimen name="mycar_item_left_margin">22dp</dimen>
+
+    <!-- 服务站列表 -->
+    <dimen name="serverstation_item_height">102dp</dimen>
+    <dimen name="serverstation_item_img_height">68dp</dimen>
+    <dimen name="serverstation_item_img_width">114dp</dimen>
+    <dimen name="serverstation_tab_height">51dp</dimen>
+    <dimen name="serverstation_info_importitem_height">68dp</dimen>
+    <dimen name="serverstation_info_item_height">51dp</dimen>
+    <dimen name="newsubscribe_checkbox_height">29dp</dimen>
+    <dimen name="subscrbe_uplodeimg_wh">90dp</dimen>
+    <dimen name="rate_content_height">228dp</dimen>
+    <dimen name="rate_et_height">85dp</dimen>
+
+    <!-- 优惠券相关 -->
+    <dimen name="coupon_item_height">187dp</dimen>
+    <dimen name="coupon_item_up_height">57dp</dimen>
+    <dimen name="coupon_item_down_height">114dp</dimen>
+    <dimen name="coupon_qrcode_item_height">68dp</dimen>
+    <dimen name="coupon_consume_qrcode_width">160dp</dimen>
+    <dimen name="coupon_consume_qrcode_height">160dp</dimen>
+    <dimen name="coupon_consume_qrcode_line_width">180dp</dimen>
+</resources>

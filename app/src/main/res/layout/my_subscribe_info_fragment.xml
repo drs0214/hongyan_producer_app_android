@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroud"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:text="基本信息"
+            android:textColor="@color/list_item_text_color_main"
+            android:textSize="@dimen/content_textsize" />
+
+        <TextView
+            android:id="@+id/tv_serverstation"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/serverstation_info_item_height"
+            android:background="@color/white"
+            android:drawableRight="@drawable/more"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/title_textsize" />
+
+        <LinearLayout
+            android:id="@+id/ll_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorSplitLine" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:text="预约项目"
+            android:textColor="@color/list_item_text_color_main"
+            android:textSize="@dimen/content_textsize" />
+
+        <LinearLayout
+            android:id="@+id/ll_maintain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="保养服务:"
+                android:textColor="@color/list_item_text_color_desc"
+                android:textSize="@dimen/title_textsize" />
+
+            <TextView
+                android:id="@+id/tv_maintain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/important_text_color"
+                android:textSize="@dimen/title_textsize" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorSplitLine" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_repair"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="15dp"
+            android:paddingTop="10dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="维修服务:"
+                android:textColor="@color/list_item_text_color_desc"
+                android:textSize="@dimen/title_textsize" />
+
+            <TextView
+                android:id="@+id/tv_repair"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/important_text_color"
+                android:textSize="@dimen/title_textsize" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/colorSplitLine" />
+
+        <LinearLayout
+            android:id="@+id/ll_fault"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="#F5F5F5"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="15dp"
+                    android:text="故障描述"
+                    android:textColor="@color/list_item_text_color_main"
+                    android:textSize="@dimen/content_textsize" />
+
+                <ProgressBar
+                    android:id="@+id/pb_loadrecord"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_feedback"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/important_text_color"
+                    android:textSize="@dimen/content_textsize" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorSplitLine" />
+            </LinearLayout>
+
+            <com.aerozhonghuan.hongyan.producer.widget.CustomGridView
+                android:id="@+id/grid_img_describe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/white"
+                android:numColumns="4"
+                android:verticalSpacing="10dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_record_descrbe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:orientation="vertical" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_subscribe"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/selector_login_button"
+            android:text="取消预约"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/login_textsize"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_tips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/maintain_margin_large_large"
+            android:layout_marginRight="@dimen/maintain_margin_large_large"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:text="您已取消该预约!"
+            android:textColor="@color/text_orange_color"
+            android:textSize="@dimen/text_size_small"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/ll_rate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/colorSplitLine" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:paddingLeft="15dp"
+                android:text="我的评价"
+                android:textColor="@color/list_item_text_color_main"
+                android:textSize="@dimen/content_textsize" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="15dp"
+                android:background="@color/colorSplitLine" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp">
+
+                <include layout="@layout/rate_item" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/colorSplitLine" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

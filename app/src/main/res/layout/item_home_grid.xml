@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/home_item_height"
+    android:background="@drawable/bg_click_ripple">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/iv_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/ic_home_item_tripanalyze" />
+
+        <ImageView
+            android:id="@+id/iv_point"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_alignTop="@id/iv_item"
+            android:layout_toRightOf="@id/iv_item"
+            android:src="@drawable/dots_red"
+            android:visibility="gone" />
+
+
+        <TextView
+            android:id="@+id/tv_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_item"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="行程分析"
+            android:textColor="@color/main_text_color"
+            android:textSize="@dimen/text_size_small" />
+    </RelativeLayout>
+</RelativeLayout>

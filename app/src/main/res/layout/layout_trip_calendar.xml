@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#80000000"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendarView"
+        app:mcv_allowClickDaysOutsideCurrentMonth="false"
+        app:mcv_arrowColor="@color/main_text_color"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/padding10"
+        android:paddingRight="@dimen/padding10"
+        app:mcv_headerTextAppearance="@style/Calendar_HeaderTextAppearance"
+        app:mcv_selectionColor="@color/calendar_bg_trip_data"
+        app:mcv_weekDayTextAppearance="@style/Calendar_WeekDayTextAppearance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btn_gotoday"
+        android:layout_width="160dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/btn_go_today"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+</LinearLayout>
