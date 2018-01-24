@@ -95,7 +95,7 @@ android {
             buildConfigField "String", "HOST_BUSINESS", "\"http://59.46.97.115:8071/hyapipro/hongyan\""
             buildConfigField "String", "HOST_USER_CENTER", "\"http://59.46.97.115:8071/hyapipro/hongyan/usercenter\""
             buildConfigField "String", "HOST_FILE_UPLOAD", "\"http://59.46.97.115:8071/fsm\""
-            buildConfigField "String", "HOST_HTML5", "\"http://211.145.49.130:85/hongyan_dev/driver\""
+            buildConfigField "String", "HOST_HTML5", "\"http://59.46.97.115:8071/driverh5\""
             buildConfigField "String", "HOST_DRIVER_BBS", "\"http://59.46.97.115:8071/hongyan/yqlt.php\""
             buildConfigField "String", "Branch_Name", "\"${BRANCH_NAME}\""
             buildConfigField "String", "AUTO_LOGIN_BY_ZYF", "\"${AUTO_LOGIN_BY_ZYF}\""
@@ -180,11 +180,6 @@ dependencies {
     compile 'com.github.chrisbanes:PhotoView:1.2.6'
     compile 'com.android.support:multidex:1.0.1'
     compile 'com.prolificinteractive:material-calendarview:1.4.0'
-
-    compile 'com.squareup.retrofit2:retrofit:2.1.0'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
-    compile 'io.reactivex:rxandroid:1.2.0'
 }
 
 
