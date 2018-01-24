@@ -4,7 +4,6 @@
     android:layout_height="fill_parent"
     android:clipToPadding="false"
     android:fitsSystemWindows="true">
-
     <SurfaceView
         android:id="@+id/preview_view"
         android:layout_width="fill_parent"

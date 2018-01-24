@@ -44,7 +44,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin10"
+        android:layout_marginLeft="@dimen/margin20"
         android:layout_marginTop="@dimen/margin20"
         android:text="生产调试"
         android:textColor="@color/list_item_text_color_title"
@@ -102,7 +102,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin10"
+        android:layout_marginLeft="@dimen/margin20"
         android:layout_marginTop="@dimen/margin50"
         android:text="运输扫码"
         android:textColor="@color/list_item_text_color_title"
@@ -131,7 +131,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/margin15"
-                android:text="初检"
+                android:text="运输扫码"
                 android:textColor="@color/text_nr"
                 android:textSize="@dimen/text_size_14" />
         </LinearLayout>

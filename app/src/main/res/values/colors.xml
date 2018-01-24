@@ -23,6 +23,8 @@
     <!--  文本字体文本颜色 -->
     <color name="main_text_color">#666666</color>
     <color name="text_nr">#666666</color>
+    <color name="text_tj">#333333</color>
+    <color name="chujian_blue">#3296fa</color>
     <!-- 注释字体文本颜色 -->
     <color name="desc_text_color">#999999</color>
     <!-- 重要信息文本颜色 -->

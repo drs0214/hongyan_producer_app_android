@@ -5,7 +5,10 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackgroud"
     android:orientation="vertical">
-
+    <com.aerozhonghuan.hongyan.producer.widget.TitleBarView
+        android:id="@+id/titlebarview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,8 +23,8 @@
         android:layout_height="92dp"
         android:layout_marginTop="@dimen/margin30"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/padding10"
-        android:paddingRight="@dimen/padding10">
+        android:paddingLeft="@dimen/padding20"
+        android:paddingRight="@dimen/padding20">
 
         <EditText
             android:id="@+id/et_account"
@@ -52,11 +55,10 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/angry_btn"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:layout_marginLeft="@dimen/margin10"
-        android:layout_marginRight="@dimen/margin10"
+        android:layout_marginLeft="@dimen/margin20"
+        android:layout_marginRight="@dimen/margin20"
         android:layout_marginTop="@dimen/margin45"
         android:background="@drawable/btn_blue_shape"
         android:gravity="center"

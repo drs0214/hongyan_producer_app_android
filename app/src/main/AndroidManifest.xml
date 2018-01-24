@@ -134,7 +134,7 @@
 
         </activity>
         <activity
-            android:name=".modules.home.MainActivity"
+            android:name="com.aerozhonghuan.hongyan.producer.modules.common.TestUI"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" >
