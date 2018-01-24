@@ -20,9 +20,11 @@
     <dimen name="margin15">15dp</dimen>
     <dimen name="margin16">16dp</dimen>
     <dimen name="margin20">20dp</dimen>
+    <dimen name="margin25">25dp</dimen>
     <dimen name="margin50">50dp</dimen>
     <dimen name="margin30">30dp</dimen>
     <dimen name="margin40">40dp</dimen>
+    <dimen name="margin45">45dp</dimen>
     <dimen name="margin60">60dp</dimen>
     <dimen name="margin90">90dp</dimen>
     <!--  内边距 级别倍数-->
@@ -42,6 +44,7 @@
     <dimen name="text_size_10">10sp</dimen>
     <dimen name="text_size_12">12sp</dimen>
     <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_15">15sp</dimen>
     <dimen name="text_size_16">16sp</dimen>
     <dimen name="text_size_18">18sp</dimen>
     <dimen name="text_size_20">20sp</dimen>

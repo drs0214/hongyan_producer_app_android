@@ -50,7 +50,6 @@ public class HomeFragment extends BaseFragment {
     private static final String TAG = "HomeFragment";
     private static final int GIRD_COLUMN_NUM = 4;
     private BannerViewPager vp_banner;
-    private RecyclerView gv_hometab;
     private List<HomeGridItemBean> homeGridItemBeanList;
     private View rootView;
     private HomeAdapter adapter;
@@ -80,7 +79,6 @@ public class HomeFragment extends BaseFragment {
 
     private void initView() {
         vp_banner = (BannerViewPager) rootView.findViewById(R.id.vp_banner);
-        gv_hometab = (RecyclerView) rootView.findViewById(R.id.gv_hometab);
         ll_dots = (LinearLayout) rootView.findViewById(R.id.ll_dots);
         img_oneornoBanner = (ImageView) rootView.findViewById(R.id.img_oneornoBanner);
         tvRight = (TextView) rootView.findViewById(R.id.tv_right);
@@ -101,7 +99,6 @@ public class HomeFragment extends BaseFragment {
         for (int i = 0; i < HomeConstants.HOME_GRID_ITEM_IMAGES.length; i++) {
             homeGridItemBeanList.add(new HomeGridItemBean(HomeConstants.HOME_GRID_ITEM_IMAGES[i], HomeConstants.HOME_GRID_ITEM_NAMES[i]));
         }
-        setGridView();
         setViewPager();
         if (MyAppliation.getApplication().getUserInfo() == null) return;
         final TypeToken<List<HomeBannerInfo>> typeToken = new TypeToken<List<HomeBannerInfo>>() {
@@ -170,23 +167,6 @@ public class HomeFragment extends BaseFragment {
         }
     }
 
-    /*
-     *设置主页九宫格
-     */
-    private void setGridView() {
-        gv_hometab.setLayoutManager(new GridLayoutManager(getContext(), GIRD_COLUMN_NUM));
-        adapter = new HomeAdapter();
-        gv_hometab.setAdapter(adapter);
-        adapter.setOnItemClickLitener(new OnItemClickLitener() {
-            @Override
-            public void onItemClick(View view, int position) {
-                UmengUtils.onEvent(getActivity(), HomeConstants.UMENG_EVENTS[position], HomeConstants.HOME_GRID_ITEM_NAMES[position]);
-                Intent intent = new Intent(getContext(), HomeConstants.HOME_GRID_ITEM_INTENTACTIVITY[position - 1]);
-                intent.putExtra("text", HomeConstants.HOME_GRID_ITEM_NAMES[position]);
-                startActivity(intent);
-            }
-        });
-    }
 
     /**
      * 显示隐藏fragment时控制轮播
