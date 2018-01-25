@@ -21,7 +21,7 @@
         android:id="@+id/tv_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="@dimen/margin5"
         android:gravity="center"
         android:text="将二维码放入框内，即可自动扫描"
         android:textColor="#fff" />
@@ -32,8 +32,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="150dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginBottom="@dimen/margin150"
+        android:layout_marginTop="@dimen/margin5"
         android:clickable="true"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -47,7 +47,7 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="@dimen/margin5"
             android:text="手动输入车辆VIN号"
             android:textColor="#fff" />
 

@@ -7,14 +7,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="21dp"
+        android:paddingBottom="@dimen/margin21"
         >
         <LinearLayout
             android:id="@+id/ll_name_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginTop="21dp"
+            android:layout_marginTop="@dimen/margin21"
             android:layout_marginLeft="@dimen/margin15"
             android:orientation="vertical">
         <TextView
@@ -29,13 +29,13 @@
             android:id="@+id/tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="@dimen/margin14"
             android:layout_alignLeft="@+id/tv_name"
             android:layout_below="@id/tv_name"
             android:layout_alignStart="@+id/tv_name"
             android:text="2018-1-23  10:30:45"
             android:textColor="@color/desc_text_color"
-            android:textSize="@dimen/text_size_14" />
+            android:textSize="@dimen/text_size_12" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/ll_result"
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginTop="13dp"
+            android:layout_marginTop="@dimen/margin13"
             android:layout_marginRight="@dimen/margin15"
             android:gravity="center"
             android:orientation="vertical">
@@ -56,29 +56,29 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
+                android:layout_marginTop="@dimen/margin9"
                 android:text="通过"
                 android:textColor="@color/text_nr"
-                android:textSize="@dimen/text_size_14" />
+                android:textSize="@dimen/text_size_12" />
         </LinearLayout>
         <TextView
             android:id="@+id/tv_state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/ll_result"
-            android:layout_marginRight="59dp"
+            android:layout_marginRight="@dimen/margin59"
             android:layout_centerVertical="true"
             android:text="初检"
             android:textColor="@color/chujian_blue"
             android:textSize="@dimen/text_size_15" />
         <View
             android:id="@+id/line"
-            android:layout_width="1dp"
-            android:layout_height="45dp"
-            android:background="#e5e5e5"
+            android:layout_width="@dimen/line"
+            android:layout_height="@dimen/margin45"
+            android:background="@color/line"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/tv_state"
-            android:layout_marginRight="59dp"
+            android:layout_marginRight="@dimen/margin59"
 
             />
 

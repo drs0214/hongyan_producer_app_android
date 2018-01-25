@@ -19,24 +19,24 @@ public class LoginActivity extends TitlebarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         loginHttpLoader = new LoginHttpLoader();
-        btn_login = (Button) findViewById(R.id.btn_login);
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                loginHttpLoader.getSession("apptest", "apptest")
-                        .subscribe(new ProgressSubscriber<String>(){
-
-                            @Override
-                            public void onError(Throwable e) {
-                                super.onError(e);
-                            }
-
-                            @Override
-                            public void onNext(String s) {
-                                // TODO: 2018/1/25 缓存cookie 并且更新header拦截器
-                            }
-                        });
-            }
-        });
+//        btn_login = (Button) findViewById(R.id.btn_login);
+//        btn_login.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                loginHttpLoader.getSession("apptest", "apptest")
+//                        .subscribe(new ProgressSubscriber<String>(){
+//
+//                            @Override
+//                            public void onError(Throwable e) {
+//                                super.onError(e);
+//                            }
+//
+//                            @Override
+//                            public void onNext(String s) {
+//                                // TODO: 2018/1/25 缓存cookie 并且更新header拦截器
+//                            }
+//                        });
+//            }
+//        });
     }
 }
