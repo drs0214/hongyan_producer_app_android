@@ -15,11 +15,11 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 
+import com.aerozhonghuan.foundation.base.SingleActivity;
 import com.aerozhonghuan.hongyan.producer.BuildConfig;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoManager;
 import com.aerozhonghuan.hongyan.producer.utils.EnvironmentInfoUtils;
-import com.aerozhonghuan.foundation.base.SingleActivity;
 
 
 /**

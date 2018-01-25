@@ -3,7 +3,7 @@ package com.aerozhonghuan.hongyan.producer.utils;
 import android.app.ActivityManager;
 import android.content.Context;
 
-import com.aerozhonghuan.hongyan.producer.framework.base.MyAppliation;
+import com.aerozhonghuan.hongyan.producer.framework.base.MyApplication;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,7 +23,7 @@ public class ProcessUtil {
      * @return
      */
     public static String getProcessName(int pid) {
-        ActivityManager am = (ActivityManager) MyAppliation.getApplication().getSystemService(Context.ACTIVITY_SERVICE);
+        ActivityManager am = (ActivityManager) MyApplication.getApplication().getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> processInfoList = am.getRunningAppProcesses();
         if (processInfoList == null) {
             return null;

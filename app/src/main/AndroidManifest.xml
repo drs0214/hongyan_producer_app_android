@@ -15,36 +15,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- QQ、QQ空间所需权限 -->
     <uses-permission android:name="android.permission.GET_TASKS" />
-    <!-- 云信相关权限  start -->
-    <!-- 网络相关 -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
-    <!-- 手机状态 -->
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-
-    <!-- 读写文件 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
-    <!-- 多媒体 -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- SDK 权限申明, 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
     <!-- 和下面的 uses-permission 一起加入到你的 AndroidManifest 文件中。 -->
     <permission
@@ -52,42 +22,6 @@
         android:protectionLevel="signature" />
     <!-- 接收 SDK 消息广播权限， 第三方 APP 接入时，请将 com.netease.nim.demo 替换为自己的包名 -->
     <uses-permission android:name="com.aerozhonghuan.hongyan.producer.permission.RECEIVE_MSG" />
-
-    <!-- 爱心推权限 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.GET_TASKS" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.REORDER_TASKS" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
-    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
-    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="com.sec.android.provider.badge.permission.READ" />
-    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE" />
-    <uses-permission android:name="com.htc.launcher.permission.READ_SETTINGS" />
-    <uses-permission android:name="com.htc.launcher.permission.UPDATE_SHORTCUT" />
-    <uses-permission android:name="com.anddoes.launcher.permission.UPDATE_COUNT" />
-    <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" />
-    <uses-permission android:name="com.huawei.android.launcher.permission.READ_SETTINGS" />
-    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
-    <uses-permission android:name="com.huawei.android.launcher.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="com.sonyericsson.home.permission.RECEIVE_BADGE" />
-    <uses-permission android:name="com.sonyericsson.home.permission.BROADCAST_BADGE" />
-    <uses-permission android:name="android.permission.READ_LOGS" />
-
-    <!-- 请将yourpackage改为应用包名 -->
-    <permission
-        android:name="com.aerozhonghuan.hongyan.producer.permission.MIPUSH_RECEIVE"
-        android:protectionLevel="signature" />
-
     <uses-permission android:name="com.aerozhonghuan.hongyan.producer.permission.MIPUSH_RECEIVE" />
     <!-- 地图 -->
     <!-- 允许程序读取所有者数据 -->
@@ -108,10 +42,8 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
 
-    <!-- 爱心推权限 end -->
-    <!-- 云信权限 end -->
     <application
-        android:name=".framework.base.MyAppliation"
+        android:name=".framework.base.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -130,14 +62,12 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/SpalshTheme"
-            android:windowSoftInputMode="stateAlwaysHidden">
-
-        </activity>
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity
             android:name=".modules.home.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" >
+            android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -155,104 +85,6 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
-        <!-- 版本更新服务 -->
-        <service android:name=".framework.versionUpdate.BreakpointLoadService" />
-        <!-- 版本更新 自定义notify 自定义按钮广播 -->
-        <receiver android:name=".framework.versionUpdate.BreakpointLoadService$MyBroadcastReceiver">
-            <intent-filter>
-                <action android:name="com.notifications.intent.action.ButtonClick" />
-            </intent-filter>
-        </receiver>
-
-        <!-- 爱心推配置 begin -->
-        <!-- 定义接收器，用来接收透传、api结果以及点击事件 -->
-        <!-- 请把此处设置为您定义的BroadcastReceiver派生类全名 -->
-        <receiver android:name=".framework.push.IxintuiReceiver">
-            <intent-filter>
-
-                <!-- 接收透传消息 -->
-                <action android:name="com.ixintui.action.MESSAGE" />
-                <!-- 接收register, add tag等反馈消息 -->
-                <action android:name="com.ixintui.action.RESULT" />
-                <!-- 接收notification click消息 -->
-                <action android:name="com.ixintui.action.notification.CLICK" />
-            </intent-filter>
-        </receiver>
-
-        <!-- 以下为push使用的活动，服务和接收器，请不要修改这些内容 -->
-        <activity
-            android:name="com.ixintui.push.PushActivity"
-            android:configChanges="orientation|keyboardHidden"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar">
-            <intent-filter>
-                <action android:name="com.ixintui.push.PushActivity" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <!-- Rich push 核心功能 since 1.8 -->
-        <activity
-            android:name="com.ixintui.push.RichpushActivity"
-            android:theme="@android:style/Theme.Translucent" />
-        <!-- push服务 -->
-        <service
-            android:name="com.ixintui.push.PushService"
-            android:exported="true"
-            android:process=":ixintui_service_v1">
-            <intent-filter>
-                <action android:name="android.content.SyncAdapter" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.content.SyncAdapter"
-                android:resource="@xml/ixintui_sync" />
-        </service>
-        <service android:name="com.ixintui.push.DeamonService">
-            <intent-filter>
-                <action android:name="android.accounts.AccountAuthenticator" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.accounts.AccountAuthenticator"
-                android:resource="@xml/ixintui_deamon" />
-        </service>
-        <service
-            android:name="com.ixintui.push.MediateService"
-            android:exported="true" />
-        <!-- 推送内部使用的provider -->
-        <provider
-            android:name="com.ixintui.push.Provider"
-            android:authorities="com.aerozhonghuan.hongyan.producer.ixintui.push.provider"
-            android:exported="false"
-            android:multiprocess="true" />
-        <provider
-            android:name="com.ixintui.push.SyncProvider"
-            android:authorities="com.aerozhonghuan.hongyan.producer.provider"
-            android:exported="false"
-            android:syncable="true" />
-
-        <receiver android:name="com.ixintui.push.Receiver">
-            <intent-filter>
-                <action android:name="com.ixintui.action.BROADCAST" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
-
-                <data android:scheme="package" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-            </intent-filter>
-        </receiver>
-        <receiver
-            android:name=".framework.push.NotificationBroadcastReceiver"
-            android:enabled="true"
-            android:exported="true" />
-
-        <!-- 爱心推配置 end -->
-
-
         <!-- 友盟分享微信回调需要 begin -->
         <activity
             android:name=".wxapi.WXEntryActivity"
@@ -268,8 +100,13 @@
             android:name=".modules.common.WebviewActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".modules.firstcheck.FirstCheckActivity" />
-        <activity android:name=".modules.user.LoginActivity"></activity>
+        <activity
+            android:name=".modules.check.CheckActivity"
+            android:label="@string/title_activity_firstcheck"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".modules.user.LoginActivity" />
+        <activity android:name=".modules.transportScan.TransportScanActivity"></activity>
     </application>
 
 </manifest>

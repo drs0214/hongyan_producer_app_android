@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.WindowManager;
 
-import com.aerozhonghuan.hongyan.producer.framework.base.MyAppliation;
+import com.aerozhonghuan.hongyan.producer.framework.base.MyApplication;
 import com.squareup.picasso.Transformation;
 
 /**
@@ -17,7 +17,7 @@ public class PicassoScaleTransformation implements Transformation {
 
     @Override
     public Bitmap transform(Bitmap source) {
-        int targetWidth = ((WindowManager) MyAppliation.getApplication().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getWidth();
+        int targetWidth = ((WindowManager) MyApplication.getApplication().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getWidth();
         if (source.getWidth() == 0) {
             return source;
         }

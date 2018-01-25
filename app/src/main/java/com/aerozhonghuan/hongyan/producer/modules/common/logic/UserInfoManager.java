@@ -1,18 +1,15 @@
 package com.aerozhonghuan.hongyan.producer.modules.common.logic;
 
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 
-import com.aerozhonghuan.hongyan.producer.dao.DaoContext;
-import com.aerozhonghuan.hongyan.producer.dao.beans.UserBean;
-import com.aerozhonghuan.hongyan.producer.dao.db.UserBeanDao;
-import com.aerozhonghuan.hongyan.producer.framework.base.MyAppliation;
-import com.aerozhonghuan.hongyan.producer.modules.common.ActivityDispatcher;
-import com.aerozhonghuan.hongyan.producer.modules.common.entity.UserInfo;
 import com.aerozhonghuan.foundation.log.LogUtil;
-import com.aerozhonghuan.oknet2.CommonCallback;
-import com.aerozhonghuan.oknet2.CommonMessage;
+import com.aerozhonghuan.foundation.utils.LocalStorage;
+import com.aerozhonghuan.hongyan.producer.framework.base.MyApplication;
+import com.aerozhonghuan.hongyan.producer.modules.common.ActivityDispatcher;
+import com.aerozhonghuan.hongyan.producer.modules.common.entity.UserBean;
+import com.aerozhonghuan.hongyan.producer.modules.common.entity.UserInfo;
 
 /**
  * Created by zhangyunfei on 17/6/23.
@@ -23,6 +20,17 @@ public class UserInfoManager {
     private static UserInfo userInfoCached;
 
     private UserInfoManager() {
+    }
+
+    public static void saveReminder(String userId, int count) {
+        LocalStorage localStorage = new LocalStorage(MyApplication.getApplication());
+        localStorage.putInt(userId, count);
+    }
+
+    public static int getReminder(String userId) {
+        LocalStorage localStorage = new LocalStorage(MyApplication.getApplication());
+        int count = localStorage.getInt(userId);
+        return count;
     }
 
     /**
@@ -59,7 +67,7 @@ public class UserInfoManager {
         }
         UserInfoDao dao = new UserInfoDao();
         userInfoCached = dao.getCurrentUserBaseInfo();
-        return userInfoCached;
+        return userInfoCached == null ? new UserInfo() : userInfoCached;
     }
 
     /**
@@ -68,8 +76,7 @@ public class UserInfoManager {
      * @return
      */
     public static UserBean getCurrentUserDetailInfo() {
-        UserInfoDao dao = new UserInfoDao();
-        return dao.getCurrentUserDetailInfo();
+        return UserInfoDao.getCurrentUserBean() == null ? new UserBean() : UserInfoDao.getCurrentUserBean();
     }
 
     /**
@@ -80,23 +87,11 @@ public class UserInfoManager {
         UserInfo currentUser = getCurrentUserBaseInfo();
         if (currentUser == null) return;
         String token = currentUser.getToken();
+        if (TextUtils.isEmpty(token))
+            return;
         UserInfoManager.clearCurrentUser();
-// 清除通知栏通知，防止点击异常
-        NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.cancelAll();
-        //将注销状态通知给服务端
-        UserInfoWebRequest.logout(MyAppliation.getApplication(), token, new CommonCallback<Object>() {
-            @Override
-            public void onSuccess(Object messsageBodyObject, CommonMessage commonMessage, String allResponseString) {
-                LogUtil.d(TAG, "UserInfoWebRequest.logout 成功");
-            }
 
-            @Override
-            public boolean onFailure(int httpCode, Exception exception, CommonMessage responseMessage, String allResponseString) {
-                LogUtil.d(TAG, "UserInfoWebRequest.logout 失败");
-                return super.onFailure(httpCode, exception, responseMessage, allResponseString);
-            }
-        });
+        // TODO: 2018/1/25 退出登录 
         userInfoCached = null;
         getCurrentUserBaseInfo();
 
@@ -110,7 +105,7 @@ public class UserInfoManager {
      * @return
      */
     public static String getCurrentCarNumber() {
-        UserBean userBean = UserInfoDao.getCurrentUserDetailInfo();
+        UserBean userBean = UserInfoDao.getCurrentUserBean();
         if (userBean == null) return null;
         return userBean.getCarNo();
     }
@@ -121,7 +116,7 @@ public class UserInfoManager {
      * @return
      */
     public static String getCurrentUserPhone() {
-        UserBean userBean = UserInfoDao.getCurrentUserDetailInfo();
+        UserBean userBean = UserInfoDao.getCurrentUserBean();
         if (userBean == null) return null;
         return userBean.getPhone();
     }
@@ -131,11 +126,11 @@ public class UserInfoManager {
      *
      * @param userBean
      */
-    public static boolean saveUserDetail(UserBean userBean) {
-        UserBeanDao dao = DaoContext.getDaoContext().getDaoSession().getUserBeanDao();
-        dao.deleteAll();
-        long rowid = dao.insert(userBean);
-        LogUtil.i(TAG, "保存用户信息成功 rowid = " + rowid);
-        return rowid > 0;
+    public static void saveUserDetail(UserBean userBean) {
+//        UserBeanDao dao = DaoContext.getDaoContext().getDaoSession().getUserBeanDao();
+//        dao.deleteAll();
+//        long rowid = dao.insert(userBean);
+//        LogUtil.i(TAG, "保存用户信息成功 rowid = " + rowid);
+        UserInfoDao.saveUserBean(userBean);
     }
 }

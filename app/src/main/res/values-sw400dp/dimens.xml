@@ -8,7 +8,7 @@
     <dimen name="titlebar_right_textsize">16sp</dimen>
     <dimen name="home_tab_height">52dp</dimen>
     <dimen name="home_tab_textsize">12sp</dimen>
-    <dimen name="img_big_height">171dp</dimen>
+    <dimen name="img_big_height">230dp</dimen>
     <dimen name="img_serverinfo_height">171dp</dimen>
     <dimen name="home_item_bottom">20dp</dimen>
     <dimen name="home_item_height">114dp</dimen>

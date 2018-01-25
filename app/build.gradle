@@ -53,18 +53,14 @@ android {
             minifyEnabled false
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "HOST_BUSINESS", "\"http://59.46.97.115:8071/hyapipro/hongyan\""
-            buildConfigField "String", "HOST_USER_CENTER", "\"http://59.46.97.115:8071/hyapipro/hongyan/usercenter\""
-            buildConfigField "String", "HOST_FILE_UPLOAD", "\"http://59.46.97.115:8071/fsm\""
-            buildConfigField "String", "HOST_HTML5", "\"http://211.145.49.130:85/hongyan_dev/driver\""
-            buildConfigField "String", "HOST_DRIVER_BBS", "\"http://59.46.97.115:8071/hongyan/yqlt.php\""
+            buildConfigField "String", "HOST_BUSINESS", "\"http://preprd.tls.sih.cq.cn:8090/api/\""
+            buildConfigField "String", "HOST_HTML5", "\"http://211.145.49.130:85/hy_dev/web\""
             buildConfigField "String", "Branch_Name", "\"${BRANCH_NAME}\""
             buildConfigField "String", "AUTO_LOGIN_BY_ZYF", "\"${AUTO_LOGIN_BY_ZYF}\""
             buildConfigField "Boolean", "IS_ON_DEVELOP", "${IS_ON_DEVELOP}"
             buildConfigField "Integer", "BUILD_NUMBER", "${BUILD_NUMBER}"
             buildConfigField "Integer", "PUSH_APPKEY", "2120440432"
-            buildConfigField "String", "WEDRIVE_CK", "\"cc47841113ea4d3196fb81b1fe84cac1\""
-            manifestPlaceholders = [yunxin_app_key: "96586ac3d3c447882194835d2095016a", umeng_app_key: "5a2f639da40fa32b4900056c"]
+            manifestPlaceholders = [umeng_app_key: "5a2f639da40fa32b4900056c"]
         }
         if (project.IS_JENKINS) {
             beta {
@@ -74,16 +70,12 @@ android {
                 signingConfig signingConfigs.release
                 proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
                 buildConfigField "String", "HOST_BUSINESS", "\"${SERVER_URL}\""
-                buildConfigField "String", "HOST_USER_CENTER", "\"${USERCENTER_URL}\""
-                buildConfigField "String", "HOST_FILE_UPLOAD", "\"${HOST_FILE_UPLOAD}\""
                 buildConfigField "String", "HOST_HTML5", "\"${HOST_HTML5}\""
-                buildConfigField "String", "HOST_DRIVER_BBS", "\"${HOST_DRIVER_BBS}\""
                 buildConfigField "String", "Branch_Name", "\"${BRANCH_NAME}\""
                 buildConfigField "Boolean", "IS_ON_DEVELOP", "${IS_ON_DEVELOP}"
                 buildConfigField "Integer", "BUILD_NUMBER", "${BUILD_NUMBER}"
                 buildConfigField "Integer", "PUSH_APPKEY", "1164925026"
-                buildConfigField "String", "WEDRIVE_CK", "\"cc47841113ea4d3196fb81b1fe84cac1\""
-                manifestPlaceholders = [yunxin_app_key: "96586ac3d3c447882194835d2095016a", umeng_app_key: "5a2f639da40fa32b4900056c"]
+                manifestPlaceholders = [umeng_app_key: "5a2f639da40fa32b4900056c"]
             }
         }
 
@@ -93,17 +85,13 @@ android {
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "HOST_BUSINESS", "\"http://59.46.97.115:8071/hyapipro/hongyan\""
-            buildConfigField "String", "HOST_USER_CENTER", "\"http://59.46.97.115:8071/hyapipro/hongyan/usercenter\""
-            buildConfigField "String", "HOST_FILE_UPLOAD", "\"http://59.46.97.115:8071/fsm\""
-            buildConfigField "String", "HOST_HTML5", "\"http://59.46.97.115:8071/driverh5\""
-            buildConfigField "String", "HOST_DRIVER_BBS", "\"http://59.46.97.115:8071/hongyan/yqlt.php\""
+            buildConfigField "String", "HOST_HTML5", "\"http://59.46.97.115:8071/hy_dev/web\""
             buildConfigField "String", "Branch_Name", "\"${BRANCH_NAME}\""
             buildConfigField "String", "AUTO_LOGIN_BY_ZYF", "\"${AUTO_LOGIN_BY_ZYF}\""
             buildConfigField "Boolean", "IS_ON_DEVELOP", "${IS_ON_DEVELOP}"
             buildConfigField "Integer", "BUILD_NUMBER", "${BUILD_NUMBER}"
             buildConfigField "Integer", "PUSH_APPKEY", "2120440432"
-            buildConfigField "String", "WEDRIVE_CK", "\"cc47841113ea4d3196fb81b1fe84cac1\""
-            manifestPlaceholders = [yunxin_app_key: "96586ac3d3c447882194835d2095016a", umeng_app_key: "5a2f639da40fa32b4900056c"]
+            manifestPlaceholders = [umeng_app_key: "5a2f639da40fa32b4900056c"]
         }
 
         uat {
@@ -113,16 +101,12 @@ android {
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "HOST_BUSINESS", "\"http://uat.tls.sih.cq.cn:8000/api/hongyan\""
-            buildConfigField "String", "HOST_USER_CENTER", "\"http://uat.tls.sih.cq.cn:8000/api/hongyan/usercenter\""
-            buildConfigField "String", "HOST_FILE_UPLOAD", "\"http://uat.tls.sih.cq.cn:8000/fsm\""
             buildConfigField "String", "HOST_HTML5", "\"http://uat.tls.sih.cq.cn:8000/driverh5\""
-            buildConfigField "String", "HOST_DRIVER_BBS", "\"http://uat.tls.sih.cq.cn:8000/forum/yqlt.php\""
             buildConfigField "String", "Branch_Name", "\"${BRANCH_NAME}\""
             buildConfigField "Boolean", "IS_ON_DEVELOP", "${IS_ON_DEVELOP}"
             buildConfigField "Integer", "BUILD_NUMBER", "${BUILD_NUMBER}"
             buildConfigField "Integer", "PUSH_APPKEY", "1164925026"
-            buildConfigField "String", "WEDRIVE_CK", "\"e4008802cb5c4c7b8d8a9153a14429d5\""
-            manifestPlaceholders = [yunxin_app_key: "96586ac3d3c447882194835d2095016a", umeng_app_key: "5a2f639da40fa32b4900056c"]
+            manifestPlaceholders = [umeng_app_key: "5a2f639da40fa32b4900056c"]
         }
 
         release {
@@ -131,17 +115,12 @@ android {
             signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "HOST_BUSINESS", "\"http://itg.sih.cq.cn/api/hongyan\""
-            buildConfigField "String", "HOST_USER_CENTER", "\"http://itg.sih.cq.cn/api/hongyan/usercenter\""
-            buildConfigField "String", "HOST_FILE_UPLOAD", "\"http://itg.sih.cq.cn/fsm\""
             buildConfigField "String", "HOST_HTML5", "\"http://itg.sih.cq.cn/driverh5\""
-            buildConfigField "String", "HOST_DRIVER_BBS", "\"http://itg.sih.cq.cn/forum/yqlt.php\""
             buildConfigField "String", "Branch_Name", "\"${BRANCH_NAME}\""
             buildConfigField "Boolean", "IS_ON_DEVELOP", "${IS_ON_DEVELOP}"
             buildConfigField "Integer", "BUILD_NUMBER", "${BUILD_NUMBER}"
             buildConfigField "Integer", "PUSH_APPKEY", "1164925026"
-            buildConfigField "String", "WEDRIVE_CK", "\"52b376899aaf4714a4e40e902a1f5aa5\""
-            manifestPlaceholders = [yunxin_app_key: "34742e4968884821fb3f14160545c512", umeng_app_key: "59ba1079e88bad7e5300005e"]
-
+            manifestPlaceholders = [umeng_app_key: "59ba1079e88bad7e5300005e"]
 
         }
     }
@@ -154,32 +133,20 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testCompile 'junit:junit:4.12'
-    //附加 leakcanary
-//    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-//    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
-//    if (project.IS_JENKINS) {
-//        betaCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
-//    }
     compile files('libs/logback-android-1.1.1-6.jar')
     compile files('libs/slf4j-api-1.7.12.jar')
-    compile project(':dao')
+    compile project(':rxretrofitlibrary')
     compile 'com.aerozhonghuan:loglibrary:1.0.3'
     compile 'com.aerozhonghuan:push:1.0.0'
-    compile 'com.aerozhonghuan:oknet_json:1.1.7'
     compile 'com.aerozhonghuan:foundation:1.0.7'
     compile 'com.aerozhonghuan:hybrid:1.1.4'
-    compile 'com.aerozhonghuan:pullToRefresh:1.0.1'
     compile 'com.aerozhonghuan:qrcode:1.0.0'
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.android.support:design:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.joanzapata.android:base-adapter-helper:1.1.11'
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.github.chrisbanes:PhotoView:1.2.6'
     compile 'com.android.support:multidex:1.0.1'
-    compile 'com.prolificinteractive:material-calendarview:1.4.0'
 }
 
 

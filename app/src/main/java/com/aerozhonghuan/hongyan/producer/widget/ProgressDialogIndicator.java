@@ -2,7 +2,8 @@ package com.aerozhonghuan.hongyan.producer.widget;
 
 import android.content.Context;
 
-import com.aerozhonghuan.oknet2.ProgressIndicator;
+import com.aerozhonghuan.rxretrofitlibrary.ProgressIndicator;
+
 
 /**
  * 进度指示

@@ -8,8 +8,7 @@ package com.aerozhonghuan.hongyan.producer.modules.home;
 
 public interface IMainView {
     int TAB_HOMEFRAGMENT = 1;
-    int TAB_MESSAGEFRAGMENT = 2;
+    int TAB_SEARCHFRAGMENT = 2;
     int TAB_MINEFRAGMENT = 3;
-
     int getCurrentTab();
 }

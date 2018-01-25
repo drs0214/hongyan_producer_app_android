@@ -1,6 +1,5 @@
 package com.aerozhonghuan.hongyan.producer.modules.home.fragment;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,25 +18,17 @@ import android.widget.TextView;
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.foundation.eventbus.EventBusManager;
 import com.aerozhonghuan.hongyan.producer.R;
-import com.aerozhonghuan.hongyan.producer.dao.beans.UserBean;
 import com.aerozhonghuan.hongyan.producer.framework.base.Constants;
-import com.aerozhonghuan.hongyan.producer.framework.base.MyAppliation;
-import com.aerozhonghuan.hongyan.producer.framework.base.URLs;
-import com.aerozhonghuan.hongyan.producer.framework.versionUpdate.AppInfo;
-import com.aerozhonghuan.hongyan.producer.framework.versionUpdate.FileBreakpointLoadManager;
-import com.aerozhonghuan.hongyan.producer.framework.versionUpdate.UpdateDialogUtils;
+import com.aerozhonghuan.hongyan.producer.framework.base.MyApplication;
 import com.aerozhonghuan.hongyan.producer.modules.common.AboutActivity;
+import com.aerozhonghuan.hongyan.producer.modules.common.entity.UserBean;
 import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoDao;
 import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoManager;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.QueryTaskNumAndScoreTotalEvent;
 import com.aerozhonghuan.hongyan.producer.modules.user.beans.AccountUpdateEvent;
 import com.aerozhonghuan.hongyan.producer.utils.AppUtil;
-import com.aerozhonghuan.hongyan.producer.utils.CircleTransform;
 import com.aerozhonghuan.hongyan.producer.utils.NetUtils;
 import com.aerozhonghuan.hongyan.producer.utils.SimpleSettings;
-import com.aerozhonghuan.hongyan.producer.utils.UrlHelper;
-import com.squareup.picasso.MemoryPolicy;
-import com.squareup.picasso.Picasso;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -71,37 +62,14 @@ public class MineFragment extends BaseFragment {
     private TextView textview_name;
     private TextView textview_phone;
     private View row_userinfo;
-    private FileBreakpointLoadManager fileBreakpointLoadManager;
-    private AppInfo appInfo;
     private OnItemClick mOnItemClick = new OnItemClick() {
         @Override
         public void onItemClick(String title) {
             if (MENU_ITEM_UPDATE.equals(title)) {
-                if (!NetUtils.isConnected(MyAppliation.getApplication())) {
+                if (!NetUtils.isConnected(MyApplication.getApplication())) {
                     alert("网络异常,请稍后查询");
                 } else {
-                    fileBreakpointLoadManager = new FileBreakpointLoadManager(getContext());
-                    //检测是否有新版本,有新版本则通过handler发送消息,弹出对话框
-                    fileBreakpointLoadManager.checkAppVersion(new FileBreakpointLoadManager.OnCheckAppVersionLinstener() {
-                        @Override
-                        public void prepareUpdate(AppInfo info) {
-                            EventBusManager.postSticky(info);
-                            //弹出更新对话框
-                            Dialog dialog = UpdateDialogUtils.getUpdateDialog(getContext(), info, fileBreakpointLoadManager, true);
-                            if (!dialog.isShowing())
-                                dialog.show();
-                        }
 
-                        @Override
-                        public void noNewVersions() {
-                            alert("暂无更新");
-                        }
-
-                        @Override
-                        public void error() {
-                            alert("暂无更新");
-                        }
-                    });
                 }
             } else if (MENU_ITEM_ABOUTUS.equals(title)) {
                 startActivity(new Intent(getActivity(), AboutActivity.class));
@@ -221,7 +189,7 @@ public class MineFragment extends BaseFragment {
 
 
     private void setCache() {
-        UserBean userbean = UserInfoDao.getCurrentUserDetailInfo();
+        UserBean userbean = UserInfoDao.getCurrentUserBean();
         if (userbean != null) {
             if (!TextUtils.isEmpty(userbean.getName())) {
                 textview_name.setText(userbean.getName());
@@ -234,15 +202,6 @@ public class MineFragment extends BaseFragment {
         }
         if (UserInfoManager.getCurrentUserBaseInfo() == null) return;
 
-        String token = UserInfoManager.getCurrentUserBaseInfo().getToken();
-        String encodeToken = UrlHelper.UrlEncode(token);
-        String url = URLs.USER_GET_USERPHOTO + "?token=" + encodeToken;
-        Picasso.with(getActivity()).
-                load(url).resize(150, 150).
-                centerCrop().placeholder(R.mipmap.ic_default_user).
-                error(R.mipmap.ic_launcher).error(R.mipmap.ic_default_user).
-                transform(new CircleTransform()).
-                into(imageview_photo);
     }
 
     public String getAppVersionName() {
@@ -252,9 +211,6 @@ public class MineFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (fileBreakpointLoadManager != null) {
-            fileBreakpointLoadManager = null;
-        }
     }
 
     @Override
@@ -272,32 +228,13 @@ public class MineFragment extends BaseFragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onUploadSuccess(AccountUpdateEvent event) {
         Log.i(TAG, "刷新 mine");
-        UserBean userbean = UserInfoDao.getCurrentUserDetailInfo();
+        UserBean userbean = UserInfoDao.getCurrentUserBean();
         if (event.getKey().equals(AccountUpdateEvent.UPDATE_PHONE)) {
             String phone = event.getValue();
             textview_phone.setText(phone);
         } else if (event.getKey().equals(AccountUpdateEvent.UPDATE_NAME)) {
             textview_name.setText(event.getValue());
-        } else if (event.getKey().equals(AccountUpdateEvent.UPDATE_IMG)) {
-            String token = UserInfoManager.getCurrentUserBaseInfo().getToken();
-            String encodeToken = UrlHelper.UrlEncode(token);
-            String url = URLs.USER_GET_USERPHOTO + "?token=" + encodeToken;
-            Picasso.with(getActivity()).
-                    load(url).resize(150, 150).
-                    centerCrop().memoryPolicy(MemoryPolicy.NO_CACHE).placeholder(R.mipmap.ic_default_user).
-                    error(R.mipmap.ic_launcher).error(R.mipmap.ic_default_user).
-                    transform(new CircleTransform()).
-                    into(imageview_photo);
         }
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    @SuppressWarnings("unused")
-    public void onUpdate(AppInfo info) {
-        if (getActivity() == null || getActivity().isFinishing()) return;
-        appInfo = info;
-        section2.removeAllViews();
-        buildSectionViews(getContext(), sectionList2, section2, mOnItemClick);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
@@ -375,9 +312,6 @@ public class MineFragment extends BaseFragment {
             MenuItem item = getItem(position);
             if (item.iconID != 0)
                 viewHolder.imageview_pic.setImageResource(item.iconID);
-            if (TextUtils.equals(item.title, "版本更新") && appInfo != null) {
-                viewHolder.textViewTitle.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(R.drawable.ic_update), null);
-            }
             viewHolder.textViewTitle.setText(item.title);
             viewHolder.textview_desc.setText(item.desc);
             return convertView;

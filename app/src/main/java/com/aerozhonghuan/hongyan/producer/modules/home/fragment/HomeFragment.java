@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,22 +14,14 @@ import android.widget.TextView;
 
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
-import com.aerozhonghuan.hongyan.producer.framework.base.MyAppliation;
-import com.aerozhonghuan.hongyan.producer.framework.base.URLs;
 import com.aerozhonghuan.hongyan.producer.modules.common.WebviewActivity;
 import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoManager;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.HomeBannerInfo;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.HomeConstants;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.HomeGridItemBean;
 import com.aerozhonghuan.hongyan.producer.utils.PicassoScaleTransformation;
-import com.aerozhonghuan.hongyan.producer.utils.UmengUtils;
 import com.aerozhonghuan.hongyan.producer.utils.WindowUtil;
 import com.aerozhonghuan.hongyan.producer.widget.BannerViewPager;
-import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
-import com.aerozhonghuan.oknet2.CommonCallback;
-import com.aerozhonghuan.oknet2.CommonMessage;
-import com.aerozhonghuan.oknet2.RequestBuilder;
-import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -58,8 +49,6 @@ public class HomeFragment extends BaseFragment {
     private LinearLayout ll_dots;
     private ArrayList<ImageView> dotsList;
     private ImageView img_oneornoBanner;
-    private TextView tvRight;
-    private TitleBarView titleBar;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,10 +70,6 @@ public class HomeFragment extends BaseFragment {
         vp_banner = (BannerViewPager) rootView.findViewById(R.id.vp_banner);
         ll_dots = (LinearLayout) rootView.findViewById(R.id.ll_dots);
         img_oneornoBanner = (ImageView) rootView.findViewById(R.id.img_oneornoBanner);
-        tvRight = (TextView) rootView.findViewById(R.id.tv_right);
-        titleBar = (TitleBarView) rootView.findViewById(R.id.titlebarview1);
-        titleBar.enableBackButton(false);
-        titleBar.setTitle(getResources().getString(R.string.title_activity_main));
     }
 
     @Override
@@ -100,10 +85,8 @@ public class HomeFragment extends BaseFragment {
             homeGridItemBeanList.add(new HomeGridItemBean(HomeConstants.HOME_GRID_ITEM_IMAGES[i], HomeConstants.HOME_GRID_ITEM_NAMES[i]));
         }
         setViewPager();
-        if (MyAppliation.getApplication().getUserInfo() == null) return;
-        final TypeToken<List<HomeBannerInfo>> typeToken = new TypeToken<List<HomeBannerInfo>>() {
-        };
-        RequestBuilder
+        // TODO: 2018/1/24 请求banner数据
+        /*RequestBuilder
                 .with(getContext())
                 .URL(URLs.HOME_BANNER)
                 .para("appType", "2")
@@ -118,7 +101,7 @@ public class HomeFragment extends BaseFragment {
                     public boolean onFailure(int httpCode, Exception exception, CommonMessage responseMessage, String allResponseString) {
                         return true;
                     }
-                }).excute();
+                }).excute();*/
     }
 
     /**

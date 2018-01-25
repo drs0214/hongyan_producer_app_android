@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 import android.os.Environment;
 
 import com.aerozhonghuan.foundation.utils.LocalStorage;
-import com.aerozhonghuan.hongyan.producer.framework.base.MyAppliation;
+import com.aerozhonghuan.hongyan.producer.framework.base.MyApplication;
 
 import java.io.File;
 
@@ -28,7 +28,7 @@ public class SimpleSettings extends LocalStorage {
      */
     public static File getBaseDir() {
         File dir_sdcard = Environment.getExternalStorageDirectory();
-        String packageName = MyAppliation.getApplication().getPackageName();
+        String packageName = MyApplication.getApplication().getPackageName();
         File dir_base = new File(dir_sdcard, packageName);
         if (!dir_base.exists()) {
             dir_base.mkdirs();

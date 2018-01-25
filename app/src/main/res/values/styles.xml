@@ -56,61 +56,6 @@
         <item name="android:background">@color/colorSplitLine</item>
     </style>
 
-    <style name="serverstation_list_tab_style">
-        <item name="android:textSize">@dimen/content_textsize</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:button">@null</item>
-        <item name="android:background">#ffffffff</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/selector_tab_textcolor</item>
-        <item name="android:drawableRight">@drawable/selector_tab_drawableright</item>
-    </style>
-
-    <style name="serverstation_map_tab_style">
-        <item name="android:textSize">@dimen/content_textsize</item>
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:button">@null</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/selector_tab_textcolor</item>
-        <item name="android:drawableRight">@drawable/selector_tab_drawableright</item>
-    </style>
-
-    <style name="serverstation_item_rel_style">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/serverstation_info_item_height</item>
-        <item name="android:background">@color/white</item>
-        <item name="android:paddingLeft">15dp</item>
-        <item name="android:paddingRight">15dp</item>
-    </style>
-
-    <style name="serverstation_item_name_style">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/title_textsize</item>
-        <item name="android:textColor">@color/desc_text_color</item>
-        <item name="android:layout_centerVertical">true</item>
-    </style>
-
-    <style name="serverstation_item_content_style">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/serverstation_info_item_height</item>
-        <item name="android:textSize">@dimen/title_textsize</item>
-        <item name="android:textColor">@color/important_text_color</item>
-        <item name="android:layout_marginLeft">10dp</item>
-        <item name="android:layout_centerVertical">true</item>
-    </style>
-
-    <style name="serverstation_item_img_style">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_alignParentRight">true</item>
-        <item name="android:layout_centerVertical">true</item>
-    </style>
-
     <style name="myDialog" parent="@android:style/Theme.Dialog">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>

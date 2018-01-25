@@ -22,7 +22,7 @@ public class SearchFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (rootView == null) {
-            rootView = inflater.inflate(R.layout.fragment_home, null);
+            rootView = inflater.inflate(R.layout.fragment_search, null);
             initView();
             initData();
         }

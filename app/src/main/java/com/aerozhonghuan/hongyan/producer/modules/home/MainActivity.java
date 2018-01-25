@@ -1,7 +1,6 @@
 package com.aerozhonghuan.hongyan.producer.modules.home;
 
 import android.app.ActivityManager;
-import android.app.Dialog;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -17,16 +16,11 @@ import com.aerozhonghuan.foundation.base.BaseActivity;
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.foundation.eventbus.EventBusManager;
 import com.aerozhonghuan.hongyan.producer.R;
-import com.aerozhonghuan.hongyan.producer.framework.push.PushContext;
-import com.aerozhonghuan.hongyan.producer.framework.versionUpdate.AppInfo;
-import com.aerozhonghuan.hongyan.producer.framework.versionUpdate.DeleteOrStopLoadEvent;
-import com.aerozhonghuan.hongyan.producer.framework.versionUpdate.FileBreakpointLoadManager;
-import com.aerozhonghuan.hongyan.producer.framework.versionUpdate.UpdateDialogUtils;
 import com.aerozhonghuan.hongyan.producer.modules.common.event.DefalutHttpExceptionAlert;
 import com.aerozhonghuan.hongyan.producer.modules.common.event.ReloadMessageEvent;
 import com.aerozhonghuan.hongyan.producer.modules.home.fragment.HomeFragment;
-import com.aerozhonghuan.hongyan.producer.modules.home.fragment.SearchFragment;
 import com.aerozhonghuan.hongyan.producer.modules.home.fragment.MineFragment;
+import com.aerozhonghuan.hongyan.producer.modules.home.fragment.SearchFragment;
 import com.aerozhonghuan.hongyan.producer.widget.TabButton;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -53,36 +47,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private List<TabButton> buttonList = new ArrayList<>();
     private List<BaseFragment> fragmentList = new ArrayList<>();
     private BaseFragment currentFragment;
-    private FileBreakpointLoadManager fileBreakpointLoadManager;
     private long badgeNum;
     // 记录首次按退出键时的时间
     private long mExitTime = 0;
-    private PushContext pushContext;
-
-    private void checkAppUpdate() {
-        fileBreakpointLoadManager = new FileBreakpointLoadManager(this);
-        //检测是否有新版本,有新版本则通过handler发送消息,弹出对话框
-        fileBreakpointLoadManager.checkAppVersion(new FileBreakpointLoadManager.OnCheckAppVersionLinstener() {
-            @Override
-            public void prepareUpdate(AppInfo info) {
-                EventBusManager.postSticky(info);
-                //弹出更新对话框
-                Dialog dialog = UpdateDialogUtils.getUpdateDialog(MainActivity.this, info, fileBreakpointLoadManager, true);
-                if (!dialog.isShowing())
-                    dialog.show();
-            }
-
-            @Override
-            public void noNewVersions() {
-                android.util.Log.d(TAG, "暂无更新");
-            }
-
-            @Override
-            public void error() {
-                //                alert("网络异常");
-            }
-        });
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,9 +58,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         EventBusManager.register(this);
         initView();
         initEvent();
-        checkAppUpdate();
-        pushContext = PushContext.getInstance();
-        pushContext.onInit(this);
         if (getIntent() != null && getIntent().getExtras() != null && getIntent().getExtras().containsKey("notify_intent")) {
             try {
                 PendingIntent pendingIntent = getIntent().getParcelableExtra("notify_intent");
@@ -211,13 +175,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (fileBreakpointLoadManager != null) {
-            fileBreakpointLoadManager = null;
-        }
         EventBusManager.unregister(this);
         Log.d(TAG, "onDestroy: Mainactivty");
-        if (pushContext != null)
-            pushContext.clearup(this);
     }
 
 
@@ -226,7 +185,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         if (currentFragment instanceof HomeFragment) {
             return TAB_HOMEFRAGMENT;
         } else if (currentFragment instanceof SearchFragment) {
-            return TAB_MESSAGEFRAGMENT;
+            return TAB_SEARCHFRAGMENT;
         } else if (currentFragment instanceof MineFragment) {
             return TAB_MINEFRAGMENT;
         } else {
@@ -242,7 +201,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 alert("再按一次退出程序");
                 mExitTime = System.currentTimeMillis();
             } else {
-                EventBusManager.post(new DeleteOrStopLoadEvent("stopDownload"));
                 NotificationManager mNotificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
                 mNotificationManager.cancelAll();
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {

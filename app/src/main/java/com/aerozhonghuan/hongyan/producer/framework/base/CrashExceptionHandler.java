@@ -49,7 +49,7 @@ public class CrashExceptionHandler {
                 FileUtils.writeAllText(file1, errorText);
 
                 if (!BuildConfig.BUILD_TYPE.equals("debug")) {
-                    UmengAgent.reportError(MyAppliation.getApplication(), errorText);
+                    UmengAgent.reportError(MyApplication.getApplication(), errorText);
                 }
 
                 //调用默认处理

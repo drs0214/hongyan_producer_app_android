@@ -7,118 +7,29 @@
     <string name="string_tab_search">查询</string>
     <string name="string_tab_mine">我的</string>
 
+    <!-- 初检 -->
+    <string name="title_activity_firstcheck">初检</string>
+
+
     <string name="strin_login_law1">注册视为同意</string>
     <string name="strin_login_law2">服务条款和隐私政策</string>
-    <string name="title_activity_userinfo">账号设置</string>
 
     <string name="title_activity_about">关于我们</string>
     <string name="title_activity_service_clause">服务条款</string>
-    <string name="title_activity_regist">注册</string>
-    <string name="title_activity_regist_yzm">注册获取验证码</string>
 
     <string name="title_activity_login">登录</string>
-    <string name="title_activity_login_fast">快速登录</string>
-    <string name="title_activity_wanshaninfo">完善信息</string>
 
-    <string name="title_activity_find_pwd">找回密码</string>
-    <string name="title_activity_find_pwd_getyzm">找回密码获取验证码</string>
-    <string name="title_activity_find_pwd_newpwd">找回密码新密码</string>
 
-    <string name="title_activity_account_setting">账号设置</string>
-    <string name="title_activity_account_setting_modifyaccount">修改账户名称</string>
-    <string name="title_activity_account_setting_modifypwd">修改密码</string>
-    <string name="title_activity_account_setting_bindphone1">绑定手机</string>
-    <string name="title_activity_account_setting_bindphone2">绑定新手机</string>
-
-    <string name="title_add_car">添加车辆</string>
-    <string name="title_my_car">我的车辆</string>
-    <string name="title_car_detail">车辆详情</string>
-    <string name="title_car_model">标杆车辆驾驶分析</string>
-    <string name="title_butler">行车管家</string>
-    <string name="title_butler_custom_detail">自定义保养详情</string>
-    <string name="title_butler_car">选择车辆</string>
-    <string name="title_butler_add">添加保养项目</string>
-    <string name="title_butler_add_custom">添加自定义保养</string>
-    <string name="title_fault">故障诊断</string>
-    <string name="text_no_data">无数据</string>
-    <string name="title_activity_sos">一键呼救</string>
-    <string name="title_activity_driverbbs">卡友论坛</string>
-    <string name="title_recommend">新闻资讯</string>
-    <string name="title_subscribe">服务预约</string>
-    <string name="title_analysis">行程分析</string>
-    <string name="title_analysis_safe">安全分析</string>
-    <string name="title_analysis_detail">行程详情</string>
-    <string name="title_oil">油耗排行榜</string>
-    <string name="title_source">货源信息</string>
-    <string name="title_serverstationlist">服务站列表</string>
-    <string name="title_serverstationInfo">服务站详情</string>
-    <string name="title_subscribelist">我的预约</string>
-    <string name="title_subscribeinfo">预约详情</string>
-    <string name="title_newsubscribe">服务预约</string>
-    <string name="title_stationlocation">服务站位置</string>
-    <string name="goods_source_empty">该线路货源已经被抢光了，换个线路试试吧！</string>
-    <string name="title_choose_subscribecar">选择预约车辆</string>
-    <string name="title_flow_line_add">添加关注路线</string>
-    <string name="title_flow_line_delete">删除关注路线</string>
-    <string name="title_select_good_area">选择区域</string>
-    <string name="title_select_good_area_start">选择始发地</string>
-    <string name="title_select_good_area_end">选择目的地</string>
-    <string name="title_auth_main">资料认证</string>
-    <string name="title_auth_benefit">认证权益</string>
-    <string name="title_auth_lujing">陆鲸认证</string>
-    <string name="title_auth_huocheng">货车帮认证</string>
-    <string name="title_auth_common">资料认证</string>
-    <string name="title_auth_edit_name">真实姓名</string>
-    <string name="title_auth_edit_user_img">真实头像</string>
-    <string name="title_auth_edit_carnumber">车牌号</string>
-    <string name="title_auth_edit_carstyle">车型</string>
-    <string name="title_auth_edit_idcard">身份证号</string>
-    <string name="title_auth_edit_carlong">车厢长</string>
-    <string name="title_auth_edit_license">行驶证照片</string>
-    <string name="title_auth_edit_car_card">驾驶证照片</string>
-    <string name="title_auth_edit_idcard_img">身份证照片</string>
-    <string name="title_auth_edit_plate_number_type">车牌类型</string>
-    <string name="title_auth_edit_car_load">载重</string>
-    <item name="tag_position" type="id" />
     <item name="empty_view1" type="id" />
     <item name="error_view1" type="id" />
     <item name="no_network_error_view1" type="id" />
 
     <string name="umeng_socialize_text_weixin_key">微信</string>
     <string name="umeng_socialize_text_weixin_circle_key">微信朋友圈</string>
-    <string name="title_car_type1">车型车长</string>
-    <string name="title_goodssourcebyline">货源信息</string>
-    <string name="subscribe_addrate">服务站评价</string>
-    <string name="subscribe_help_location">救援人员位置</string>
-
-    <!-- subscribe start -->
-    <string name="subscribe_urge_undertime" formatted="false">您的预约单在客服人员接单30分钟后，才可以催单，请您在 %d 分钟后操作!</string>
-    <string name="subscribe_urge_undistributed" formatted="false">目前无法查看救援人员位置，服务站还没有为您分派援救人员，请稍后再试!</string>
-    <string name="subscribe_urge_nolocotion" formatted="false">目前无法查看救援人员位置，可能因为救援人员手机GPS关闭、网络信号等原因!</string>
-    <string name="title_goods_source_detail">货源详情</string>
-    <string name="title_mycoupon">优惠券</string>
-    <string name="title_mycoupon_consume_history">消费记录</string>
-    <string name="title_mycoupon_view_qrcode">二维码查看</string>
-    <string name="title_mycoupon_consume_result">消费结果</string>
 
     <string name="alert_no_network">网络异常，请检查手机网络状态</string>
     <string name="alert_load_data_failure">数据加载失败,请重试</string>
-
-    <!-- subscribe end -->
     <string name="retry">重试</string>
-    <!-- 优惠券 start -->
-    <string name="title_coupon_info">优惠券详情</string>
-    <string name="title_coupon_stations">服务商列表</string>
-    <string name="title_coupon_selectcity">请选择城市</string>
-    <string name="current_location_is" formatted="false">当前位置: %s</string>
-    <string name="location_failure">定位失败</string>
-    <string name="title_flag_route">线路详情</string>
-    <string name="title_jifentask">任务中心</string>
-    <string name="title_jifendetail">积分明细</string>
-    <string name="title_jifenstore">积分商城</string>
-    <string name="start_address">始发地</string>
-    <string name="end_address">目的地</string>
-    <string name="car_type_car_length">车型车长</string>
-    <string name="ALERT_SOURCE_PUSH_ALERT_ENABLE">关闭消息提醒您的手机将不会收到最新货源信息，是否确认关闭?</string>
-    <!-- 优惠券 end -->
+
+
 </resources>

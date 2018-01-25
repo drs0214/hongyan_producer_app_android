@@ -14,8 +14,8 @@ import android.telephony.TelephonyManager;
 import android.text.format.Formatter;
 import android.util.DisplayMetrics;
 
-import com.aerozhonghuan.hongyan.producer.framework.base.URLs;
 import com.aerozhonghuan.foundation.log.LogUtil;
+import com.aerozhonghuan.hongyan.producer.BuildConfig;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -214,7 +214,7 @@ public class EnvironmentInfoUtils {
 //        environmentMsgMap.put("权限接口地址", Urls.PERMISSION_BASE_URL);
 //        environmentMsgMap.put("微信服务地址", Urls.WEIXIN_BASE_URL);
 //        environmentMsgMap.put("OTA基础地址", Urls.OTA_BASE_URL);
-        environmentMsgMap.put("url基础地址", URLs.HOST_BUSINESS);
+        environmentMsgMap.put("url基础地址", BuildConfig.HOST_BUSINESS);
     }
 
     /**

@@ -1,7 +1,7 @@
 package com.aerozhonghuan.hongyan.producer.modules.common.event;
 
-import com.aerozhonghuan.hongyan.producer.dao.beans.UserBean;
 import com.aerozhonghuan.foundation.eventbus.EventBusEvent;
+import com.aerozhonghuan.hongyan.producer.modules.common.entity.UserBean;
 
 /**
  * 用户信息发生变化
