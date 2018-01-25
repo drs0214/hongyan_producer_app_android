@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/vp_banner"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/margin5"
             android:layout_marginRight="@dimen/margin10"
             android:gravity="right"
             android:orientation="horizontal" />

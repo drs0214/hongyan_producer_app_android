@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+    <com.aerozhonghuan.hongyan.producer.widget.TitleBarView
+        android:id="@+id/titlebarview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin20"
+        android:layout_marginTop="@dimen/margin15"
+        android:text="强制通过原因"
+        android:textColor="@color/list_item_text_color_title"
+        android:textSize="@dimen/text_size_15" />
+    <GridView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin20"
+        android:layout_marginRight="@dimen/margin20"
+        android:verticalSpacing="@dimen/margin20"
+        android:numColumns="2"
+        >
+    </GridView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin44"
+        android:layout_marginLeft="@dimen/margin20"
+        android:layout_marginRight="@dimen/margin20"
+        android:layout_marginTop="@dimen/margin30"
+        android:background="@drawable/btn_blue_shape"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_14" />
+</LinearLayout>
