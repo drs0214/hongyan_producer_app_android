@@ -217,36 +217,9 @@ def getPara_SERVER_URL = { ->
     return null
 }
 
-//用户中心地址
-def getPara_USERCENTER_URL = { ->
-    def var1 = System.getenv("USERCENTER_URL")
-    if (var1) {
-        return var1
-    }
-    return null
-}
-
-//文件上传地址
-def getPara_HOST_FILE_UPLOAD = { ->
-    def var1 = System.getenv("HOST_FILE_UPLOAD")
-    if (var1) {
-        return var1
-    }
-    return null
-}
-
 //H5页面的服务地址
 def getPara_HOST_HTML5 = { ->
     def var1 = System.getenv("HOST_HTML5")
-    if (var1) {
-        return var1
-    }
-    return null
-}
-
-//卡友论坛的服务地址
-def getPara_HOST_DRIVER_BBS = { ->
-    def var1 = System.getenv("HOST_DRIVER_BBS")
     if (var1) {
         return var1
     }
@@ -279,10 +252,7 @@ ext {
     BRANCH_NAME = getBranchName()
 
     SERVER_URL = getPara_SERVER_URL()
-    USERCENTER_URL = getPara_USERCENTER_URL()
-    HOST_FILE_UPLOAD = getPara_HOST_FILE_UPLOAD()
     HOST_HTML5 = getPara_HOST_HTML5()
-    HOST_DRIVER_BBS = getPara_HOST_DRIVER_BBS()
 
     IS_CUSTOM_VERSION = getPara_IS_CUSTOM_VERSION()
     VERSION_NAME = getPara_VERSION_NAME()
@@ -303,10 +273,7 @@ println "#读取环境参数,PREFIX_NAME is ${PREFIX_NAME}"
 println "#读取环境参数,BRANCH_NAME is ${BRANCH_NAME}"
 println '#读取环境参数,GET_VERSION is ' + project.GET_VERSION
 println '#读取环境参数,指定 业务服务器地址（仅Beta生效）：' + project.SERVER_URL
-println '#读取环境参数,指定 用户中心服务器地址（仅Beta生效）：' + project.USERCENTER_URL
-println '#读取环境参数,指定 业务服务器地址（仅Beta生效）：' + project.HOST_FILE_UPLOAD
 println '#读取环境参数,指定 H5服务器地址（仅Beta生效）：' + project.HOST_HTML5
-println '#读取环境参数,指定 论坛服务器地址（仅Beta生效）：' + project.HOST_DRIVER_BBS
 println '#读取环境参数,是否自定义版本号：' + project.IS_CUSTOM_VERSION
 println '#读取环境参数,版本号(编号)：' + project.VERSION_CODE
 println '#读取环境参数,版本号(名称)：' + project.VERSION_NAME
