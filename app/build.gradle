@@ -53,7 +53,7 @@ android {
             minifyEnabled false
             signingConfig signingConfigs.debug
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "HOST_BUSINESS", "\"http://preprd.tls.sih.cq.cn:8090/api/\""
+            buildConfigField "String", "HOST_BUSINESS", "\"http://112.65.23.139:8090/api/\""
             buildConfigField "String", "HOST_HTML5", "\"http://211.145.49.130:85/hy_dev/web\""
             buildConfigField "String", "Branch_Name", "\"${BRANCH_NAME}\""
             buildConfigField "String", "AUTO_LOGIN_BY_ZYF", "\"${AUTO_LOGIN_BY_ZYF}\""
