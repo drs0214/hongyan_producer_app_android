@@ -16,10 +16,8 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import com.aerozhonghuan.foundation.base.SingleActivity;
-import com.aerozhonghuan.hongyan.producer.BuildConfig;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoManager;
-import com.aerozhonghuan.hongyan.producer.utils.EnvironmentInfoUtils;
 
 
 /**
@@ -52,10 +50,6 @@ public class SplashActivity extends SingleActivity {
     }
 
     private void initApp() {
-        //打印环境变量信息
-        if (BuildConfig.DEBUG) {
-            new EnvironmentInfoUtils().print(this);
-        }
 
         if (UserInfoManager.isUserAuthenticated()) {
 

@@ -89,20 +89,4 @@
         <item name="android:dropDownVerticalOffset">0dip</item>
     </style>
 
-    <style name="Calendar_HeaderTextAppearance" parent="TextAppearance.AppCompat.Medium">
-        <item name="android:textColor">@color/main_text_color</item>
-        <item name="android:textSize">@dimen/text_size_14</item>
-    </style>
-
-    <style name="Calendar_WeekDayTextAppearance" parent="TextAppearance.AppCompat.Medium">
-        <item name="android:textColor">@color/main_text_color</item>
-        <item name="android:textSize">@dimen/text_size_14</item>
-
-    </style>
-
-    <style name="Calendar_DayTextAppearance" parent="TextAppearance.AppCompat.Medium">
-        <item name="android:textColor">@color/main_text_color</item>
-        <item name="android:textSize">@dimen/text_size_12</item>
-    </style>
-
 </resources>

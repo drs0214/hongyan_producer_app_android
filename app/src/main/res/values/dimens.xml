@@ -82,20 +82,8 @@
     <dimen name="title_margin">15dp</dimen>
     <dimen name="btn_height_normal">45dp</dimen>
     <dimen name="dots_weight">17dp</dimen>
-    <!-- 行程页-->
-    <dimen name="trip_view">16dp</dimen>
-    <dimen name="trip_padding">16dp</dimen>
-    <dimen name="trip_padding_half">8dp</dimen>
-    <dimen name="trip_margin_big">45dp</dimen>
-    <dimen name="trip_margin">15dp</dimen>
-    <dimen name="trip_margin_small">10dp</dimen>
-    <dimen name="trip_margin_small_small">5dp</dimen>
-    <dimen name="trip_text_18">18sp</dimen>
-    <dimen name="trip_text_16">16sp</dimen>
-    <dimen name="trip_text_14">14sp</dimen>
-    <dimen name="trip_text_12">12sp</dimen>
-    <dimen name="trip_text_10">10sp</dimen>
     <!-- 规定文本大小 -->
+
     <!-- 提示文字 -->
     <dimen name="alert_textsize">10sp</dimen>
     <!-- 文本内容字体 -->
@@ -114,31 +102,8 @@
     <!-- 自定义弹窗大小 -->
     <dimen name="dialog_width">300dp</dimen>
 
-    <!-- 一键呼救 item -->
-    <dimen name="sos_item_height">55dp</dimen>
-    <dimen name="sos_item_img_wh">34dp</dimen>
-
     <!-- 我的页面头像宽高 -->
     <dimen name="mine_pic_wh">60dp</dimen>
-
-    <!-- 我的车辆 -->
-    <dimen name="mycar_item_top_margin">17dp</dimen>
-    <dimen name="mycar_item_end_margin">15dp</dimen>
-    <dimen name="mycar_item_left_margin">20dp</dimen>
-    <!--货源信息-->
-    <dimen name="find_goods_left_margin">20dp</dimen>
-    <!-- 服务站列表 -->
-    <dimen name="serverstation_item_height">90dp</dimen>
-    <dimen name="serverstation_item_img_height">60dp</dimen>
-    <dimen name="serverstation_item_img_width">100dp</dimen>
-    <dimen name="serverstation_tab_height">45dp</dimen>
-    <dimen name="serverstation_info_importitem_height">60dp</dimen>
-    <dimen name="serverstation_info_item_height">45dp</dimen>
-    <dimen name="newsubscribe_checkbox_height">26dp</dimen>
-    <dimen name="record_textsize">24dp</dimen>
-    <dimen name="serverstation_info_item_padding">15dp</dimen>
-    <!--日历相关-->
-    <dimen name="calendar_month">18sp</dimen>
 
     <!-- 字体大小，一般大小，大，更小 -->
     <dimen name="text_size_small_small">10sp</dimen>
@@ -147,42 +112,7 @@
     <dimen name="text_size_big">16sp</dimen>
     <dimen name="text_size_big_big">20sp</dimen>
 
-    <!--  列表项-主色 -->
-    <dimen name="list_item_text_size_main">14sp</dimen>
-    <!--  列表项-辅助文本大小，描述文本 -->
-    <dimen name="list_item_text_size_desc">14sp</dimen>
-    <!--  列表项-标题，加重 -->
-    <dimen name="list_item_text_size_title">16sp</dimen>
-    <dimen name="subscrbe_uplodeimg_wh">80dp</dimen>
-    <dimen name="rate_content_height">200dp</dimen>
-    <dimen name="rate_et_height">75dp</dimen>
-
-    <!-- 优惠券相关 -->
-    <dimen name="coupon_item_height">164dp</dimen>
-    <dimen name="coupon_item_up_height">50dp</dimen>
-    <dimen name="coupon_item_down_height">100dp</dimen>
-    <dimen name="coupon_qrcode_item_height">60dp</dimen>
-    <dimen name="coupon_consume_history_item_margin">15dp</dimen>
-    <dimen name="coupon_consume_qrcode_margin_top">18dp</dimen>
-    <dimen name="coupon_consume_qrcode_text_margin_top">10dp</dimen>
-    <dimen name="coupon_consume_qrcode_width">140dp</dimen>
-    <dimen name="coupon_consume_qrcode_height">140dp</dimen>
-    <dimen name="coupon_consume_qrcode_line_width">158dp</dimen>
-    <dimen name="coupon_consume_qrcode_text_size">15sp</dimen>
-    <dimen name="coupon_consume_qrcode_desc_text_size">10sp</dimen>
-    <dimen name="coupon_consume_result_margin">15dp</dimen>
-    <dimen name="coupon_consume_result_margin_large">20dp</dimen>
-    <!--认证-->
-    <dimen name="auth_first_margin_top">20dp</dimen>
-    <dimen name="auth_text_margin_top">30dp</dimen>
-    <dimen name="auth_imgage_margin_top">10dp</dimen>
     <!--switch控件-->
     <dimen name="switch_thumb_width">20dp</dimen>
     <dimen name="switch_thumb_height">20dp</dimen>
-
-    <!--保养-->
-    <dimen name="maintain_margin_large_large">20dp</dimen>
-    <dimen name="maintain_margin_large">15dp</dimen>
-    <dimen name="maintain_margin_normal">10dp</dimen>
-    <dimen name="maintain_margin_small">5dp</dimen>
 </resources>

@@ -15,12 +15,14 @@ import android.view.View;
 import com.aerozhonghuan.foundation.base.BaseActivity;
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.foundation.eventbus.EventBusManager;
+import com.aerozhonghuan.hongyan.producer.BuildConfig;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.modules.common.event.DefalutHttpExceptionAlert;
 import com.aerozhonghuan.hongyan.producer.modules.common.event.ReloadMessageEvent;
 import com.aerozhonghuan.hongyan.producer.modules.home.fragment.HomeFragment;
 import com.aerozhonghuan.hongyan.producer.modules.home.fragment.MineFragment;
 import com.aerozhonghuan.hongyan.producer.modules.home.fragment.SearchFragment;
+import com.aerozhonghuan.hongyan.producer.utils.EnvironmentInfoUtils;
 import com.aerozhonghuan.hongyan.producer.widget.TabButton;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -56,6 +58,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         EventBusManager.register(this);
+        //打印环境变量信息
+        if (BuildConfig.DEBUG) {
+            new EnvironmentInfoUtils().print(this);
+        }
         initView();
         initEvent();
         if (getIntent() != null && getIntent().getExtras() != null && getIntent().getExtras().containsKey("notify_intent")) {

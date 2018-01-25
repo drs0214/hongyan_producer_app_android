@@ -43,17 +43,6 @@
 
     <color name="btn_orange_color">#FF9C00</color>
     <color name="btn_red_color">#FF0000</color>
-    <!--日期控件颜色值-->
-    <color name="calendar_bg_week_title">#ffffff</color>
-    <color name="calendar_tx_week_title">#555555</color>
-    <color name="calendar_tx_this_month_day">#aa564b4b</color>
-    <color name="calendar_tx_other_month_day">#ffcccccc</color>
-    <color name="calendar_tx_this_day">#ffFF0000</color>
-    <color name="calendar_bg_this_day">#ffFFFFFF</color>
-    <color name="calendar_bg">#3FDDEDEA</color>
-    <color name="calendar_bg_trip_data">#1ebaab</color>
-    <color name="calendar_tx_select">#5AD6D7</color>
-    <color name="title_color">#ffffffff</color>
 
     <!--  列表项-主色 -->
     <color name="list_item_text_color_main">#666666</color>
@@ -62,30 +51,6 @@
     <!--  列表项-标题，加重 -->
     <color name="list_item_text_color_title">#333333</color>
 
-    <!--行程-->
-    <color name="trip_text_sum">#ff9c00</color>
-    <color name="trip_text_score">#169ada</color>
-    <color name="trip_text_hint">#999999</color>
-    <color name="trip_text_normal">#666666</color>
-    <color name="trip_text_important">#333333</color>
     <color name="red_alert">#FC0D1B</color>
-    <color name="red">#FF0000</color>
-    <color name="blue">#0000FF</color>
-    <!-- 认证状态 -->
-    <color name="auth_none">#FF999999</color>
-    <color name="auth_authing">#FFFF9000</color>
-    <color name="auth_error">#FFFF0000</color>
-    <color name="auth_via">#FF58DD00</color>
-    <!-- 优惠券 -->
-    <color name="coupon_title_color">#4f77db</color>
-    <color name="coupon_name_color">#ffb400</color>
-    <color name="coupon_unusednum_color">#ff4730</color>
-    <color name="qrcode_desc_text_color">#ffff0000</color>
-    <color name="coupon_station_nocoupon">#C2C2C2</color>
-    <color name="coupon_listitem_top_color">#43AAED</color>
-
-    <color name="fault_diagnose_processing">#169ada</color>
-    <color name="fault_diagnose_has_error">#ff7800</color>
-    <color name="fault_diagnose_has_fault_code">#ff9c00</color>
 
 </resources>

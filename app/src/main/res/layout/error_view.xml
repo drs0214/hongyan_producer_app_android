@@ -31,7 +31,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/alert_load_data_failure"
             android:textColor="@color/desc_text_color"
-            android:textSize="@dimen/trip_text_16" />
+            android:textSize="@dimen/text_size_16" />
 
         <Button
             android:id="@+id/btn_retry"
