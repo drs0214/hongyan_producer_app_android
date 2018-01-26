@@ -85,7 +85,8 @@
             android:text="test"
             android:textColor="@color/text_nr"
             android:textSize="@dimen/text_size_14" />
-        <TextView
+        <Button
+            android:id="@+id/bt_bind"
             android:layout_width="@dimen/margin60"
             android:layout_height="@dimen/margin30"
             android:background="@drawable/btn_blue_shape_15"
@@ -296,7 +297,8 @@
             android:layout_marginTop="@dimen/margin10"
             android:orientation="horizontal">
 
-            <TextView
+            <Button
+                android:id="@+id/bt_history"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="@dimen/margin44"
@@ -306,7 +308,8 @@
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_14" />
 
-            <TextView
+            <Button
+                android:id="@+id/bt_start_check"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="@dimen/margin44"

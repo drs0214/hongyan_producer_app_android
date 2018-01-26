@@ -10,6 +10,7 @@
 
     <!-- 初检 -->
     <string name="title_activity_firstcheck">初检</string>
+    <string name="title_activity_handbind">手工绑定</string>
 
 
     <!-- 运输扫描 -->

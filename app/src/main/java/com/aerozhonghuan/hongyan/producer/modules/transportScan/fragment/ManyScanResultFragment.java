@@ -23,6 +23,7 @@ public class ManyScanResultFragment extends TitlebarFragment {
     private View rootView;
     ListView listview;
     ArrayList<ManyScanResultBean> manyscanresultlist=new ArrayList<ManyScanResultBean>();
+    ManyScanResultAdapter adapter;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,7 +49,7 @@ public class ManyScanResultFragment extends TitlebarFragment {
 
     }
     private void setListen() {
-        ManyScanResultAdapter adapter=new ManyScanResultAdapter(getContext(),manyscanresultlist);
+         adapter=new ManyScanResultAdapter(getContext(),manyscanresultlist);
         listview.setAdapter(adapter);
     }
 }

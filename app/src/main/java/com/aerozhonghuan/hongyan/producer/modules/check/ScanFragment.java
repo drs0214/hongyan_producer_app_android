@@ -1,16 +1,16 @@
 package com.aerozhonghuan.hongyan.producer.modules.check;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
+import com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity;
 
 /**
  * Created by zhangyonghui on 2018/1/22.
@@ -25,8 +25,8 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null && getArguments().containsKey("stationInfo") && getArguments().containsKey("stationId")) {
-            type= getArguments().getString("type");
+        if (getArguments() != null && getArguments().containsKey("type") ) {
+            type = getArguments().getString("type");
         }
     }
 
@@ -62,17 +62,22 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_camera_scan:
-                if (type!=null&&"初检".equals(type)){
+                if (type != null && "初检".equals(type)) {
 
-                }else{
+                } else {
 
                 }
                 break;
             case R.id.ll_hand_input:
-                if (type!=null&&"复检".equals(type)){
+                if (type != null && "初检".equals(type)) {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type","初检");
+                    startActivity(new Intent(getActivity(), HandInputActivity.class).putExtras(bundle));
 
-                }else{
-
+                } else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type","复检");
+                    startActivity(new Intent(getContext(), HandInputActivity.class).putExtras(bundle));
                 }
                 break;
         }

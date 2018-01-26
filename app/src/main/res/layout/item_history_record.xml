@@ -7,7 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="@dimen/margin21"
+        android:paddingBottom="@dimen/margin16"
         >
         <LinearLayout
             android:id="@+id/ll_name_time"
@@ -26,7 +26,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
-            android:id="@+id/tv_time"
+            android:id="@+id/tv_data"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin12"
@@ -49,11 +49,13 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/iv_ispass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/pass" />
 
             <TextView
+                android:id="@+id/tv_ispass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin8"
@@ -66,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/ll_result"
-            android:layout_marginRight="@dimen/margin59"
+            android:layout_marginRight="@dimen/margin52"
             android:layout_centerVertical="true"
             android:text="初检"
             android:textColor="@color/chujian_blue"
@@ -78,7 +80,7 @@
             android:background="@color/line"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/tv_state"
-            android:layout_marginRight="@dimen/margin59"
+            android:layout_marginRight="@dimen/margin52"
 
             />
 

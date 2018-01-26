@@ -1,23 +1,23 @@
 package com.aerozhonghuan.hongyan.producer.modules.check.activity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarActivity;
-import com.aerozhonghuan.hongyan.producer.modules.check.fragment.HandInputFragment;
-import com.aerozhonghuan.hongyan.producer.modules.transportScan.fragment.ManyScanResultFragment;
+import com.aerozhonghuan.hongyan.producer.modules.check.fragment.BindFragment;
 
 /**
  * @author: drs
- * @time: 2018/1/26 19:23
+ * @time: 2018/1/27 1:39
  * @des:
  */
-public class HandInputActivity extends TitlebarActivity{
+public class BindActivity extends TitlebarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getTitleBarView().setTitle("手工绑定");
+        getTitleBarView().setVisibility(View.GONE);
         if (savedInstanceState == null) {
-            HandInputFragment fragment = new HandInputFragment();
+            BindFragment fragment = new BindFragment();
             if (getIntent() != null && getIntent().getExtras() != null) {
                 showFragment(fragment, false, new Bundle(getIntent().getExtras()));
             }
