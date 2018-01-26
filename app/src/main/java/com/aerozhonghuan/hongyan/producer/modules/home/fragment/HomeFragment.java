@@ -78,7 +78,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initData() {
-        if (UserInfoManager.getCurrentUserBaseInfo() == null) return;
+        if (UserInfoManager.getCookieSession() == null) return;
 
         homeGridItemBeanList = new ArrayList<>();
         for (int i = 0; i < HomeConstants.HOME_GRID_ITEM_IMAGES.length; i++) {

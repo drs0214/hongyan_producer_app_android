@@ -8,30 +8,17 @@ import com.aerozhonghuan.foundation.log.LogUtil;
 import com.aerozhonghuan.foundation.utils.LocalStorage;
 import com.aerozhonghuan.hongyan.producer.framework.base.MyApplication;
 import com.aerozhonghuan.hongyan.producer.modules.common.ActivityDispatcher;
-import com.aerozhonghuan.hongyan.producer.modules.common.entity.UserBean;
-import com.aerozhonghuan.hongyan.producer.modules.common.entity.UserInfo;
+import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
 
 /**
- * Created by zhangyunfei on 17/6/23.
+ * Created by zhangyonghui
  */
 
 public class UserInfoManager {
-    private static final String TAG = UserInfoManager.class.getSimpleName();
-    private static UserInfo userInfoCached;
 
-    private UserInfoManager() {
-    }
-
-    public static void saveReminder(String userId, int count) {
-        LocalStorage localStorage = new LocalStorage(MyApplication.getApplication());
-        localStorage.putInt(userId, count);
-    }
-
-    public static int getReminder(String userId) {
-        LocalStorage localStorage = new LocalStorage(MyApplication.getApplication());
-        int count = localStorage.getInt(userId);
-        return count;
-    }
+    private static final String KEY_COOKIE_SESSION = "JSESSIONID";
+    private static final String KEY_AUTHORIZATION = "PERMISSIONS";
+    private static final String TAG = "UserInfoManager";
 
     /**
      * 当前 是否已经登录了用户
@@ -39,44 +26,49 @@ public class UserInfoManager {
      * @return
      */
     public static boolean isUserAuthenticated() {
-        userInfoCached = UserInfoDao.getCurrentUserBaseInfo();
-        LogUtil.d(TAG, "invoke:: isUserAuthenticated = " + (userInfoCached != null));
-        return userInfoCached != null;
+        return  !TextUtils.isEmpty(UserInfoManager.getCookieSession());
     }
 
-    public static void saveCurrentUser(UserInfo userInfo) {
-        LogUtil.d(TAG, "invoke:: saveCurrentUser = " + userInfo);
-        if (userInfo == null)
-            return;
-        UserInfoDao.saveUserBaseInfo(userInfo);
+
+    public static void saveCookieSession(String session) {
+        LocalStorage localStorage = new LocalStorage(MyApplication.getApplication());
+        localStorage.putString(KEY_COOKIE_SESSION, session);
     }
 
-    public static void clearCurrentUser() {
-        UserInfoDao.clearCurrentUser();
+    public static void saveAuthorization(String permissions) {
+        LocalStorage localStorage = new LocalStorage(MyApplication.getApplication());
+        localStorage.putString(KEY_AUTHORIZATION, permissions);
     }
 
-    /**
-     * 获得当前已经登录的用户信息
-     *
-     * @return
-     */
-
-    public static UserInfo getCurrentUserBaseInfo() {
-        if (userInfoCached != null) {
-            return userInfoCached;
+    public static String getCookieSession() {
+        LocalStorage localStorage = new LocalStorage(MyApplication.getApplication());
+        String session = localStorage.getString(KEY_COOKIE_SESSION);
+        if (TextUtils.isEmpty(session)) {
+            return null;
         }
-        UserInfoDao dao = new UserInfoDao();
-        userInfoCached = dao.getCurrentUserBaseInfo();
-        return userInfoCached == null ? new UserInfo() : userInfoCached;
+        return session;
+    }
+
+    public static String getAuthorization() {
+        LocalStorage localStorage = new LocalStorage(MyApplication.getApplication());
+        String permissions = localStorage.getString(KEY_AUTHORIZATION);
+        if (TextUtils.isEmpty(permissions)) {
+            return null;
+        }
+        return permissions;
+    }
+
+    public void release() {
+
     }
 
     /**
-     * 获得 当前用户的详情信息
-     *
-     * @return
+     * 清除 基本信息和详情信息
      */
-    public static UserBean getCurrentUserDetailInfo() {
-        return UserInfoDao.getCurrentUserBean() == null ? new UserBean() : UserInfoDao.getCurrentUserBean();
+    public static void clearCurrentUser() {
+        LocalStorage localStorage = new LocalStorage(MyApplication.getApplication());
+        localStorage.remove(KEY_COOKIE_SESSION);
+        localStorage.remove(KEY_AUTHORIZATION);
     }
 
     /**
@@ -84,53 +76,14 @@ public class UserInfoManager {
      */
     public static void logout(Context context) {
         LogUtil.d(TAG, "准备 退出登录");
-        UserInfo currentUser = getCurrentUserBaseInfo();
-        if (currentUser == null) return;
-        String token = currentUser.getToken();
-        if (TextUtils.isEmpty(token))
+        String session = getCookieSession();
+        if (TextUtils.isEmpty(session))
             return;
         UserInfoManager.clearCurrentUser();
-
-        // TODO: 2018/1/25 退出登录 
-        userInfoCached = null;
-        getCurrentUserBaseInfo();
+        PermissionsManager.clearPermissions();
+        // TODO: 2018/1/25 退出登录
 
         Intent intent = ActivityDispatcher.getIntent_LoginOnLogout(context);
         context.startActivity(intent);
-    }
-
-    /**
-     * 获得当前车辆的车牌号
-     *
-     * @return
-     */
-    public static String getCurrentCarNumber() {
-        UserBean userBean = UserInfoDao.getCurrentUserBean();
-        if (userBean == null) return null;
-        return userBean.getCarNo();
-    }
-
-    /**
-     * 获得当前用户的手机号
-     *
-     * @return
-     */
-    public static String getCurrentUserPhone() {
-        UserBean userBean = UserInfoDao.getCurrentUserBean();
-        if (userBean == null) return null;
-        return userBean.getPhone();
-    }
-
-    /**
-     * 保存用户信息，详细信息
-     *
-     * @param userBean
-     */
-    public static void saveUserDetail(UserBean userBean) {
-//        UserBeanDao dao = DaoContext.getDaoContext().getDaoSession().getUserBeanDao();
-//        dao.deleteAll();
-//        long rowid = dao.insert(userBean);
-//        LogUtil.i(TAG, "保存用户信息成功 rowid = " + rowid);
-        UserInfoDao.saveUserBean(userBean);
     }
 }

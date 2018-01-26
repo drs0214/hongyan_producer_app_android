@@ -62,11 +62,6 @@
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/SpalshTheme"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
-        <activity
-            android:name="com.aerozhonghuan.hongyan.producer.modules.common.TestUI"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -74,6 +69,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".modules.home.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+
         <activity
             android:name=".modules.common.AboutActivity"
             android:label="@string/title_activity_about"
@@ -105,8 +106,16 @@
             android:label="@string/title_activity_firstcheck"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".modules.user.LoginActivity" />
-        <activity android:name=".modules.transportScan.TransportScanActivity"></activity>
+        <activity android:name=".modules.user.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            />
+        <activity android:name=".modules.transportScan.TransportScanActivity"
+            android:label="@string/title_activity_transportscan"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            />
     </application>
 
 </manifest>

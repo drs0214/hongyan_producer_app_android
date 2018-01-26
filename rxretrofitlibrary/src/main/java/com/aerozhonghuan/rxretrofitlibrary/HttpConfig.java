@@ -2,10 +2,11 @@ package com.aerozhonghuan.rxretrofitlibrary;
 
 import android.app.Application;
 
-import com.aerozhonghuan.rxretrofitlibrary.HeaderParamInterceptor;
-import com.aerozhonghuan.rxretrofitlibrary.log.LogUtil;
+import com.aerozhonghuan.rxretrofitlibrary.log.LoggerUtil;
 
 import java.io.File;
+
+import okhttp3.Interceptor;
 
 /**
  * HttpConfig
@@ -26,7 +27,7 @@ public class HttpConfig {
     public static void init(Application app, boolean debug, String base_url, boolean isUseJson){
         setApplication(app);
         setDebug(debug);
-        LogUtil.init(debug);
+        LoggerUtil.init(debug);
         setBaseUrl(base_url);
         isPostJson = isUseJson;
     }
@@ -34,7 +35,7 @@ public class HttpConfig {
     public static void init(Application app, boolean debug, String base_url){
         setApplication(app);
         setDebug(debug);
-        LogUtil.init(debug);
+        LoggerUtil.init(debug);
         setBaseUrl(base_url);
         isPostJson = false;
     }
@@ -76,11 +77,11 @@ public class HttpConfig {
         HttpConfig.externalCacheDir = externalCacheDir;
     }
 
-    public static void setRequestParaInterceptor(RequestParaInterceptor mMyRequestParaInterceptor) {
+    public static void setRequestParaInterceptor(Interceptor mMyRequestParaInterceptor) {
         HttpManager.setRequestParaInterceptor(mMyRequestParaInterceptor);
     }
 
-    public static void setHeaderParamInterceptor(HeaderParamInterceptor headerParamInterceptor) {
+    public static void setHeaderParamInterceptor(Interceptor headerParamInterceptor) {
         HttpManager.setHeaderParamInterceptor(headerParamInterceptor);
     }
 
@@ -90,7 +91,7 @@ public class HttpConfig {
      * @param defaultExceptionHandler defaultExceptionHandler
      */
     public static void setDefaultExceptionHandler(DefaultExceptionHandler defaultExceptionHandler) {
-        HttpManager.setDefaultExceptionHandler(defaultExceptionHandler);
+//        HttpResponseFunc.setDefaultExceptionHandler(defaultExceptionHandler);
     }
 
     public static boolean isEnableGzipRequest() {

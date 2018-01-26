@@ -1,4 +1,8 @@
-package com.aerozhonghuan.rxretrofitlibrary;
+package com.aerozhonghuan.hongyan.producer.framework.base;
+
+import android.text.TextUtils;
+
+import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoManager;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -25,6 +29,9 @@ public class HeaderParamInterceptor implements Interceptor {
             for (String headerKey : keys) {
                 requestBuilder.addHeader(headerKey, headerParamsMap.get(headerKey)).build();
             }
+        }
+        if (!TextUtils.isEmpty(UserInfoManager.getCookieSession())) {
+            requestBuilder.addHeader("Cookie", UserInfoManager.getCookieSession());
         }
         request = requestBuilder.build();
         return chain.proceed(request);

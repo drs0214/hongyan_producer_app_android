@@ -78,20 +78,19 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <Button
-        android:id="@+id/btn_out"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin44"
-        android:layout_marginLeft="@dimen/margin20"
-        android:layout_marginRight="@dimen/margin20"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/margin44"
-        android:background="@drawable/btn_blue_shape"
-        android:gravity="center"
-        android:text="退出账户"
-
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size_14" />
+        <Button
+            android:id="@+id/btn_out"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin44"
+            android:layout_marginLeft="@dimen/margin20"
+            android:layout_marginRight="@dimen/margin20"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/margin44"
+            android:background="@drawable/btn_blue_shape"
+            android:gravity="center"
+            android:text="退出账户"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_14" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

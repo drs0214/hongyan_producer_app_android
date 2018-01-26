@@ -18,22 +18,38 @@ import retrofit2.adapter.rxjava.HttpException;
 
 public class ExceptionEngine {
     //对应HTTP的状态码
-    private static final int UNAUTHORIZED = 401;
+
+    //
+    private static final int DATAPARSEERROR = 400;
+    public static final int UNAUTHORIZED = 401;
     private static final int FORBIDDEN = 403;
     private static final int NOT_FOUND = 404;
+    private static final int SEND_ERROR_FIELD = 422;
     private static final int REQUEST_TIMEOUT = 408;
     private static final int INTERNAL_SERVER_ERROR = 500;
     private static final int BAD_GATEWAY = 502;
     private static final int SERVICE_UNAVAILABLE = 503;
     private static final int GATEWAY_TIMEOUT = 504;
+    private static final int SERIVCE_ERROR = 510;
 
     public static ApiException handleException(Throwable e){
         ApiException ex;
         if (e instanceof HttpException){             //HTTP错误
             HttpException httpException = (HttpException) e;
-            ex = new ApiException(e, ERROR.HTTP_ERROR);
+            ex = new ApiException(e, httpException.code());
             switch(httpException.code()){
+                case DATAPARSEERROR:
+                    ex.message = "数据异常";
+                    break;
                 case UNAUTHORIZED:
+                    ex.message = "登录失败";
+                    break;
+                case SEND_ERROR_FIELD:
+                    ex.message = "发送数据异常";
+                    break;
+                case SERIVCE_ERROR:
+                    ex.message = httpException.message();
+                    break;
                 case FORBIDDEN:
                 case NOT_FOUND:
                 case REQUEST_TIMEOUT:

@@ -24,7 +24,7 @@
         <com.aerozhonghuan.hongyan.producer.widget.TabButton
             android:id="@+id/tab_home"
             style="@style/main_tabbutton"
-            app:clickcolor="@color/tab_text_pressed_color_tab"
+            app:clickcolor="@color/tab_text_pressed_color"
             app:clickimage="@mipmap/tab_home_selected"
             app:image="@mipmap/tab_home_normal"
             app:text="@string/string_tab_home"
@@ -33,16 +33,16 @@
         <com.aerozhonghuan.hongyan.producer.widget.TabButton
             android:id="@+id/tab_msg"
             style="@style/main_tabbutton"
-            app:clickcolor="@color/tab_text_pressed_color_tab"
-            app:clickimage="@mipmap/tab_msg_selected"
-            app:image="@mipmap/tab_msg_normal"
+            app:clickcolor="@color/tab_text_pressed_color"
+            app:clickimage="@mipmap/tab_search_selected"
+            app:image="@mipmap/tab_search_normal"
             app:text="@string/string_tab_search"
             app:text_size="@dimen/text_size_small_small" />
 
         <com.aerozhonghuan.hongyan.producer.widget.TabButton
             android:id="@+id/tab_user"
             style="@style/main_tabbutton"
-            app:clickcolor="@color/tab_text_pressed_color_tab"
+            app:clickcolor="@color/tab_text_pressed_color"
             app:clickimage="@mipmap/tab_mine_selected"
             app:image="@mipmap/tab_mine_normal"
             app:text="@string/string_tab_mine"

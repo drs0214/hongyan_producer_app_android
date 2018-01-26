@@ -5,9 +5,9 @@ import com.orhanobut.logger.Logger;
 /**
  * LogInterceptor
  *
- * Created by zhangyunfei on 16/3/15.
+ * Created by zhangyonghui
  */
-public class LogUtil {
+public class LoggerUtil {
     /**
      * 初始化log工具，在app入口处调用
      *

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!--  主色 -->
-    <color name="colorPrimary">#169ADA</color>
+    <color name="colorPrimary">#3296fa</color>
     <color name="colorPrimaryDark">#007DB9</color>
     <!--  辅色 -->
     <color name="color2">#FF9C00</color>
@@ -15,10 +15,9 @@
     <color name="main_bg">#f5f5f5</color>
 
     <!--  标题栏 -->
-    <color name="titlebar_bg">#169ADA</color>
+    <color name="titlebar_bg">#3296fa</color>
     <color name="titlebar_text_color">#ffffffff</color>
-    <color name="tab_text_pressed_color">#169ada</color>
-    <color name="tab_text_pressed_color_tab">#2A5BD8</color>
+    <color name="tab_text_pressed_color">#3296fa</color>
     <color name="tab_text_nomal_color">#999999</color>
     <!--  文本字体文本颜色 -->
     <color name="black_text_color">#000000</color>

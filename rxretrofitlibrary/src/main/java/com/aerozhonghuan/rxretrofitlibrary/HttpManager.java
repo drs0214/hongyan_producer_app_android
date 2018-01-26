@@ -1,10 +1,8 @@
 package com.aerozhonghuan.rxretrofitlibrary;
 
-import com.aerozhonghuan.rxretrofitlibrary.HeaderParamInterceptor;
-import com.aerozhonghuan.rxretrofitlibrary.HttpConfig;
-
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -18,9 +16,9 @@ public class HttpManager {
     private volatile static HttpManager INSTANCE;
     private static final int DEFAULT_TIME_OUT = 5;//超时时间 5s
     private static final int DEFAULT_READ_TIME_OUT = 10;
-    private static RequestParaInterceptor sMyRequestParaInterceptor;
-    private static HeaderParamInterceptor sMyHeaderParamInterceptor;
-    private static DefaultExceptionHandler sDefaultExceptionHandler;
+    private static Interceptor sMyRequestParaInterceptor;
+    private static Interceptor sMyHeaderParamInterceptor;
+
     private Retrofit mRetrofit;
 
     //构造方法私有
@@ -30,10 +28,10 @@ public class HttpManager {
         builder.readTimeout(DEFAULT_READ_TIME_OUT,TimeUnit.SECONDS);//读操作超时时间
         // 添加公共参数拦截器
         if (sMyHeaderParamInterceptor != null) {
-            builder.addInterceptor(sMyRequestParaInterceptor);
+            builder.addInterceptor(sMyHeaderParamInterceptor);
         }
         if (sMyRequestParaInterceptor != null) {
-            builder.addInterceptor(sMyHeaderParamInterceptor);
+            builder.addInterceptor(sMyRequestParaInterceptor);
         }
         // 添加日志拦截器
         if (HttpConfig.isDebug()) {
@@ -75,7 +73,7 @@ public class HttpManager {
      *
      * @param requestParaInterceptor requestParaInterceptor
      */
-    public static void setRequestParaInterceptor(RequestParaInterceptor requestParaInterceptor) {
+    public static void setRequestParaInterceptor(Interceptor requestParaInterceptor) {
         sMyRequestParaInterceptor = requestParaInterceptor;
     }
 
@@ -84,16 +82,7 @@ public class HttpManager {
      *
      * @param headerParamInterceptor requestParaInterceptor
      */
-    public static void setHeaderParamInterceptor(HeaderParamInterceptor headerParamInterceptor) {
+    public static void setHeaderParamInterceptor(Interceptor headerParamInterceptor) {
         sMyHeaderParamInterceptor = headerParamInterceptor;
-    }
-
-    /**
-     * 默认异常处理器
-     *
-     * @param defaultExceptionHandler defaultExceptionHandler
-     */
-    public static void setDefaultExceptionHandler(DefaultExceptionHandler defaultExceptionHandler) {
-        sDefaultExceptionHandler = defaultExceptionHandler;
     }
 }

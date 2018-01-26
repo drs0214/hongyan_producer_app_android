@@ -2,6 +2,7 @@
     <string name="app_name">重卡汇产销版</string>
 
     <string name="title_activity_main">重卡汇</string>
+    <string name="title_activity_login">登录</string>
     <!-- 首页标签 -->
     <string name="string_tab_home">首页</string>
     <string name="string_tab_search">查询</string>
@@ -11,13 +12,15 @@
     <string name="title_activity_firstcheck">初检</string>
 
 
+    <!-- 运输扫描 -->
+    <string name="title_activity_transportscan">运输扫描</string>
+
+
     <string name="strin_login_law1">注册视为同意</string>
     <string name="strin_login_law2">服务条款和隐私政策</string>
 
     <string name="title_activity_about">关于我们</string>
     <string name="title_activity_service_clause">服务条款</string>
-
-    <string name="title_activity_login">登录</string>
 
 
     <item name="empty_view1" type="id" />

@@ -9,10 +9,7 @@ import com.aerozhonghuan.foundation.umeng.UmengAgent;
 import com.aerozhonghuan.hongyan.producer.BuildConfig;
 import com.aerozhonghuan.hongyan.producer.framework.logback.LogConfigurator;
 import com.aerozhonghuan.hongyan.producer.framework.logback.LogbackAppender;
-import com.aerozhonghuan.hongyan.producer.modules.common.entity.UserInfo;
-import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoManager;
 import com.aerozhonghuan.hongyan.producer.utils.ProcessUtil;
-import com.aerozhonghuan.rxretrofitlibrary.HeaderParamInterceptor;
 import com.aerozhonghuan.rxretrofitlibrary.HttpConfig;
 import com.umeng.socialize.PlatformConfig;
 
@@ -93,18 +90,9 @@ public class MyApplication extends MultiDexApplication {
     }
 
     private void initHttp() {
-        HttpConfig.init(this,BuildConfig.DEBUG,BuildConfig.HOST_BUSINESS,HttpConfig.DONTUSEJSON);
-        updateHeader();
-    }
-
-    public void updateHeader(){
-        HttpConfig.setHeaderParamInterceptor(new HeaderParamInterceptor.Builder()
-                .addHeaderParam("Cookie",getJSESSIONID())
-                .build());
-    }
-
-    private String getJSESSIONID(){
-        return "seesionId_1m9ujcw70q8wx4plnpekujoux";
+        HttpConfig.init(this, BuildConfig.DEBUG, BuildConfig.HOST_BUSINESS, HttpConfig.USEJSON);
+        HttpConfig.setRequestParaInterceptor( new RequestParaInterceptor.Builder().build());
+        HttpConfig.setHeaderParamInterceptor(new HeaderParamInterceptor.Builder().build());
     }
 
     private void initUmengShare() {
@@ -135,15 +123,6 @@ public class MyApplication extends MultiDexApplication {
     @Override
     public void onTerminate() {
         super.onTerminate();
-    }
-
-    /**
-     * 获得当前用户
-     *
-     * @return
-     */
-    public UserInfo getUserInfo() {
-        return UserInfoManager.getCurrentUserBaseInfo();
     }
 
 }

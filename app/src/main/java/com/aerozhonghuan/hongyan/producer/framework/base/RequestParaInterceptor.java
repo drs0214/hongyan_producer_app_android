@@ -1,4 +1,4 @@
-package com.aerozhonghuan.rxretrofitlibrary;
+package com.aerozhonghuan.hongyan.producer.framework.base;
 
 import com.aerozhonghuan.rxretrofitlibrary.HttpConfig;
 import com.google.gson.Gson;
@@ -25,9 +25,6 @@ import okio.Buffer;
 public class RequestParaInterceptor implements Interceptor{
     Map<String, String> paramsMap = new HashMap<>();
     private static final String TAG = "okhttp";
-    private RequestParaInterceptor() {
-
-    }
 
     @Override
     public Response intercept(Chain chain) throws IOException {
@@ -38,7 +35,7 @@ public class RequestParaInterceptor implements Interceptor{
 
         if (request.method().equals("GET") && paramsMap.size() > 0) {
             request = injectParamsIntoUrl(request.url().newBuilder(), requestBuilder, paramsMap);
-        } else if (request.method().equals("POST") && paramsMap.size() > 0) {
+        } else if (request.method().equals("POST")) {
             if (body != null) {
                 if (body instanceof FormBody) {
                     addParamsToFormBody((FormBody)body, requestBuilder);
@@ -78,8 +75,10 @@ public class RequestParaInterceptor implements Interceptor{
      */
     private void addParamsToFormBody(FormBody body, Request.Builder requestBuilder) {
         Map<String, String> formMap = new HashMap<>();
-        for (Map.Entry<String, String> entry : paramsMap.entrySet()) {
-            formMap.put(entry.getKey(), entry.getValue());
+        if (paramsMap.size() > 0) {
+            for (Map.Entry<String, String> entry : paramsMap.entrySet()) {
+                formMap.put(entry.getKey(), entry.getValue());
+            }
         }
         for (int i = 0; i < body.size(); i++) {
             formMap.put(body.name(i), body.value(i));

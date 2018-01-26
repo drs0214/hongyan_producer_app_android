@@ -17,13 +17,18 @@ import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.foundation.eventbus.EventBusManager;
 import com.aerozhonghuan.hongyan.producer.BuildConfig;
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
+import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsBean;
+import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
 import com.aerozhonghuan.hongyan.producer.modules.common.event.DefalutHttpExceptionAlert;
 import com.aerozhonghuan.hongyan.producer.modules.common.event.ReloadMessageEvent;
 import com.aerozhonghuan.hongyan.producer.modules.home.fragment.HomeFragment;
 import com.aerozhonghuan.hongyan.producer.modules.home.fragment.MineFragment;
 import com.aerozhonghuan.hongyan.producer.modules.home.fragment.SearchFragment;
+import com.aerozhonghuan.hongyan.producer.modules.home.logic.HomeHttpLoader;
 import com.aerozhonghuan.hongyan.producer.utils.EnvironmentInfoUtils;
 import com.aerozhonghuan.hongyan.producer.widget.TabButton;
+import com.aerozhonghuan.rxretrofitlibrary.ApiException;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -52,6 +57,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private long badgeNum;
     // 记录首次按退出键时的时间
     private long mExitTime = 0;
+    private HomeHttpLoader homeHttpLoader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +68,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         if (BuildConfig.DEBUG) {
             new EnvironmentInfoUtils().print(this);
         }
-        initView();
-        initEvent();
+        homeHttpLoader = new HomeHttpLoader();
+        getUserAuthorization();
         if (getIntent() != null && getIntent().getExtras() != null && getIntent().getExtras().containsKey("notify_intent")) {
             try {
                 PendingIntent pendingIntent = getIntent().getParcelableExtra("notify_intent");
@@ -74,10 +80,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         }
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -91,11 +93,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 EventBusManager.post(new ReloadMessageEvent());
             }
         }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
     }
 
     private void initView() {
@@ -228,5 +225,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             return true;
         }
         return false;
+    }
+
+    public void getUserAuthorization() {
+        homeHttpLoader.getAuthorization().subscribe(new MySubscriber<PermissionsBean>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            protected void onError(ApiException ex) {
+                super.onError(ex);
+            }
+
+            @Override
+            public void onNext(PermissionsBean permissionsBean) {
+                PermissionsManager.setPermissions(permissionsBean);
+                initView();
+                initEvent();
+            }
+        });
     }
 }

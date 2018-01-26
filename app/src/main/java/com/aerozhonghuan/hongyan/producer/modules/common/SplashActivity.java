@@ -32,7 +32,6 @@ public class SplashActivity extends SingleActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         // 取消状态栏
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -42,21 +41,10 @@ public class SplashActivity extends SingleActivity {
         this.getWindow().setAttributes(params);
         setContentView(R.layout.splash_view);
         mHandler = new Handler();
-
-//        hideNavigation();
-
         checkMyAppPermission();
-
     }
 
     private void initApp() {
-
-        if (UserInfoManager.isUserAuthenticated()) {
-
-        }
-//        CustomServiceConfigurator.init(this);//初始化云信
-//        LogUtil.d(TAG, "初始化云信 完成");
-
         onInitFirstView();
     }
 
@@ -165,7 +153,6 @@ public class SplashActivity extends SingleActivity {
      * 初始化
      */
     public void onInitFirstView() {
-
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
