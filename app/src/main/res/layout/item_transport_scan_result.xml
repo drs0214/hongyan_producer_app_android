@@ -25,7 +25,7 @@
             android:layout_marginRight="@dimen/margin12"
             android:gravity="right"
             android:text="0665659"
-            android:textColor="@color/text_nr"
+            android:textColor="@color/desc_text_color"
             android:textSize="@dimen/text_size_14" />
 
     </LinearLayout>
@@ -50,7 +50,7 @@
             android:layout_marginRight="@dimen/margin12"
             android:gravity="right"
             android:text="HD154848"
-            android:textColor="@color/text_nr"
+            android:textColor="@color/desc_text_color"
             android:textSize="@dimen/text_size_14" />
 
     </LinearLayout>
@@ -74,7 +74,7 @@
             android:layout_marginRight="@dimen/margin12"
             android:gravity="right"
             android:text="交付"
-            android:textColor="@color/text_nr"
+            android:textColor="@color/desc_text_color"
             android:textSize="@dimen/text_size_14" />
 
     </LinearLayout>
@@ -98,7 +98,7 @@
             android:layout_marginRight="@dimen/margin12"
             android:gravity="right"
             android:text="成功"
-            android:textColor="@color/text_nr"
+            android:textColor="@color/desc_text_color"
             android:textSize="@dimen/text_size_14" />
 
     </LinearLayout>
@@ -122,7 +122,7 @@
             android:layout_marginRight="@dimen/margin12"
             android:gravity="right"
             android:text="操作不匹配"
-            android:textColor="@color/text_nr"
+            android:textColor="@color/desc_text_color"
             android:textSize="@dimen/text_size_14" />
 
     </LinearLayout>
