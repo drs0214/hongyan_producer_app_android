@@ -21,7 +21,7 @@ public class ScanFragment extends TitlebarFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (rootView == null) {
-            rootView = inflater.inflate(R.layout.check_scan_fragment,null);
+            rootView = inflater.inflate(R.layout.fragment_single_scan,null);
         }
         return super.onCreateView(inflater, container, savedInstanceState);
 
