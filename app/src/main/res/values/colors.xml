@@ -12,6 +12,7 @@
     <color name="divider_line">#E5E5E5</color>
     <!--  背景 -->
     <color name="colorBackgroud">#F5F5F5</color>
+    <color name="main_bg">#f5f5f5</color>
 
     <!--  标题栏 -->
     <color name="titlebar_bg">#169ADA</color>
