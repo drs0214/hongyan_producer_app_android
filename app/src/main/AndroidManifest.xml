@@ -64,7 +64,7 @@
             android:theme="@style/SpalshTheme"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity
-            android:name="com.aerozhonghuan.hongyan.producer.modules.common.TestUI"
+            android:name="com.aerozhonghuan.hongyan.producer.modules.home.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden">

@@ -31,5 +31,8 @@
     <string name="alert_load_data_failure">数据加载失败,请重试</string>
     <string name="retry">重试</string>
 
+   <!-- 运输扫描-->
+    <string name="transport_scan">运输扫描</string>
+
 
 </resources>

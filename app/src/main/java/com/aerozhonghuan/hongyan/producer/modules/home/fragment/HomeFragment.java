@@ -19,6 +19,7 @@ import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoManager;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.HomeBannerInfo;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.HomeConstants;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.HomeGridItemBean;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.TransportScanActivity;
 import com.aerozhonghuan.hongyan.producer.utils.PicassoScaleTransformation;
 import com.aerozhonghuan.hongyan.producer.utils.WindowUtil;
 import com.aerozhonghuan.hongyan.producer.widget.BannerViewPager;
@@ -36,7 +37,7 @@ import static com.squareup.picasso.MemoryPolicy.NO_STORE;
  * 作者:zhangyonghui
  * 创建日期：2017/6/20  on 上午 11:27
  */
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private static final String TAG = "HomeFragment";
     private static final int GIRD_COLUMN_NUM = 4;
@@ -46,7 +47,7 @@ public class HomeFragment extends BaseFragment {
     private HomeAdapter adapter;
     //    private TitleBarView titleBar;
     private List<HomeBannerInfo> bannerInfoList;
-    private LinearLayout ll_dots;
+    private LinearLayout ll_dots,ll_transport_scan;
     private ArrayList<ImageView> dotsList;
     private ImageView img_oneornoBanner;
 
@@ -69,6 +70,7 @@ public class HomeFragment extends BaseFragment {
     private void initView() {
         vp_banner = (BannerViewPager) rootView.findViewById(R.id.vp_banner);
         ll_dots = (LinearLayout) rootView.findViewById(R.id.ll_dots);
+        ll_transport_scan = (LinearLayout) rootView.findViewById(R.id.ll_transport_scan);
         img_oneornoBanner = (ImageView) rootView.findViewById(R.id.img_oneornoBanner);
     }
 
@@ -78,6 +80,7 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void initData() {
+        ll_transport_scan.setOnClickListener(this);
         if (UserInfoManager.getCurrentUserBaseInfo() == null) return;
 
         homeGridItemBeanList = new ArrayList<>();
@@ -190,6 +193,16 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.ll_transport_scan:
+                startActivity(new Intent(getActivity(), TransportScanActivity.class));
+                break;
+        }
+
     }
 
     /**
