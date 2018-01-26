@@ -5,10 +5,13 @@
     android:orientation="vertical">
 
     <GridView
+        android:id="@+id/gridview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/margin20"
         android:layout_marginRight="@dimen/margin20"
+        android:layout_marginTop="@dimen/margin30"
+        android:horizontalSpacing="@dimen/margin20"
         android:numColumns="3"
         android:verticalSpacing="@dimen/margin20"></GridView>
 </LinearLayout>

@@ -69,7 +69,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             new EnvironmentInfoUtils().print(this);
         }
         homeHttpLoader = new HomeHttpLoader();
-        getUserAuthorization();
+        initView();
+        initEvent();
+//        getUserAuthorization();
         if (getIntent() != null && getIntent().getExtras() != null && getIntent().getExtras().containsKey("notify_intent")) {
             try {
                 PendingIntent pendingIntent = getIntent().getParcelableExtra("notify_intent");

@@ -52,6 +52,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
+            android:id="@+id/ll_first_check"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -73,6 +74,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_second_check"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

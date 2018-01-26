@@ -23,7 +23,7 @@ public class SingleScanFragment  extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (rootView == null) {
-            rootView = inflater.inflate(R.layout.fragment_transport_scan_history, null);
+            rootView = inflater.inflate(R.layout.fragment_single_scan, null);
             initView();
             initData();
         }
@@ -35,8 +35,6 @@ public class SingleScanFragment  extends BaseFragment {
     }
 
     private void initView() {
-        titleBar = (TitleBarView) rootView.findViewById(R.id.titlebarview1);
-        titleBar.enableBackButton(false);
-        titleBar.setTitle(getResources().getString(R.string.string_tab_search));
+
     }
 }

@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.modules.check.CheckActivity;
 import com.aerozhonghuan.hongyan.producer.modules.common.WebviewActivity;
 import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoManager;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.HomeBannerInfo;
@@ -47,7 +48,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private HomeAdapter adapter;
     //    private TitleBarView titleBar;
     private List<HomeBannerInfo> bannerInfoList;
-    private LinearLayout ll_dots,ll_transport_scan;
+    private LinearLayout ll_dots,ll_transport_scan,ll_first_check,ll_second_check;
     private ArrayList<ImageView> dotsList;
     private ImageView img_oneornoBanner;
 
@@ -71,6 +72,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         vp_banner = (BannerViewPager) rootView.findViewById(R.id.vp_banner);
         ll_dots = (LinearLayout) rootView.findViewById(R.id.ll_dots);
         ll_transport_scan = (LinearLayout) rootView.findViewById(R.id.ll_transport_scan);
+        ll_first_check = (LinearLayout) rootView.findViewById(R.id.ll_first_check);
+        ll_second_check = (LinearLayout) rootView.findViewById(R.id.ll_second_check);
         img_oneornoBanner = (ImageView) rootView.findViewById(R.id.img_oneornoBanner);
     }
 
@@ -81,6 +84,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private void initData() {
         ll_transport_scan.setOnClickListener(this);
+        ll_first_check.setOnClickListener(this);
+        ll_second_check.setOnClickListener(this);
         if (UserInfoManager.getCookieSession() == null) return;
 
         homeGridItemBeanList = new ArrayList<>();
@@ -200,6 +205,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         switch (v.getId()){
             case R.id.ll_transport_scan:
                 startActivity(new Intent(getActivity(), TransportScanActivity.class));
+                break;
+            case R.id.ll_first_check:
+                Bundle bundle = new Bundle();
+                bundle.putString("type","初检");
+                startActivity(new Intent(getActivity(), CheckActivity.class).putExtras(bundle));
+                break;
+            case R.id.ll_second_check:
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("type","复检");
+                startActivity(new Intent(getActivity(), CheckActivity.class).putExtras(bundle1));
                 break;
         }
 

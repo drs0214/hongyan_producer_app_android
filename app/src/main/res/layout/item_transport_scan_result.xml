@@ -20,6 +20,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin12"
@@ -45,6 +46,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_chassisnumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin12"
@@ -69,6 +71,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_scan_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin12"
@@ -93,6 +96,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_scan_result"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin12"
@@ -117,6 +121,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/fail_cause"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin12"
