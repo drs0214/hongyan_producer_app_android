@@ -20,6 +20,7 @@
         android:textSize="@dimen/text_size_15" />
 
     <GridView
+        android:id="@+id/gridview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin20"

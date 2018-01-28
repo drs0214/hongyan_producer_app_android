@@ -1,14 +1,17 @@
 package com.aerozhonghuan.hongyan.producer.modules.check.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.modules.check.activity.StartCheckActivity;
 import com.aerozhonghuan.hongyan.producer.modules.check.adapter.History_RecordAdapter;
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.History_RecordBean;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
@@ -65,6 +68,14 @@ public class HistoryRecordFragment extends BaseFragment implements View.OnClickL
     private void setListen() {
          adapter=new History_RecordAdapter(getContext(),history_record_list);
         listview.setAdapter(adapter);
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bundle = new Bundle();
+                bundle.putString("check_history_detail","1");//1是查核查历史详情
+                startActivity(new Intent(getActivity(), StartCheckActivity.class).putExtras(bundle));
+            }
+        });
     }
 
     @Override

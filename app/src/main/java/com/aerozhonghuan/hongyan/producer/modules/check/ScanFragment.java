@@ -3,9 +3,11 @@ package com.aerozhonghuan.hongyan.producer.modules.check;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.aerozhonghuan.hongyan.producer.R;
@@ -20,6 +22,7 @@ import com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivi
 public class ScanFragment extends TitlebarFragment implements View.OnClickListener {
     private View rootView;
     LinearLayout ll_camera_scan, ll_hand_input;
+    EditText et_num;
     String type;
 
     @Override
@@ -46,6 +49,9 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
     private void initView() {
         ll_camera_scan = (LinearLayout) rootView.findViewById(R.id.ll_camera_scan);
         ll_hand_input = (LinearLayout) rootView.findViewById(R.id.ll_hand_input);
+        et_num= (EditText) rootView.findViewById(R.id.et_num);
+        et_num.setInputType(InputType.TYPE_NULL);
+        et_num.requestFocus();
     }
 
     private void initData() {

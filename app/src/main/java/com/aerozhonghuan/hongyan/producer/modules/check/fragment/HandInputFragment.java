@@ -12,6 +12,7 @@ import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.CheckInfoActivity;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportInfoActivity;
 
 /**
  * @author: drs
@@ -22,13 +23,19 @@ public class HandInputFragment extends BaseFragment implements View.OnClickListe
     private View rootView;
     String type;
     Button bt_ok;
+    String transport_scan;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null && getArguments().containsKey("type") ) {
+        if (getArguments() != null && getArguments().containsKey("type")) {
             type = getArguments().getString("type");
         }
+        if (getArguments() != null && getArguments().containsKey("transport_scan")) {
+            transport_scan = getArguments().getString("transport_scan");
+        }
     }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -42,7 +49,7 @@ public class HandInputFragment extends BaseFragment implements View.OnClickListe
     }
 
     private void initView() {
-        bt_ok= (Button) rootView.findViewById(R.id.bt_ok);
+        bt_ok = (Button) rootView.findViewById(R.id.bt_ok);
     }
 
     private void initData() {
@@ -54,11 +61,16 @@ public class HandInputFragment extends BaseFragment implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.bt_ok:
-                Bundle bundle = new Bundle();
-                bundle.putString("type",type);
-                startActivity(new Intent(getActivity(), CheckInfoActivity.class).putExtras(bundle));
+                if (transport_scan != null && "1".equals(transport_scan)) {
+                    startActivity(new Intent(getActivity(), TransportInfoActivity.class));
+                } else {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("type", type);
+                    startActivity(new Intent(getActivity(), CheckInfoActivity.class).putExtras(bundle));
+                }
+
                 break;
 
         }

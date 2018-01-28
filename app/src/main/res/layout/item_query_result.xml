@@ -21,6 +21,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin12"
@@ -46,6 +47,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_chassisnumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin12"
@@ -71,6 +73,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin12"
@@ -96,6 +99,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_operationtime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin12"
@@ -121,6 +125,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_operationtype"
             android:layout_width="296dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin12"
@@ -146,6 +151,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_department"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/margin12"

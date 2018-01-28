@@ -153,6 +153,14 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
+        <activity android:name="com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportInfoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            />
+        <activity android:name="com.aerozhonghuan.hongyan.producer.modules.query.activity.Query_Transport_Scan_HistoryActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            />
 
     </application>
 
