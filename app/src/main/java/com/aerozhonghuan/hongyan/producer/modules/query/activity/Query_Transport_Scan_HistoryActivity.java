@@ -11,6 +11,7 @@ import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarActivity;
 import com.aerozhonghuan.hongyan.producer.modules.query.entity.OperationTypeBean;
 import com.aerozhonghuan.hongyan.producer.modules.query.fragment.Operation_TimeFragment;
 import com.aerozhonghuan.hongyan.producer.modules.query.fragment.Operation_TypeFragment;
+import com.aerozhonghuan.hongyan.producer.modules.query.view.OperationTime;
 import com.aerozhonghuan.hongyan.producer.modules.query.view.OperationType;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 
@@ -26,6 +27,7 @@ public class Query_Transport_Scan_HistoryActivity extends TitlebarActivity imple
     private TitleBarView titleBar;
     FrameLayout fl_content;
     private OperationType mOperationType;
+    private OperationTime mOperationTime;
     LinearLayout ll_single_scan,ll_many_scan,ll_operation_type,ll_operation_time;
     TextView tv_single_scan,tv_many_scan;
     View view_single,view_many;
@@ -129,11 +131,11 @@ public class Query_Transport_Scan_HistoryActivity extends TitlebarActivity imple
                 mOperationType = new OperationType(Query_Transport_Scan_HistoryActivity.this, data);
                 mOperationType.showoperationtypePopup(line, data);
                 break;
-            //操作类型筛选
+            //操作时间筛选
             case R.id.ll_operation_time:
                 // 价格点击监听
-                mOperationType = new OperationType(Query_Transport_Scan_HistoryActivity.this, data);
-                mOperationType.showoperationtypePopup(line, data);
+                mOperationTime = new OperationTime(Query_Transport_Scan_HistoryActivity.this);
+                mOperationTime.showoperationtimePopup(line);
                 break;
 
         }
