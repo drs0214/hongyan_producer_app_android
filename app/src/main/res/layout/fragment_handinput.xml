@@ -14,7 +14,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/margin230"
+            android:layout_height="@dimen/scan_image_height"
             android:scaleType="fitXY"
             android:layout_marginTop="@dimen/margin15"
             android:src="@drawable/handinput" />
