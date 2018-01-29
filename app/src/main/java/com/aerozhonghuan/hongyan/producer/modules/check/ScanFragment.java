@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity;
-import com.aerozhonghuan.hongyan.producer.modules.home.MainActivity;
 import com.zh.drs.zxinglibrary.android.CaptureActivity;
 import com.zh.drs.zxinglibrary.bean.ZxingConfig;
 import com.zh.drs.zxinglibrary.common.Constant;

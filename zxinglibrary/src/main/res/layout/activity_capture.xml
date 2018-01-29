@@ -19,7 +19,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/margin48"
             android:layout_gravity="top"
             android:background="#99000000">
 
@@ -52,13 +52,20 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin5"
+            android:gravity="center"
+            android:text="将二维码/条形码放入框内，即可自动扫描"
+            android:textColor="#fff" />
         <LinearLayout
             android:id="@+id/bottomLayout"
             android:layout_width="match_parent"
-            android:layout_height="96dp"
+            android:layout_height="@dimen/margin100"
             android:layout_gravity="bottom"
-            android:layout_marginBottom="80dp"
+            android:layout_marginBottom="@dimen/margin60"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -71,21 +78,19 @@
 
                 <ImageView
                     android:id="@+id/flashLightIv"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:scaleType="centerCrop"
-                    android:tint="#ffffffff"
-                    android:src="@drawable/ic_close"
-                    />
+                    android:src="@drawable/light_off"
+                   />
 
                 <TextView
                     android:id="@+id/flashLightTv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="@dimen/margin5"
                     android:gravity="center"
-                    android:text="打开闪光灯"
-
+                    android:text="打开手电筒"
                     android:textColor="@color/result_text" />
 
             </LinearLayout>
@@ -100,8 +105,8 @@
                 android:visibility="gone">
 
                 <ImageView
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
+                    android:layout_width="@dimen/margin36"
+                    android:layout_height="@dimen/margin36"
                     android:scaleType="centerCrop"
                     android:tint="#ffffffff"
                     android:src="@drawable/ic_photo"
@@ -110,7 +115,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="@dimen/margin5"
                     android:gravity="center"
                     android:text="相册"
 

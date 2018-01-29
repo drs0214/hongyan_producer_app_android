@@ -172,11 +172,11 @@ public class CaptureActivity extends Activity implements SurfaceHolder.Callback,
     public void switchFlashImg(int flashState) {
 
         if (flashState == Constant.FLASH_OPEN) {
-            flashLightIv.setImageResource(R.drawable.ic_open);
-            flashLightTv.setText("关闭闪光灯");
+            flashLightIv.setImageResource(R.drawable.light_on);
+            flashLightTv.setText("关闭手电筒");
         } else {
-            flashLightIv.setImageResource(R.drawable.ic_close);
-            flashLightTv.setText("打开闪光灯");
+            flashLightIv.setImageResource(R.drawable.light_off);
+            flashLightTv.setText("打开手电筒");
         }
 
     }
