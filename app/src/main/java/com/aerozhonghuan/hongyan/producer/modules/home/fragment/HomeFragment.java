@@ -16,6 +16,7 @@ import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.modules.check.CheckActivity;
 import com.aerozhonghuan.hongyan.producer.modules.common.WebviewActivity;
+import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
 import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoManager;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.HomeBannerInfo;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.HomeConstants;
@@ -48,7 +49,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private HomeAdapter adapter;
     //    private TitleBarView titleBar;
     private List<HomeBannerInfo> bannerInfoList;
-    private LinearLayout ll_dots,ll_transport_scan,ll_first_check,ll_second_check;
+    private LinearLayout ll_dots,ll_transport_scan,ll_first_check,ll_second_check,ll_check,ll_transport;
     private ArrayList<ImageView> dotsList;
     private ImageView img_oneornoBanner;
 
@@ -71,10 +72,24 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private void initView() {
         vp_banner = (BannerViewPager) rootView.findViewById(R.id.vp_banner);
         ll_dots = (LinearLayout) rootView.findViewById(R.id.ll_dots);
+        ll_check = (LinearLayout) rootView.findViewById(R.id.ll_check);
+        ll_transport = (LinearLayout) rootView.findViewById(R.id.ll_transport);
         ll_transport_scan = (LinearLayout) rootView.findViewById(R.id.ll_transport_scan);
         ll_first_check = (LinearLayout) rootView.findViewById(R.id.ll_first_check);
         ll_second_check = (LinearLayout) rootView.findViewById(R.id.ll_second_check);
         img_oneornoBanner = (ImageView) rootView.findViewById(R.id.img_oneornoBanner);
+        if (!PermissionsManager.isShowInspectionFirstCheck()) {
+            ll_first_check.setVisibility(View.GONE);
+        }
+        if (!PermissionsManager.isShowInspectionSecondCheck()) {
+            ll_second_check.setVisibility(View.GONE);
+        }
+        if (!PermissionsManager.isShowInspectionView()) {
+            ll_check.setVisibility(View.GONE);
+        }
+        if (!PermissionsManager.isShowTransportView()) {
+            ll_transport.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -110,6 +125,26 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                         return true;
                     }
                 }).excute();*/
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.ll_transport_scan:
+                startActivity(new Intent(getActivity(), TransportScanActivity.class));
+                break;
+            case R.id.ll_first_check:
+                Bundle bundle = new Bundle();
+                bundle.putString("type","初检");
+                startActivity(new Intent(getActivity(), CheckActivity.class).putExtras(bundle));
+                break;
+            case R.id.ll_second_check:
+                Bundle bundle1 = new Bundle();
+                bundle1.putString("type","复检");
+                startActivity(new Intent(getActivity(), CheckActivity.class).putExtras(bundle1));
+                break;
+        }
+
     }
 
     /**
@@ -198,26 +233,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.ll_transport_scan:
-                startActivity(new Intent(getActivity(), TransportScanActivity.class));
-                break;
-            case R.id.ll_first_check:
-                Bundle bundle = new Bundle();
-                bundle.putString("type","初检");
-                startActivity(new Intent(getActivity(), CheckActivity.class).putExtras(bundle));
-                break;
-            case R.id.ll_second_check:
-                Bundle bundle1 = new Bundle();
-                bundle1.putString("type","复检");
-                startActivity(new Intent(getActivity(), CheckActivity.class).putExtras(bundle1));
-                break;
-        }
-
     }
 
     /**

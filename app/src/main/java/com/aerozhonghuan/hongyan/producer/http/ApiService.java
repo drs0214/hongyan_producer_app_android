@@ -1,15 +1,21 @@
 package com.aerozhonghuan.hongyan.producer.http;
 
+import com.aerozhonghuan.hongyan.producer.modules.check.entity.CarInfo;
+import com.aerozhonghuan.hongyan.producer.modules.check.entity.History_RecordBean;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsBean;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.SessionBean;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.AppInfo;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.PhoneInfo;
 
+import java.util.List;
+
+import okhttp3.ResponseBody;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 import rx.Observable;
 
 /**
@@ -43,7 +49,7 @@ public interface ApiService {
      * @return
      */
     @POST("app/mobileInfo/v1/upload")
-    Observable<String> uploadPhoneInfo(@Body PhoneInfo info);
+    Observable<ResponseBody> uploadPhoneInfo(@Body PhoneInfo info);
 
     /**
      * 获取最新版本信息
@@ -51,4 +57,20 @@ public interface ApiService {
      */
     @GET("app/version/v1/scts/last")
     Observable<AppInfo> getAppInfo();
+
+
+    /**
+     * 获取车辆信息
+     * @return
+     */
+    @GET("vehicle/inspection/v1/get")
+    Observable<CarInfo> getCarInfo(@Query("vhcle") String vhcle);
+
+
+    /**
+     * 获取车辆信息
+     * @return
+     */
+    @GET("vehicle/inspection/v1/history")
+    Observable<List<History_RecordBean>> getInspectioniHistory(@Query("vhcle") String vhcle);
 }

@@ -16,12 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.CheckInfoActivity;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity;
+import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 import com.zh.drs.zxinglibrary.android.CaptureActivity;
 import com.zh.drs.zxinglibrary.bean.ZxingConfig;
 import com.zh.drs.zxinglibrary.common.Constant;
@@ -39,6 +39,8 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
     EditText et_num;
     String type;
     private int REQUEST_CODE_SCAN = 111;
+    private TitleBarView titlebar;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +63,8 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
 
 
     private void initView() {
+        titlebar = getTitlebar();
+        titlebar.setTitle(type);
         ll_camera_scan = (LinearLayout) rootView.findViewById(R.id.ll_camera_scan);
         ll_hand_input = (LinearLayout) rootView.findViewById(R.id.ll_hand_input);
         et_num= (EditText) rootView.findViewById(R.id.et_num);
@@ -89,7 +93,7 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
             @Override
             public void afterTextChanged(Editable s) {
                 if (!TextUtils.isEmpty(s.toString())){
-                    jumpcheckinfo();
+                    jumpcheckinfo(s.toString());
                     et_num.setText("");
                 }
 
@@ -97,9 +101,10 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
         });
     }
 
-    private void jumpcheckinfo() {
+    private void jumpcheckinfo(String vhcle) {
         Bundle bundle = new Bundle();
         bundle.putString("type", type);
+        bundle.putString("vhcle", vhcle);
         startActivity(new Intent(getActivity(), CheckInfoActivity.class).putExtras(bundle));
     }
 
@@ -193,7 +198,7 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
                 String content = data.getStringExtra(Constant.CODED_CONTENT);
 //                et_num.setText(content);
                 alert(content);
-                jumpcheckinfo();
+                jumpcheckinfo(content);
                 //                result.setText("扫描结果为：" + content);
             }
         }

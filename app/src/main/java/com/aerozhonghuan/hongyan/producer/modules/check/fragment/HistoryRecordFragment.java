@@ -9,32 +9,41 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
+import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.StartCheckActivity;
 import com.aerozhonghuan.hongyan.producer.modules.check.adapter.History_RecordAdapter;
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.History_RecordBean;
+import com.aerozhonghuan.hongyan.producer.modules.check.logic.CheckHttpLoader;
+import com.aerozhonghuan.hongyan.producer.widget.ProgressDialogIndicator;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: drs
  * @time: 2018/1/27 2:06
  * @des:
  */
-public class HistoryRecordFragment extends BaseFragment implements View.OnClickListener {
+public class HistoryRecordFragment extends TitlebarFragment implements View.OnClickListener {
     private View rootView;
     String type;
     TitleBarView titlebarview1;
     ListView listview;
     History_RecordAdapter adapter;
     ArrayList<History_RecordBean> history_record_list=new ArrayList<History_RecordBean>();
+    private String vhcle;
+    private ProgressDialogIndicator progressDialogIndicator;
+    private CheckHttpLoader checkHttpLoader;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null && getArguments().containsKey("type")) {
+        if (getArguments() != null && getArguments().containsKey("type") && getArguments().containsKey("vhcle")) {
             type = getArguments().getString("type");
+            vhcle = getArguments().getString("vhcle");
         }
     }
 
@@ -51,7 +60,8 @@ public class HistoryRecordFragment extends BaseFragment implements View.OnClickL
     }
 
     private void initView() {
-        titlebarview1= (TitleBarView) rootView.findViewById(R.id.titlebarview1);
+        progressDialogIndicator = new ProgressDialogIndicator(getContext());
+        titlebarview1= getTitlebar();
         if(type!=null){
             titlebarview1.setTitle(type);
         }
@@ -59,10 +69,17 @@ public class HistoryRecordFragment extends BaseFragment implements View.OnClickL
     }
 
     private void initData() {
-        for (int i = 0; i <10 ; i++) {
+        /*for (int i = 0; i <10 ; i++) {
             History_RecordBean bean=new History_RecordBean("张三","2018-1-27  10:30:50","初检",true);
             history_record_list.add(bean);
-        }
+        }*/
+        checkHttpLoader = new CheckHttpLoader();
+        checkHttpLoader.getInspectioniHistory(vhcle).subscribe(new MySubscriber<List<History_RecordBean>>(getContext(), progressDialogIndicator){
+            @Override
+            public void onNext(List<History_RecordBean> beans) {
+                history_record_list.addAll(beans);
+            }
+        });
     }
 
     private void setListen() {

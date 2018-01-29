@@ -5,6 +5,7 @@ import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsBean;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.AppInfo;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.PhoneInfo;
 
+import okhttp3.ResponseBody;
 import rx.Observable;
 
 /**
@@ -16,7 +17,7 @@ public class HomeHttpLoader extends HttpLoader {
         return observe(apiService.getAuthorization());
     }
 
-    public Observable<String> uploadPhoneInfo(PhoneInfo info){
+    public Observable<ResponseBody> uploadPhoneInfo(PhoneInfo info){
         return observe(apiService.uploadPhoneInfo(info));
     }
 

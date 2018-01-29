@@ -20,7 +20,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView
@@ -43,7 +43,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView
@@ -66,7 +66,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
@@ -101,7 +101,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView
@@ -124,7 +124,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView
@@ -147,7 +147,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView
@@ -170,7 +170,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView
@@ -193,7 +193,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView
@@ -216,7 +216,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView
@@ -239,7 +239,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView
@@ -262,7 +262,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView
@@ -287,7 +287,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/margin20"
         android:layout_marginRight="@dimen/margin20"
-        android:layout_marginBottom="@dimen/margin20"
+        android:layout_marginBottom="@dimen/margin10"
         >
 
         <LinearLayout

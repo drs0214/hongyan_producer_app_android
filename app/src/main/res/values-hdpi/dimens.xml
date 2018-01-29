@@ -31,7 +31,7 @@
     <dimen name="margin25">22dp</dimen>
     <dimen name="margin30">27dp</dimen>
     <dimen name="margin40">35dp</dimen>
-    <dimen name="margin44">39dp</dimen>
+    <dimen name="margin44">38dp</dimen>
     <dimen name="margin45">40dp</dimen>
     <dimen name="margin47">42dp</dimen>
     <dimen name="margin50">45dp</dimen>
@@ -59,16 +59,16 @@
     <dimen name="padding20">18dp</dimen>
 
     <!-- 字体大小，一般大小，大，更小 -->
-    <dimen name="text_size_10">9sp</dimen>
-    <dimen name="text_size_12">10sp</dimen>
-    <dimen name="text_size_14">12sp</dimen>
-    <dimen name="text_size_15">13sp</dimen>
-    <dimen name="text_size_16">14sp</dimen>
-    <dimen name="text_size_18">16sp</dimen>
-    <dimen name="text_size_20">18sp</dimen>
-    <dimen name="text_size_24">22sp</dimen>
-    <dimen name="text_size_28">25sp</dimen>
-    <dimen name="text_size_30">27sp</dimen>
+    <dimen name="text_size_10">10sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_15">15sp</dimen>
+    <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="text_size_20">20sp</dimen>
+    <dimen name="text_size_24">24sp</dimen>
+    <dimen name="text_size_28">28sp</dimen>
+    <dimen name="text_size_30">30sp</dimen>
 
     <dimen name="line">1dp</dimen>
     <!-- 一般情形的边距-->
@@ -84,7 +84,7 @@
 
     <!-- home页 -->
     <dimen name="titlebar_right_textsize">13sp</dimen>
-    <dimen name="home_tab_height">40dp</dimen>
+    <dimen name="home_tab_height">45dp</dimen>
     <dimen name="home_tab_textsize">10sp</dimen>
     <dimen name="img_big_height">187dp</dimen>
     <dimen name="img_serverinfo_height">133dp</dimen>
@@ -119,11 +119,11 @@
     <dimen name="mine_pic_wh">52dp</dimen>
 
     <!-- 字体大小，一般大小，大，更小 -->
-    <dimen name="text_size_small_small">9sp</dimen>
-    <dimen name="text_size_small">10sp</dimen>
-    <dimen name="text_size_normal">12sp</dimen>
-    <dimen name="text_size_big">14sp</dimen>
-    <dimen name="text_size_big_big">18sp</dimen>
+    <dimen name="text_size_small_small">10sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_big">16sp</dimen>
+    <dimen name="text_size_big_big">20sp</dimen>
 
     <!--switch控件-->
     <dimen name="switch_thumb_width">18dp</dimen>
@@ -133,5 +133,5 @@
     <dimen name="scan_image_height">180dp</dimen>
 
     <!-- 检查 -->
-    <dimen name="check_startcheck">100dp</dimen>
+    <dimen name="check_startcheck">90dp</dimen>
 </resources>

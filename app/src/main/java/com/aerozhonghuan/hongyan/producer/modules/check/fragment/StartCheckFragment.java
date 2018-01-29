@@ -7,10 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.modules.check.CheckActivity;
+import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 
 /**
@@ -23,6 +25,7 @@ public class StartCheckFragment extends BaseFragment implements View.OnClickList
     String type,check_history_detail;
     TitleBarView titlebarview1;
     Button bt_back,bt_end_check,bt_pass;
+    private LinearLayout ll_check_lockcar;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -49,6 +52,13 @@ public class StartCheckFragment extends BaseFragment implements View.OnClickList
 
     private void initView() {
         titlebarview1 = (TitleBarView) rootView.findViewById(R.id.titlebarview1);
+        ll_check_lockcar = (LinearLayout) rootView.findViewById(R.id.ll_check_lockcar);
+        if (!PermissionsManager.isShowInspectionCheck()) {
+            ll_check_lockcar.setVisibility(View.GONE);
+        }
+        if (PermissionsManager.isShowInspectionFirstCheck()) {
+            ll_check_lockcar.setVisibility(View.VISIBLE);
+        }
         if (type != null) {
             titlebarview1.setTitle(type);
         }
@@ -74,7 +84,9 @@ public class StartCheckFragment extends BaseFragment implements View.OnClickList
             }else{
                 bt_back.setText("返回"+type+"扫描首页");
                 bt_end_check.setText("结束"+type);
-                bt_pass.setVisibility(View.VISIBLE);
+                if (PermissionsManager.isShowInspectionForcepass()) {
+                    bt_pass.setVisibility(View.VISIBLE);
+                }
             }
         }
 

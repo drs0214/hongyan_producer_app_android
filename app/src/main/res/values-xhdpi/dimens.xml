@@ -133,5 +133,5 @@
     <dimen name="scan_image_height">220dp</dimen>
 
     <!-- 检查 -->
-    <dimen name="check_startcheck">130dp</dimen>
+    <dimen name="check_startcheck">120dp</dimen>
 </resources>

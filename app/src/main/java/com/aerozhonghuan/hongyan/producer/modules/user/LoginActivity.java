@@ -43,7 +43,6 @@ public class LoginActivity extends TitlebarActivity {
         loginHttpLoader = new LoginHttpLoader();
         progressDialogIndicator = new ProgressDialogIndicator(this);
         initView();
-
     }
 
     private void initView() {
@@ -52,6 +51,8 @@ public class LoginActivity extends TitlebarActivity {
         titleBar.setTitle(getResources().getString(R.string.title_activity_login));
         et_account = (TextView)findViewById(R.id.et_account);
         et_pwd = (TextView)findViewById(R.id.et_pwd);
+        et_account.setText("user");
+        et_pwd.setText("admin");
         btn_login = (Button) findViewById(R.id.btn_login);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override

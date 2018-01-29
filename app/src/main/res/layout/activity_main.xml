@@ -28,7 +28,7 @@
             app:clickimage="@mipmap/tab_home_selected"
             app:image="@mipmap/tab_home_normal"
             app:text="@string/string_tab_home"
-            app:text_size="@dimen/text_size_small_small" />
+            app:text_size="@dimen/text_size_small" />
 
         <com.aerozhonghuan.hongyan.producer.widget.TabButton
             android:id="@+id/tab_msg"
@@ -37,7 +37,7 @@
             app:clickimage="@mipmap/tab_search_selected"
             app:image="@mipmap/tab_search_normal"
             app:text="@string/string_tab_search"
-            app:text_size="@dimen/text_size_small_small" />
+            app:text_size="@dimen/text_size_small" />
 
         <com.aerozhonghuan.hongyan.producer.widget.TabButton
             android:id="@+id/tab_user"
@@ -46,7 +46,7 @@
             app:clickimage="@mipmap/tab_mine_selected"
             app:image="@mipmap/tab_mine_normal"
             app:text="@string/string_tab_mine"
-            app:text_size="@dimen/text_size_small_small" />
+            app:text_size="@dimen/text_size_small" />
 
     </LinearLayout>
 </LinearLayout>

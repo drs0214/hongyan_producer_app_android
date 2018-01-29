@@ -1,7 +1,6 @@
 package com.aerozhonghuan.hongyan.producer.modules.transportScan;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -9,6 +8,7 @@ import android.widget.TextView;
 
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarActivity;
+import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.fragment.ManyScanFragment;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.fragment.SingleScanFragment;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
@@ -25,6 +25,8 @@ public class TransportScanActivity extends TitlebarActivity implements View.OnCl
     View view_single,view_many;
     SingleScanFragment singleScanFragment;
     ManyScanFragment manyScanFragment;
+    private LinearLayout ll_tab_singleandbatch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,10 @@ public class TransportScanActivity extends TitlebarActivity implements View.OnCl
     private void initView() {
         titleBar = (TitleBarView)findViewById(R.id.titlebarview1);
         titleBar.setTitle(getResources().getString(R.string.transport_scan));
+        ll_tab_singleandbatch = (LinearLayout) findViewById(R.id.ll_tab_singleandbatch);
+        if (!PermissionsManager.isShowTransportMasscan()) {
+            ll_tab_singleandbatch.setVisibility(View.GONE);
+        }
         fl_content= (FrameLayout) findViewById(R.id.fl_content);
         ll_single_scan= (LinearLayout) findViewById(R.id.ll_single_scan);
         ll_many_scan= (LinearLayout) findViewById(R.id.ll_many_scan);

@@ -43,10 +43,11 @@ public class MySubscriber<T> extends ErrorSubscriber<T> {
         if (progressDialogIndicator != null) {
             progressDialogIndicator.onProgressEnd();
         }
-//        EventBusManager.post(new DefalutHttpExceptionAlert(ex.message));
         Toast.makeText(activityWeakReference.get().getApplicationContext(), ex.message, Toast.LENGTH_SHORT).show();
-        if (ex.code == ExceptionEngine.UNAUTHORIZED) {
-            UserInfoManager.logout(activityWeakReference.get());
+        switch (ex.code){
+            case ExceptionEngine.UNAUTHORIZED:
+                UserInfoManager.logout(activityWeakReference.get());
+                break;
         }
         clear();
     }

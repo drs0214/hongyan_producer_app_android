@@ -41,6 +41,7 @@ import com.aerozhonghuan.rxretrofitlibrary.RxApiManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import rx.Subscription;
 
 
@@ -133,9 +134,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
             @Override
             public void onNext(PermissionsBean permissionsBean) {
-                PermissionsManager.setPermissions(permissionsBean);
-                initView();
-                initEvent();
+                if (permissionsBean != null && permissionsBean.permissions != null) {
+                    PermissionsManager.setPermissions(permissionsBean);
+                    initView();
+                    initEvent();
+                } else {
+                    alert("数据异常");
+                    UserInfoManager.logout(getContext());
+                }
             }
         });
         RxApiManager.get().add(TAG,subscription);
@@ -163,16 +169,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         phoneInfo.sdkVersion = Build.VERSION.SDK;
         phoneInfo.appVersion = BuildConfig.VERSION_NAME;
         phoneInfo.username = UserInfoManager.getCurrentUserInfo().getUserName();
-        Subscription subscription = homeHttpLoader.uploadPhoneInfo(phoneInfo).subscribe(new MySubscriber<String>(this){
+        Subscription subscription = homeHttpLoader.uploadPhoneInfo(phoneInfo).subscribe(new MySubscriber<ResponseBody>(this){
             @Override
             protected void onError(ApiException ex) {
                 LogUtil.d(TAG,"上传手机信息异常:"+ex.message);
             }
 
             @Override
-            public void onNext(String string) {
+            public void onNext(ResponseBody responseBody) {
                 localCache.putLong(KEY_UPLOADPHONEINFO_FLAG, System.currentTimeMillis());
-                LogUtil.d(TAG,"uploadphoneinfo 请求成功::"+string);
             }
         });
         RxApiManager.get().add(TAG, subscription);

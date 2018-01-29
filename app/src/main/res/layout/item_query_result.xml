@@ -4,8 +4,8 @@
     android:layout_height="wrap_content"
     android:background="@drawable/white_shape_5"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/margin12"
-    android:paddingTop="@dimen/margin12">
+    android:paddingBottom="@dimen/margin10"
+    android:paddingTop="@dimen/margin10">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView
@@ -61,7 +61,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView
@@ -87,7 +87,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView
@@ -112,7 +112,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView
@@ -138,7 +138,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin12"
+        android:layout_marginTop="@dimen/margin10"
         android:orientation="horizontal">
 
         <TextView

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Created by zhangyonghui on 2018/1/26.
- * 产销管理类
+ * 产销权限管理类
  */
 
 public class PermissionsManager {
