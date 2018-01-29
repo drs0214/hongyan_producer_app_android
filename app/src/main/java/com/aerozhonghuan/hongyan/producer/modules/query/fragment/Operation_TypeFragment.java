@@ -28,7 +28,7 @@ public class Operation_TypeFragment extends TitlebarFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (rootView == null) {
-            rootView = inflater.inflate(R.layout.transport_scan_result, null);
+            rootView = inflater.inflate(R.layout.query_transport_scan_result, null);
             initView();
             initData();
             setListen();
