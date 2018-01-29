@@ -11,6 +11,7 @@ import com.aerozhonghuan.hongyan.producer.framework.logback.LogConfigurator;
 import com.aerozhonghuan.hongyan.producer.framework.logback.LogbackAppender;
 import com.aerozhonghuan.hongyan.producer.utils.ProcessUtil;
 import com.aerozhonghuan.rxretrofitlibrary.HttpConfig;
+import com.squareup.leakcanary.LeakCanary;
 import com.umeng.socialize.PlatformConfig;
 
 /**
@@ -74,7 +75,7 @@ public class MyApplication extends MultiDexApplication {
         LogUtil.isEnable = BuildConfig.DEBUG;
         EventBusManager.DEBUG = false;
         initLogback();//初始化日志框架
-
+        LeakCanary.install(this);
         initUmengStatistic();
         LogUtil.d(TAG, "初始化uemng统计框架 完成");
 

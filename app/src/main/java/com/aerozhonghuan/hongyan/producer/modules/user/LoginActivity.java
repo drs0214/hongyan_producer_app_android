@@ -10,15 +10,20 @@ import android.widget.TextView;
 import com.aerozhonghuan.foundation.log.LogUtil;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.Matchs;
+import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarActivity;
 import com.aerozhonghuan.hongyan.producer.modules.common.ActivityDispatcher;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.SessionBean;
+import com.aerozhonghuan.hongyan.producer.modules.common.entity.UserInfo;
 import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoManager;
 import com.aerozhonghuan.hongyan.producer.modules.user.logic.LoginHttpLoader;
 import com.aerozhonghuan.hongyan.producer.utils.NetUtils;
+import com.aerozhonghuan.hongyan.producer.widget.ProgressDialogIndicator;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 import com.aerozhonghuan.rxretrofitlibrary.ApiException;
-import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
+import com.aerozhonghuan.rxretrofitlibrary.RxApiManager;
+
+import rx.Subscription;
 
 public class LoginActivity extends TitlebarActivity {
 
@@ -28,12 +33,15 @@ public class LoginActivity extends TitlebarActivity {
     private TextView et_pwd;
     private static final String TAG = "LoginActivity";
     private TitleBarView titleBar;
+    private Subscription subscription;
+    private ProgressDialogIndicator progressDialogIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         loginHttpLoader = new LoginHttpLoader();
+        progressDialogIndicator = new ProgressDialogIndicator(this);
         initView();
 
     }
@@ -59,7 +67,7 @@ public class LoginActivity extends TitlebarActivity {
             alert("当前无网络连接");
             return;
         }
-        String username = et_account.getText().toString();
+        final String username = et_account.getText().toString();
         String pwd = et_pwd.getText().toString();
         if (TextUtils.isEmpty(username)) {
             alert("请输入账号");
@@ -78,27 +86,32 @@ public class LoginActivity extends TitlebarActivity {
             return;
         }
         btn_login.setClickable(false);
-        loginHttpLoader.getSession(username, pwd)
-                .subscribe(new MySubscriber<SessionBean>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
+        subscription = loginHttpLoader.getSession(username, pwd)
+                .subscribe(new MySubscriber<SessionBean>(this, progressDialogIndicator) {
                     @Override
                     public void onError(ApiException e) {
+                        super.onError(e);
                         btn_login.setClickable(true);
-                        LogUtil.d(TAG,"错误信息:"+e.message);
+                        LogUtil.d(TAG, "错误信息:" + e.message);
                     }
 
                     @Override
                     public void onNext(SessionBean sessionBean) {
-                        String cookie = String.format("%s=%s",sessionBean.session.name,sessionBean.session.value);
+                        String cookie = String.format("%s=%s", sessionBean.session.name, sessionBean.session.value);
                         UserInfoManager.saveCookieSession(cookie);
+                        UserInfoManager.saveUserInfo(new UserInfo(username));
                         Intent intent = ActivityDispatcher.getIntent_MainActivity(getContext());
                         startActivity(intent);
                         finish();
                     }
                 });
+        RxApiManager.get().add(TAG,subscription);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // 取消请求
+        RxApiManager.get().cancel(TAG);
     }
 }

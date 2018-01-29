@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,8 +60,8 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
         ll_camera_scan = (LinearLayout) rootView.findViewById(R.id.ll_camera_scan);
         ll_hand_input = (LinearLayout) rootView.findViewById(R.id.ll_hand_input);
         et_num= (EditText) rootView.findViewById(R.id.et_num);
-//        et_num.setInputType(InputType.TYPE_NULL);
-//        et_num.requestFocus();
+        et_num.setInputType(InputType.TYPE_NULL);
+        et_num.requestFocus();
     }
 
     private void initData() {

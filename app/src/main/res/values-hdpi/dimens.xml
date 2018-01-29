@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="titlebar_height">43dp</dimen>
+    <dimen name="titlebar_paddingLeft">9dp</dimen>
+    <dimen name="titlebar_paddingRight">9dp</dimen>
+
+    <dimen name="activity_horizontal_margin">14dp</dimen>
+    <dimen name="activity_vertical_margin">14dp</dimen>
+    <dimen name="activity_horizontal_margin_half">7dp</dimen>
+    <dimen name="activity_vertical_margin_half">7dp</dimen>
+    <dimen name="activity_horizontal_margin_half_half">3dp</dimen>
+    <dimen name="activity_vertical_margin_half_half">3dp</dimen>
+
+    <!--  外边距 级别倍数-->
+    <dimen name="margin2">2dp</dimen>
+    <dimen name="margin4">3dp</dimen>
+    <dimen name="margin5">4dp</dimen>
+    <dimen name="margin8">7dp</dimen>
+    <dimen name="margin9">8dp</dimen>
+    <dimen name="margin10">9dp</dimen>
+    <dimen name="margin12">10dp</dimen>
+    <dimen name="margin13">11dp</dimen>
+    <dimen name="margin14">12dp</dimen>
+    <dimen name="margin15">13dp</dimen>
+    <dimen name="margin16">14dp</dimen>
+    <dimen name="margin18">16dp</dimen>
+    <dimen name="margin20">18dp</dimen>
+    <dimen name="margin21">19dp</dimen>
+    <dimen name="margin24">21dp</dimen>
+    <dimen name="margin25">22dp</dimen>
+    <dimen name="margin30">27dp</dimen>
+    <dimen name="margin40">35dp</dimen>
+    <dimen name="margin44">39dp</dimen>
+    <dimen name="margin45">40dp</dimen>
+    <dimen name="margin47">42dp</dimen>
+    <dimen name="margin50">45dp</dimen>
+    <dimen name="margin52">46dp</dimen>
+    <dimen name="margin55">48dp</dimen>
+    <dimen name="margin59">52dp</dimen>
+    <dimen name="margin60">53dp</dimen>
+    <dimen name="margin90">80dp</dimen>
+    <dimen name="margin92">81dp</dimen>
+    <dimen name="margin100">89dp</dimen>
+    <dimen name="margin110">98dp</dimen>
+    <dimen name="margin150">133dp</dimen>
+    <dimen name="margin220">204dp</dimen>
+    <dimen name="margin230">213dp</dimen>
+    <dimen name="margin345">307dp</dimen>
+
+    <!--  内边距 级别倍数-->
+    <dimen name="padding4">3dp</dimen>
+    <dimen name="padding5">4dp</dimen>
+    <dimen name="padding8">7dp</dimen>
+    <dimen name="padding10">9dp</dimen>
+    <dimen name="padding15">13dp</dimen>
+    <dimen name="padding16">14dp</dimen>
+    <dimen name="padding20">18dp</dimen>
+
+    <!-- 字体大小，一般大小，大，更小 -->
+    <dimen name="text_size_10">9sp</dimen>
+    <dimen name="text_size_12">10sp</dimen>
+    <dimen name="text_size_14">12sp</dimen>
+    <dimen name="text_size_15">13sp</dimen>
+    <dimen name="text_size_16">14sp</dimen>
+    <dimen name="text_size_18">16sp</dimen>
+    <dimen name="text_size_20">18sp</dimen>
+    <dimen name="text_size_24">22sp</dimen>
+    <dimen name="text_size_28">25sp</dimen>
+    <dimen name="text_size_30">27sp</dimen>
+
+    <dimen name="line">1dp</dimen>
+    <!-- 一般情形的边距-->
+    <dimen name="list_item_vertical_margin">9dp</dimen>
+
+    <dimen name="login_textsize">12sp</dimen>
+
+    <dimen name="login_textview_width">58dp</dimen>
+    <dimen name="titlebar_title_text_size">16sp</dimen>
+    <dimen name="fab_margin">14dp</dimen>
+    <dimen name="row_item_lable_max_width">58dp</dimen>
+    <dimen name="import_textsize">16sp</dimen>
+
+    <!-- home页 -->
+    <dimen name="titlebar_right_textsize">13sp</dimen>
+    <dimen name="home_tab_height">40dp</dimen>
+    <dimen name="home_tab_textsize">10sp</dimen>
+    <dimen name="img_big_height">187dp</dimen>
+    <dimen name="img_serverinfo_height">133dp</dimen>
+    <dimen name="home_item_bottom">18dp</dimen>
+    <dimen name="home_item_height">89dp</dimen>
+    <dimen name="home_item_margintop">25dp</dimen>
+    <dimen name="home_item_img_weight">40dp</dimen>
+    <dimen name="title_margin">13dp</dimen>
+    <dimen name="btn_height_normal">40dp</dimen>
+    <dimen name="dots_weight">15dp</dimen>
+    <!-- 规定文本大小 -->
+
+    <!-- 提示文字 -->
+    <dimen name="alert_textsize">9sp</dimen>
+    <!-- 文本内容字体 -->
+    <dimen name="content_textsize">10sp</dimen>
+    <!-- 文本标题字体 -->
+    <dimen name="title_textsize">12sp</dimen>
+    <!-- 按钮字体 -->
+    <dimen name="btn_textsize">14sp</dimen>
+    <!-- 导航标题 -->
+    <dimen name="navigation_textsize">16sp</dimen>
+
+    <!-- 按钮大小 -->
+    <dimen name="btn_small_width">105dp</dimen>
+    <dimen name="btn_small_height">32dp</dimen>
+
+    <!-- 自定义弹窗大小 -->
+    <dimen name="dialog_width">267dp</dimen>
+
+    <!-- 我的页面头像宽高 -->
+    <dimen name="mine_pic_wh">52dp</dimen>
+
+    <!-- 字体大小，一般大小，大，更小 -->
+    <dimen name="text_size_small_small">9sp</dimen>
+    <dimen name="text_size_small">10sp</dimen>
+    <dimen name="text_size_normal">12sp</dimen>
+    <dimen name="text_size_big">14sp</dimen>
+    <dimen name="text_size_big_big">18sp</dimen>
+
+    <!--switch控件-->
+    <dimen name="switch_thumb_width">18dp</dimen>
+    <dimen name="switch_thumb_height">18dp</dimen>
+
+    <!-- 扫描 -->
+    <dimen name="scan_image_height">180dp</dimen>
+
+    <!-- 检查 -->
+    <dimen name="check_startcheck">100dp</dimen>
+</resources>

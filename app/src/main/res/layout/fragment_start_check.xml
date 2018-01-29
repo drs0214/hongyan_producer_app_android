@@ -226,7 +226,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/check_startcheck"
                 android:layout_marginTop="@dimen/margin10"
                 android:src="@drawable/first_checkfail" />
         </LinearLayout>

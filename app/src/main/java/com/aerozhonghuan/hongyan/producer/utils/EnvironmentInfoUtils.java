@@ -58,7 +58,7 @@ public class EnvironmentInfoUtils {
     /**
      * 打印
      */
-    public void print(Activity context) {
+    public void print(Context context) {
         if (context == null)
             throw new NullPointerException();
         HashMap<String, String> basicMsg = getBasicMsg(context);

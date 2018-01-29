@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/margin220">
+        android:layout_height="@dimen/scan_image_height">
 
         <ImageView
             android:layout_width="match_parent"

@@ -5,9 +5,11 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentTransaction;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,26 +17,31 @@ import android.view.View;
 import com.aerozhonghuan.foundation.base.BaseActivity;
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.foundation.eventbus.EventBusManager;
+import com.aerozhonghuan.foundation.log.LogUtil;
 import com.aerozhonghuan.hongyan.producer.BuildConfig;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsBean;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
-import com.aerozhonghuan.hongyan.producer.modules.common.event.DefalutHttpExceptionAlert;
 import com.aerozhonghuan.hongyan.producer.modules.common.event.ReloadMessageEvent;
+import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoManager;
+import com.aerozhonghuan.hongyan.producer.modules.home.entity.AppInfo;
+import com.aerozhonghuan.hongyan.producer.modules.home.entity.PhoneInfo;
 import com.aerozhonghuan.hongyan.producer.modules.home.fragment.HomeFragment;
 import com.aerozhonghuan.hongyan.producer.modules.home.fragment.MineFragment;
 import com.aerozhonghuan.hongyan.producer.modules.home.fragment.SearchFragment;
 import com.aerozhonghuan.hongyan.producer.modules.home.logic.HomeHttpLoader;
-import com.aerozhonghuan.hongyan.producer.utils.EnvironmentInfoUtils;
+import com.aerozhonghuan.hongyan.producer.utils.LocalCache;
+import com.aerozhonghuan.hongyan.producer.utils.TelephonyUtils;
+import com.aerozhonghuan.hongyan.producer.widget.ProgressDialogIndicator;
 import com.aerozhonghuan.hongyan.producer.widget.TabButton;
 import com.aerozhonghuan.rxretrofitlibrary.ApiException;
-
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
+import com.aerozhonghuan.rxretrofitlibrary.RxApiManager;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import rx.Subscription;
 
 
 /**
@@ -58,20 +65,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     // 记录首次按退出键时的时间
     private long mExitTime = 0;
     private HomeHttpLoader homeHttpLoader;
+    private ProgressDialogIndicator progressDialogIndicator;
+    private LocalCache localCache;
+    private final String KEY_UPLOADPHONEINFO_FLAG = "last_uploadphoneinfo_time";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        EventBusManager.register(this);
+//        EventBusManager.register(this);
         //打印环境变量信息
-        if (BuildConfig.DEBUG) {
-            new EnvironmentInfoUtils().print(this);
-        }
+        /*if (BuildConfig.DEBUG) {
+            new EnvironmentInfoUtils().print(getApplicationContext());
+        }*/
+        progressDialogIndicator = new ProgressDialogIndicator(this);
         homeHttpLoader = new HomeHttpLoader();
-        initView();
-        initEvent();
-//        getUserAuthorization();
+        getUserAuthorization();
+        checkIsUploadPhoneInfo();
+        checkAppUpdate();
         if (getIntent() != null && getIntent().getExtras() != null && getIntent().getExtras().containsKey("notify_intent")) {
             try {
                 PendingIntent pendingIntent = getIntent().getParcelableExtra("notify_intent");
@@ -81,7 +92,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             }
         }
     }
-
 
     @Override
     protected void onNewIntent(Intent intent) {
@@ -115,6 +125,74 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             buttonList.get(i).setOnClickListener(this);
             buttonList.get(i).setTag(i);
         }
+    }
+
+    // 获取用户权限
+    public void getUserAuthorization() {
+        Subscription subscription = homeHttpLoader.getAuthorization().subscribe(new MySubscriber<PermissionsBean>(this, progressDialogIndicator) {
+
+            @Override
+            public void onNext(PermissionsBean permissionsBean) {
+                PermissionsManager.setPermissions(permissionsBean);
+                initView();
+                initEvent();
+            }
+        });
+        RxApiManager.get().add(TAG,subscription);
+    }
+
+    // 上报手机信息,每天上报一次
+    private void checkIsUploadPhoneInfo(){
+        localCache = new LocalCache(getApplicationContext());
+        long lastTime = localCache.getLong(KEY_UPLOADPHONEINFO_FLAG);
+        if ((lastTime == 0 || lastTime + (24 * 60 * 60 * 1000) < System.currentTimeMillis())) {
+            uploadPhoneInfo();
+        }
+    }
+
+    private void uploadPhoneInfo() {
+        PhoneInfo phoneInfo = new PhoneInfo();
+        TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        phoneInfo.imei = telephonyManager.getDeviceId();
+        phoneInfo.imsi = telephonyManager.getSubscriberId();
+        phoneInfo.mobileNumber = telephonyManager.getLine1Number();
+        phoneInfo.operator = TelephonyUtils.getOperator(getApplicationContext());
+        phoneInfo.mobileBrand = Build.BRAND;
+        phoneInfo.mobileType = Build.MODEL;
+        phoneInfo.androidVersion = Build.VERSION.RELEASE;
+        phoneInfo.sdkVersion = Build.VERSION.SDK;
+        phoneInfo.appVersion = BuildConfig.VERSION_NAME;
+        phoneInfo.username = UserInfoManager.getCurrentUserInfo().getUserName();
+        Subscription subscription = homeHttpLoader.uploadPhoneInfo(phoneInfo).subscribe(new MySubscriber<String>(this){
+            @Override
+            protected void onError(ApiException ex) {
+                LogUtil.d(TAG,"上传手机信息异常:"+ex.message);
+            }
+
+            @Override
+            public void onNext(String string) {
+                localCache.putLong(KEY_UPLOADPHONEINFO_FLAG, System.currentTimeMillis());
+                LogUtil.d(TAG,"uploadphoneinfo 请求成功::"+string);
+            }
+        });
+        RxApiManager.get().add(TAG, subscription);
+    }
+
+    // 获取应用更新
+    private void checkAppUpdate() {
+        Subscription subscription = homeHttpLoader.getAppInfo().subscribe(new MySubscriber<AppInfo>(this) {
+            @Override
+            protected void onError(ApiException ex) {
+
+            }
+
+            @Override
+            public void onNext(AppInfo appInfo) {
+                LogUtil.d(TAG,"检查更新::"+appInfo.toString());
+
+            }
+        });
+        RxApiManager.get().add(TAG,subscription);
     }
 
     @Override
@@ -163,28 +241,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         transaction.commit();
     }
 
-    /**
-     * 默认 http异常提醒
-     *
-     * @param defalutHttpExceptionAlert
-     */
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    @SuppressWarnings("unused")
-    public void onEvent(DefalutHttpExceptionAlert defalutHttpExceptionAlert) {
-        if (isFinishing())
-            return;
-        if (defalutHttpExceptionAlert != null)
-            alert(defalutHttpExceptionAlert.getErrorMsg());
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        EventBusManager.unregister(this);
-        Log.d(TAG, "onDestroy: Mainactivty");
-    }
-
-
     @Override
     public int getCurrentTab() {
         if (currentFragment instanceof HomeFragment) {
@@ -229,24 +285,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         return false;
     }
 
-    public void getUserAuthorization() {
-        homeHttpLoader.getAuthorization().subscribe(new MySubscriber<PermissionsBean>() {
-            @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            protected void onError(ApiException ex) {
-                super.onError(ex);
-            }
-
-            @Override
-            public void onNext(PermissionsBean permissionsBean) {
-                PermissionsManager.setPermissions(permissionsBean);
-                initView();
-                initEvent();
-            }
-        });
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        EventBusManager.unregister(this);
+        RxApiManager.get().cancel(TAG);
+        Log.d(TAG, "onDestroy: Mainactivty");
     }
 }

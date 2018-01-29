@@ -1,7 +1,5 @@
 package com.aerozhonghuan.hongyan.producer.modules.common.entity;
 
-import com.google.gson.Gson;
-
 import java.io.Serializable;
 
 /**
@@ -11,22 +9,15 @@ import java.io.Serializable;
  */
 
 public class UserInfo implements Serializable {
-    //    用户id(电话、邮箱之类)
-    private String userId;
+    public UserInfo() {
+    }
+
+    public UserInfo(String userName) {
+        this.userName = userName;
+    }
+
     //    用户名称
     private String userName;
-    //    用户类型
-    private String roleCode;
-    //    token
-    private String token;
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
 
     public String getUserName() {
         return userName;
@@ -36,26 +27,4 @@ public class UserInfo implements Serializable {
         this.userName = userName;
     }
 
-    public String getRoleCode() {
-        return roleCode;
-    }
-
-    public void setRoleCode(String roleCode) {
-        this.roleCode = roleCode;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    @Override
-    public String toString() {
-        Gson gson = new Gson();
-        String str = gson.toJson(this);
-        return str;
-    }
 }
