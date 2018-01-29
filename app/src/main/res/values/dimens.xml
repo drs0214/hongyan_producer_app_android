@@ -46,6 +46,7 @@
     <dimen name="margin150">150dp</dimen>
     <dimen name="margin220">220dp</dimen>
     <dimen name="margin230">230dp</dimen>
+    <dimen name="margin270">270dp</dimen>
     <dimen name="margin345">345dp</dimen>
 
     <!--  内边距 级别倍数-->

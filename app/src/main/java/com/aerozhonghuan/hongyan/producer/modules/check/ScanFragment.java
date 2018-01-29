@@ -7,7 +7,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,7 @@ import android.widget.Toast;
 
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
+import com.aerozhonghuan.hongyan.producer.modules.check.activity.CheckInfoActivity;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity;
 import com.zh.drs.zxinglibrary.android.CaptureActivity;
 import com.zh.drs.zxinglibrary.bean.ZxingConfig;
@@ -71,6 +75,32 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
     private void setListen() {
         ll_camera_scan.setOnClickListener(this);
         ll_hand_input.setOnClickListener(this);
+        et_num.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!TextUtils.isEmpty(s.toString())){
+                    jumpcheckinfo();
+                    et_num.setText("");
+                }
+
+            }
+        });
+    }
+
+    private void jumpcheckinfo() {
+        Bundle bundle = new Bundle();
+        bundle.putString("type", type);
+        startActivity(new Intent(getActivity(), CheckInfoActivity.class).putExtras(bundle));
     }
 
 
@@ -161,7 +191,9 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
             if (data != null) {
 
                 String content = data.getStringExtra(Constant.CODED_CONTENT);
-                Toast.makeText(getContext(), content, Toast.LENGTH_SHORT).show();
+//                et_num.setText(content);
+                alert(content);
+                jumpcheckinfo();
                 //                result.setText("扫描结果为：" + content);
             }
         }

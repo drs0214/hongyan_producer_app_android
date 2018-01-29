@@ -1,5 +1,6 @@
 package com.aerozhonghuan.hongyan.producer.modules.transportScan.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportStartActivity;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.adapter.ManyScanAdapter;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.ManyScanBean;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
@@ -27,7 +29,8 @@ public class TransportInfoFragment extends BaseFragment implements View.OnClickL
     String type;
     TitleBarView titlebarview1;
     GridView gridview;
-    ArrayList<ManyScanBean> manyscanlist=new ArrayList<ManyScanBean>();
+    ArrayList<ManyScanBean> manyscanlist = new ArrayList<ManyScanBean>();
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,45 +52,45 @@ public class TransportInfoFragment extends BaseFragment implements View.OnClickL
     }
 
     private void initView() {
-        titlebarview1= (TitleBarView) rootView.findViewById(R.id.titlebarview1);
+        titlebarview1 = (TitleBarView) rootView.findViewById(R.id.titlebarview1);
         titlebarview1.setTitle("运输扫描");
-        gridview=(GridView) rootView.findViewById(R.id.gridview);
-        ManyScanAdapter adapter=new ManyScanAdapter(getContext(),manyscanlist);
+        gridview = (GridView) rootView.findViewById(R.id.gridview);
+        ManyScanAdapter adapter = new ManyScanAdapter(getContext(), manyscanlist);
         gridview.setAdapter(adapter);
     }
 
     private void initData() {
-        ManyScanBean bean=new ManyScanBean();
+        ManyScanBean bean = new ManyScanBean();
         bean.setName("下线");
         manyscanlist.add(bean);
 
-        bean=new ManyScanBean();
+        bean = new ManyScanBean();
         bean.setName("质检");
         manyscanlist.add(bean);
 
-        bean=new ManyScanBean();
+        bean = new ManyScanBean();
         bean.setName("入库");
         manyscanlist.add(bean);
-        bean=new ManyScanBean();
+        bean = new ManyScanBean();
         bean.setName("运输开始");
         manyscanlist.add(bean);
 
-        bean=new ManyScanBean();
+        bean = new ManyScanBean();
         bean.setName("运输结束");
         manyscanlist.add(bean);
 
-        bean=new ManyScanBean();
+        bean = new ManyScanBean();
         bean.setName("改装开始");
         manyscanlist.add(bean);
-        bean=new ManyScanBean();
+        bean = new ManyScanBean();
         bean.setName("改装开始");
         manyscanlist.add(bean);
 
-        bean=new ManyScanBean();
+        bean = new ManyScanBean();
         bean.setName("交付");
         manyscanlist.add(bean);
 
-        bean=new ManyScanBean();
+        bean = new ManyScanBean();
         bean.setName("盘点");
         manyscanlist.add(bean);
     }
@@ -96,7 +99,13 @@ public class TransportInfoFragment extends BaseFragment implements View.OnClickL
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                alert(manyscanlist.get(position).getName());
+                ManyScanBean bean = manyscanlist.get(position);
+                if (bean != null && bean.getName() != null && "运输开始".equals(bean.getName())) {
+                    startActivity(new Intent(getContext(), TransportStartActivity.class));
+                } else {
+                    alert(manyscanlist.get(position).getName());
+                }
+
             }
         });
     }

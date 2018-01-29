@@ -18,7 +18,7 @@
             android:layout_marginLeft="@dimen/margin20"
             android:layout_marginRight="@dimen/margin20"
             android:horizontalSpacing="@dimen/margin30"
-            android:numColumns="5"
+            android:numColumns="3"
             />
 
         <LinearLayout

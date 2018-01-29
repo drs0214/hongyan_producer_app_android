@@ -40,12 +40,13 @@
     <dimen name="margin59">52dp</dimen>
     <dimen name="margin60">53dp</dimen>
     <dimen name="margin90">80dp</dimen>
-    <dimen name="margin92">81dp</dimen>
+    <dimen name="margin92">83dp</dimen>
     <dimen name="margin100">89dp</dimen>
     <dimen name="margin110">98dp</dimen>
     <dimen name="margin150">133dp</dimen>
     <dimen name="margin220">204dp</dimen>
     <dimen name="margin230">213dp</dimen>
+    <dimen name="margin270">240dp</dimen>
     <dimen name="margin345">307dp</dimen>
 
     <!--  内边距 级别倍数-->

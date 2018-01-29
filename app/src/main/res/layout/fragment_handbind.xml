@@ -59,10 +59,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="1232323"
+                android:hint="请输入编号"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:background="@null"
+                android:textColorHint="@color/list_item_text_color_title"
                 android:textColor="@color/list_item_text_color_title"
                 android:textSize="@dimen/text_size_15" />
 

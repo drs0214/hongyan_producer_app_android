@@ -7,7 +7,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.Editable;
 import android.text.InputType;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +20,9 @@ import android.widget.Toast;
 
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.modules.check.activity.CheckInfoActivity;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportInfoActivity;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 import com.zh.drs.zxinglibrary.android.CaptureActivity;
 import com.zh.drs.zxinglibrary.bean.ZxingConfig;
@@ -51,6 +56,26 @@ public class SingleScanFragment extends BaseFragment implements View.OnClickList
     private void setListen() {
         ll_hand_input.setOnClickListener(this);
         ll_camera_scan.setOnClickListener(this);
+        et_num.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!TextUtils.isEmpty(s.toString())){
+                    startActivity(new Intent(getActivity(), TransportInfoActivity.class));
+                    et_num.setText("");
+                }
+
+            }
+        });
     }
 
     private void initData() {
@@ -143,9 +168,10 @@ public class SingleScanFragment extends BaseFragment implements View.OnClickList
         // 扫描二维码/条码回传
         if (requestCode == REQUEST_CODE_SCAN && resultCode == RESULT_OK) {
             if (data != null) {
-
                 String content = data.getStringExtra(Constant.CODED_CONTENT);
+//                et_num.setText(content);
                 Toast.makeText(getContext(), content, Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), TransportInfoActivity.class));
                 //                result.setText("扫描结果为：" + content);
             }
         }

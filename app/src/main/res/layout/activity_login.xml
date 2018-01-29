@@ -32,6 +32,8 @@
             android:layout_height="@dimen/margin45"
             android:background="@null"
             android:hint="手机号/用户名"
+            android:singleLine="true"
+            android:maxLines="1"
             android:textColorHint="@color/hint_text_color1"
             android:textSize="@dimen/login_textsize" />
 
@@ -46,6 +48,8 @@
             android:layout_height="@dimen/margin45"
             android:background="@null"
             android:hint="登录密码"
+            android:singleLine="true"
+            android:maxLines="1"
             android:textColorHint="@color/hint_text_color1"
             android:inputType="textPassword"
             android:textSize="@dimen/login_textsize" />

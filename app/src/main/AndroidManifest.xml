@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aerozhonghuan.hongyan.producer">
+
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
 
@@ -82,8 +83,7 @@
             android:name=".modules.home.MainActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden">
-        </activity>
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
 
         <activity
             android:name=".modules.common.AboutActivity"
@@ -116,49 +116,53 @@
             android:label="@string/title_activity_firstcheck"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity android:name=".modules.user.LoginActivity"
+        <activity
+            android:name=".modules.user.LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity android:name=".modules.transportScan.TransportScanActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".modules.transportScan.TransportScanActivity"
             android:label="@string/title_activity_transportscan"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity android:name="com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.ManyScanResultActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.ManyScanResultActivity"
             android:label="@string/title_activity_transportscan"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity android:name="com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity"
             android:label="@string/title_activity_handbind"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.aerozhonghuan.hongyan.producer.modules.check.activity.CheckInfoActivity"
             android:screenOrientation="portrait"
-            />
-        <activity android:name="com.aerozhonghuan.hongyan.producer.modules.check.activity.CheckInfoActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.aerozhonghuan.hongyan.producer.modules.check.activity.BindActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity android:name="com.aerozhonghuan.hongyan.producer.modules.check.activity.BindActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.aerozhonghuan.hongyan.producer.modules.check.activity.HistoryRecordActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity android:name="com.aerozhonghuan.hongyan.producer.modules.check.activity.HistoryRecordActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.aerozhonghuan.hongyan.producer.modules.check.activity.StartCheckActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity android:name="com.aerozhonghuan.hongyan.producer.modules.check.activity.StartCheckActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportInfoActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity android:name="com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportInfoActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportStartActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
-        <activity android:name="com.aerozhonghuan.hongyan.producer.modules.query.activity.Query_Transport_Scan_HistoryActivity"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name="com.aerozhonghuan.hongyan.producer.modules.query.activity.Query_Transport_Scan_HistoryActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden"
-            />
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name="com.zh.drs.zxinglibrary.android.CaptureActivity"
             android:configChanges="orientation|screenSize"
