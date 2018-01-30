@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.aerozhonghuan.foundation.log.LogUtil;
 import com.aerozhonghuan.hongyan.producer.R;
@@ -38,6 +39,7 @@ public class CheckInfoFragment extends TitlebarFragment implements View.OnClickL
     private CheckHttpLoader checkHttpLoader;
     private ProgressDialogIndicator progressDialogIndicator;
     private static final String TAG = "CheckInfoFragment";
+    private LinearLayout ll_content;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +63,7 @@ public class CheckInfoFragment extends TitlebarFragment implements View.OnClickL
 
     private void initView() {
         progressDialogIndicator = new ProgressDialogIndicator(getContext());
+        ll_content = (LinearLayout)rootView.findViewById(R.id.ll_content);
         bt_history= (Button) rootView.findViewById(R.id.bt_history);
         bt_start_check= (Button) rootView.findViewById(R.id.bt_start_check);
         bt_bind= (Button) rootView.findViewById(R.id.bt_bind);
@@ -82,6 +85,7 @@ public class CheckInfoFragment extends TitlebarFragment implements View.OnClickL
     private void initData() {
         checkHttpLoader = new CheckHttpLoader();
         Subscription subscription = checkHttpLoader.getCarInfo(vhcle).subscribe(new MySubscriber<CarInfo>(getContext(), progressDialogIndicator) {
+
             @Override
             public void onNext(CarInfo carInfo) {
                 LogUtil.d(TAG, carInfo.toString());
@@ -93,7 +97,7 @@ public class CheckInfoFragment extends TitlebarFragment implements View.OnClickL
 
     // 显示布局控件
     private void setView() {
-
+        ll_content.setVisibility(View.VISIBLE);
     }
 
     private void setListen() {

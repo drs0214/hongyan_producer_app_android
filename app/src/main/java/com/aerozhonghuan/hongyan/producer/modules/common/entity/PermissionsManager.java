@@ -22,6 +22,9 @@ public class PermissionsManager {
     public static final String INSPECTION_VIEW = "app:scts:inspection:view";
 
     public static boolean isShowInspectionView(){
+        if (permissions == null) {
+            return false;
+        }
         return permissions.contains(INSPECTION_VIEW);
     }
 
@@ -29,6 +32,9 @@ public class PermissionsManager {
     public static final String INSPECTION_FIRSTCHECK = "app:scts:inspection:firstCheck";
 
     public static boolean isShowInspectionFirstCheck(){
+        if (permissions == null) {
+            return false;
+        }
         return permissions.contains(INSPECTION_FIRSTCHECK);
     }
 
@@ -37,6 +43,9 @@ public class PermissionsManager {
     public static final String INSPECTION_SECONDCHECK = "app:scts:inspection:secondCheck";
 
     public static boolean isShowInspectionSecondCheck(){
+        if (permissions == null) {
+            return false;
+        }
         return permissions.contains(INSPECTION_SECONDCHECK);
     }
 
@@ -45,6 +54,9 @@ public class PermissionsManager {
     public static final String INSPECTION_FORCEPASS = "app:scts:inspection:forcePass";
 
     public static boolean isShowInspectionForcepass(){
+        if (permissions == null) {
+            return false;
+        }
         return permissions.contains(INSPECTION_FORCEPASS);
     }
 
@@ -53,6 +65,9 @@ public class PermissionsManager {
     public static final String INSPECTION_CHECK = "app:scts:inspection:check";
 
     public static boolean isShowInspectionCheck(){
+        if (permissions == null) {
+            return false;
+        }
         return permissions.contains(INSPECTION_CHECK);
     }
 
@@ -61,6 +76,9 @@ public class PermissionsManager {
     public static final String INSPECTION_FORCECHECK = "app:scts:inspection:forceCheck";
 
     public static boolean isShowInspectionForceCheck(){
+        if (permissions == null) {
+            return false;
+        }
         return permissions.contains(INSPECTION_FORCECHECK);
     }
 
@@ -72,6 +90,9 @@ public class PermissionsManager {
     public static final String TRANSPORT_VIEW = "app:scts:transport:view";
 
     public static boolean isShowTransportView(){
+        if (permissions == null) {
+            return false;
+        }
         return permissions.contains(TRANSPORT_VIEW);
     }
 
@@ -80,6 +101,9 @@ public class PermissionsManager {
     public static final String TRANSPORT_MASSSCAN = "app:scts:transport:massScan";
 
     public static boolean isShowTransportMasscan(){
+        if (permissions == null) {
+            return false;
+        }
         return permissions.contains(TRANSPORT_MASSSCAN);
     }
 
@@ -88,6 +112,9 @@ public class PermissionsManager {
     public static final String TRANSPORT_ORDERGROUP = "app:scts:transport:orderGroup";
 
     public static boolean isShowTransportOrdergroup(){
+        if (permissions == null) {
+            return false;
+        }
         return permissions.contains(TRANSPORT_ORDERGROUP);
     }
 
@@ -96,6 +123,9 @@ public class PermissionsManager {
     public static final String TRANSPORT_QUERY = "app:scts:transport:query";
 
     public static boolean isShowTransportquery(){
+        if (permissions == null) {
+            return false;
+        }
         return permissions.contains(TRANSPORT_QUERY);
     }
 
@@ -104,6 +134,9 @@ public class PermissionsManager {
     public static final String TRANSPORT_INPUTSCAN = "app:scts:transport:inputScan";
 
     public static boolean isShowTransportInputScan(){
+        if (permissions == null) {
+            return false;
+        }
         return permissions.contains(TRANSPORT_INPUTSCAN);
     }
 
@@ -111,6 +144,9 @@ public class PermissionsManager {
     public static final String  DEVICE_BIND= "app:scts:device:bind";
 
     public static boolean isShowDeviceBind(){
+        if (permissions == null) {
+            return false;
+        }
         return permissions.contains(DEVICE_BIND);
     }
 

@@ -53,10 +53,10 @@ public class StartCheckFragment extends BaseFragment implements View.OnClickList
     private void initView() {
         titlebarview1 = (TitleBarView) rootView.findViewById(R.id.titlebarview1);
         ll_check_lockcar = (LinearLayout) rootView.findViewById(R.id.ll_check_lockcar);
-        if (!PermissionsManager.isShowInspectionCheck()) {
-            ll_check_lockcar.setVisibility(View.GONE);
+        if (PermissionsManager.isShowInspectionCheck()) {
+            ll_check_lockcar.setVisibility(View.VISIBLE);
         }
-        if (PermissionsManager.isShowInspectionFirstCheck()) {
+        if (PermissionsManager.isShowInspectionForceCheck()) {
             ll_check_lockcar.setVisibility(View.VISIBLE);
         }
         if (type != null) {
@@ -80,7 +80,6 @@ public class StartCheckFragment extends BaseFragment implements View.OnClickList
             if ("初检".equals(type)){
                 bt_back.setText("返回"+type+"扫描首页");
                 bt_end_check.setText("结束"+type);
-                bt_pass.setVisibility(View.GONE);
             }else{
                 bt_back.setText("返回"+type+"扫描首页");
                 bt_end_check.setText("结束"+type);

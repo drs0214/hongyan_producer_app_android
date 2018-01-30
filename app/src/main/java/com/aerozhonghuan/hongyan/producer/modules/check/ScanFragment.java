@@ -21,6 +21,7 @@ import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.CheckInfoActivity;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity;
+import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 import com.zh.drs.zxinglibrary.android.CaptureActivity;
 import com.zh.drs.zxinglibrary.bean.ZxingConfig;
@@ -70,6 +71,9 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
         et_num= (EditText) rootView.findViewById(R.id.et_num);
         et_num.setInputType(InputType.TYPE_NULL);
         et_num.requestFocus();
+        if (PermissionsManager.isShowTransportInputScan()) {
+            ll_hand_input.setVisibility(View.VISIBLE);
+        }
     }
 
     private void initData() {

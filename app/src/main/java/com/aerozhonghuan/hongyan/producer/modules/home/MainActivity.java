@@ -21,7 +21,6 @@ import com.aerozhonghuan.foundation.log.LogUtil;
 import com.aerozhonghuan.hongyan.producer.BuildConfig;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
-import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsBean;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
 import com.aerozhonghuan.hongyan.producer.modules.common.event.ReloadMessageEvent;
 import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoManager;
@@ -33,11 +32,11 @@ import com.aerozhonghuan.hongyan.producer.modules.home.fragment.SearchFragment;
 import com.aerozhonghuan.hongyan.producer.modules.home.logic.HomeHttpLoader;
 import com.aerozhonghuan.hongyan.producer.utils.LocalCache;
 import com.aerozhonghuan.hongyan.producer.utils.TelephonyUtils;
-import com.aerozhonghuan.hongyan.producer.widget.ProgressDialogIndicator;
 import com.aerozhonghuan.hongyan.producer.widget.TabButton;
 import com.aerozhonghuan.rxretrofitlibrary.ApiException;
 import com.aerozhonghuan.rxretrofitlibrary.RxApiManager;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,7 +54,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     private static final String TAG = "MainActivity";
     private static final int PAGE_HOME = 0;
-    private static final int PAGE_MESSAGE = 1;
+    private static final int PAGE_QUERY = 1;
     private static final int PAGE_MINE = 2;
     // 第二次按返回键推出程序的时间间隔，4秒
     private final int mInterval = 1000;
@@ -66,7 +65,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     // 记录首次按退出键时的时间
     private long mExitTime = 0;
     private HomeHttpLoader homeHttpLoader;
-    private ProgressDialogIndicator progressDialogIndicator;
     private LocalCache localCache;
     private final String KEY_UPLOADPHONEINFO_FLAG = "last_uploadphoneinfo_time";
 
@@ -79,9 +77,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         /*if (BuildConfig.DEBUG) {
             new EnvironmentInfoUtils().print(getApplicationContext());
         }*/
-        progressDialogIndicator = new ProgressDialogIndicator(this);
         homeHttpLoader = new HomeHttpLoader();
-        getUserAuthorization();
+        initView();
+        initEvent();
         checkIsUploadPhoneInfo();
         checkAppUpdate();
         if (getIntent() != null && getIntent().getExtras() != null && getIntent().getExtras().containsKey("notify_intent")) {
@@ -128,25 +126,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         }
     }
 
-    // 获取用户权限
-    public void getUserAuthorization() {
-        Subscription subscription = homeHttpLoader.getAuthorization().subscribe(new MySubscriber<PermissionsBean>(this, progressDialogIndicator) {
-
-            @Override
-            public void onNext(PermissionsBean permissionsBean) {
-                if (permissionsBean != null && permissionsBean.permissions != null) {
-                    PermissionsManager.setPermissions(permissionsBean);
-                    initView();
-                    initEvent();
-                } else {
-                    alert("数据异常");
-                    UserInfoManager.logout(getContext());
-                }
-            }
-        });
-        RxApiManager.get().add(TAG,subscription);
-    }
-
     // 上报手机信息,每天上报一次
     private void checkIsUploadPhoneInfo(){
         localCache = new LocalCache(getApplicationContext());
@@ -177,6 +156,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
             @Override
             public void onNext(ResponseBody responseBody) {
+                ResponseBody responseBody1 = responseBody;
+                try {
+                    String string = responseBody.string();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 localCache.putLong(KEY_UPLOADPHONEINFO_FLAG, System.currentTimeMillis());
             }
         });
@@ -204,8 +190,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public void onClick(View v) {
         Integer tag = (Integer) v.getTag();
         // 点击当前标签获取其tag,并设置选中
-        select(tag);
-        showFragment2(fragmentList.get(tag));
+        if (!PermissionsManager.isShowTransportquery() && tag == PAGE_QUERY) {
+            alert("您暂无查询权限");
+        } else {
+            select(tag);
+            showFragment2(fragmentList.get(tag));
+        }
     }
 
     /**

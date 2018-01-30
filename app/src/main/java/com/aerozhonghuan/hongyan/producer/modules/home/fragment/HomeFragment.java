@@ -14,21 +14,28 @@ import android.widget.TextView;
 
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
 import com.aerozhonghuan.hongyan.producer.modules.check.CheckActivity;
 import com.aerozhonghuan.hongyan.producer.modules.common.WebviewActivity;
+import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsBean;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
 import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoManager;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.HomeBannerInfo;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.HomeConstants;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.HomeGridItemBean;
+import com.aerozhonghuan.hongyan.producer.modules.home.logic.HomeHttpLoader;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.TransportScanActivity;
 import com.aerozhonghuan.hongyan.producer.utils.PicassoScaleTransformation;
 import com.aerozhonghuan.hongyan.producer.utils.WindowUtil;
 import com.aerozhonghuan.hongyan.producer.widget.BannerViewPager;
+import com.aerozhonghuan.hongyan.producer.widget.ProgressDialogIndicator;
+import com.aerozhonghuan.rxretrofitlibrary.RxApiManager;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import rx.Subscription;
 
 import static com.squareup.picasso.MemoryPolicy.NO_CACHE;
 import static com.squareup.picasso.MemoryPolicy.NO_STORE;
@@ -52,6 +59,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private LinearLayout ll_dots,ll_transport_scan,ll_first_check,ll_second_check,ll_check,ll_transport;
     private ArrayList<ImageView> dotsList;
     private ImageView img_oneornoBanner;
+    private HomeHttpLoader homeHttpLoader;
+    private ProgressDialogIndicator progressDialogIndicator;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -63,10 +72,30 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_home, null);
+            progressDialogIndicator = new ProgressDialogIndicator(getContext());
+            homeHttpLoader = new HomeHttpLoader();
             initView();
-            initData();
+            getUserAuthorization();
         }
         return rootView;
+    }
+
+    // 获取用户权限
+    public void getUserAuthorization() {
+        Subscription subscription = homeHttpLoader.getAuthorization().subscribe(new MySubscriber<PermissionsBean>(getContext(), progressDialogIndicator) {
+
+            @Override
+            public void onNext(PermissionsBean permissionsBean) {
+                if (permissionsBean != null && permissionsBean.permissions != null) {
+                    PermissionsManager.setPermissions(permissionsBean);
+                    initData();
+                } else {
+                    alert("数据异常");
+                    UserInfoManager.logout(getContext());
+                }
+            }
+        });
+        RxApiManager.get().add(TAG,subscription);
     }
 
     private void initView() {
@@ -78,18 +107,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         ll_first_check = (LinearLayout) rootView.findViewById(R.id.ll_first_check);
         ll_second_check = (LinearLayout) rootView.findViewById(R.id.ll_second_check);
         img_oneornoBanner = (ImageView) rootView.findViewById(R.id.img_oneornoBanner);
-        if (!PermissionsManager.isShowInspectionFirstCheck()) {
-            ll_first_check.setVisibility(View.GONE);
-        }
-        if (!PermissionsManager.isShowInspectionSecondCheck()) {
-            ll_second_check.setVisibility(View.GONE);
-        }
-        if (!PermissionsManager.isShowInspectionView()) {
-            ll_check.setVisibility(View.GONE);
-        }
-        if (!PermissionsManager.isShowTransportView()) {
-            ll_transport.setVisibility(View.GONE);
-        }
     }
 
     @Override
@@ -98,11 +115,21 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void initData() {
+        if (PermissionsManager.isShowInspectionView()) {
+            ll_check.setVisibility(View.VISIBLE);
+        }
+        if (PermissionsManager.isShowTransportView()) {
+            ll_transport.setVisibility(View.VISIBLE);
+        }
+        if (PermissionsManager.isShowInspectionFirstCheck()) {
+            ll_first_check.setVisibility(View.VISIBLE);
+        }
+        if (PermissionsManager.isShowInspectionSecondCheck()) {
+            ll_second_check.setVisibility(View.VISIBLE);
+        }
         ll_transport_scan.setOnClickListener(this);
         ll_first_check.setOnClickListener(this);
         ll_second_check.setOnClickListener(this);
-        if (UserInfoManager.getCookieSession() == null) return;
-
         homeGridItemBeanList = new ArrayList<>();
         for (int i = 0; i < HomeConstants.HOME_GRID_ITEM_IMAGES.length; i++) {
             homeGridItemBeanList.add(new HomeGridItemBean(HomeConstants.HOME_GRID_ITEM_IMAGES[i], HomeConstants.HOME_GRID_ITEM_NAMES[i]));
@@ -233,6 +260,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        RxApiManager.get().cancel(TAG);
     }
 
     /**
