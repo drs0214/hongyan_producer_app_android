@@ -13,6 +13,7 @@ import java.lang.ref.WeakReference;
 
 /**
  * Created by zhangyonghui on 2018/1/26.
+ * 自定义观察者
  */
 
 public class MySubscriber<T> extends ErrorSubscriber<T> {

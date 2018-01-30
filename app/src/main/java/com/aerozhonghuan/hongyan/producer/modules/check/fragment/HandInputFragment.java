@@ -8,10 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.CheckInfoActivity;
-import com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportInfoActivity;
 
 /**
@@ -19,7 +18,7 @@ import com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.Transpo
  * @time: 2018/1/27 1:00
  * @des:
  */
-public class HandInputFragment extends BaseFragment implements View.OnClickListener {
+public class HandInputFragment extends TitlebarFragment implements View.OnClickListener {
     private View rootView;
     String type;
     Button bt_ok;

@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarActivity;
 import com.aerozhonghuan.hongyan.producer.modules.check.fragment.HandInputFragment;
-import com.aerozhonghuan.hongyan.producer.modules.transportScan.fragment.ManyScanResultFragment;
 
 /**
  * @author: drs
@@ -15,7 +14,6 @@ public class HandInputActivity extends TitlebarActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getTitleBarView().setTitle("手工绑定");
         if (savedInstanceState == null) {
             HandInputFragment fragment = new HandInputFragment();
             if (getIntent() != null && getIntent().getExtras() != null) {

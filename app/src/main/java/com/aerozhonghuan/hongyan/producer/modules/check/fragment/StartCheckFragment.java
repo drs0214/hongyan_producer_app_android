@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
 import com.aerozhonghuan.hongyan.producer.modules.check.CheckActivity;
 import com.aerozhonghuan.hongyan.producer.modules.common.Constents;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
@@ -21,7 +21,7 @@ import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
  * @time: 2018/1/27 2:56
  * @des:
  */
-public class StartCheckFragment extends BaseFragment implements View.OnClickListener {
+public class StartCheckFragment extends TitlebarFragment implements View.OnClickListener {
     private View rootView;
     String type,check_history_detail;
     TitleBarView titlebarview1;
@@ -52,7 +52,7 @@ public class StartCheckFragment extends BaseFragment implements View.OnClickList
     }
 
     private void initView() {
-        titlebarview1 = (TitleBarView) rootView.findViewById(R.id.titlebarview1);
+        titlebarview1 = getTitlebar();
         ll_check_lockcar = (LinearLayout) rootView.findViewById(R.id.ll_check_lockcar);
         if (PermissionsManager.isShowInspectionCheck()) {
             ll_check_lockcar.setVisibility(View.VISIBLE);

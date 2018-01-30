@@ -110,11 +110,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         img_oneornoBanner = (ImageView) rootView.findViewById(R.id.img_oneornoBanner);
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-    }
-
     private void initData() {
         if (PermissionsManager.isShowInspectionView()) {
             ll_check.setVisibility(View.VISIBLE);

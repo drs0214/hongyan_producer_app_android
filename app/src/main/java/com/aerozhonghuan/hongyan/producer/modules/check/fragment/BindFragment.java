@@ -5,10 +5,9 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 
 /**
@@ -16,7 +15,7 @@ import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
  * @time: 2018/1/27 1:39
  * @des:
  */
-public class BindFragment extends BaseFragment implements View.OnClickListener {
+public class BindFragment extends TitlebarFragment implements View.OnClickListener {
     private View rootView;
     String type;
     TitleBarView titlebarview1;
@@ -42,7 +41,7 @@ public class BindFragment extends BaseFragment implements View.OnClickListener {
     }
 
     private void initView() {
-        titlebarview1= (TitleBarView) rootView.findViewById(R.id.titlebarview1);
+        titlebarview1= getTitlebar();
         titlebarview1.setTitle("手工绑定");
     }
 
