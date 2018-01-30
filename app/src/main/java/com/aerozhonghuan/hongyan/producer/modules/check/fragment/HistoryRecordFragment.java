@@ -16,6 +16,7 @@ import com.aerozhonghuan.hongyan.producer.modules.check.activity.StartCheckActiv
 import com.aerozhonghuan.hongyan.producer.modules.check.adapter.History_RecordAdapter;
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.History_RecordBean;
 import com.aerozhonghuan.hongyan.producer.modules.check.logic.CheckHttpLoader;
+import com.aerozhonghuan.hongyan.producer.modules.common.Constents;
 import com.aerozhonghuan.hongyan.producer.widget.ProgressDialogIndicator;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 
@@ -41,8 +42,10 @@ public class HistoryRecordFragment extends TitlebarFragment implements View.OnCl
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null && getArguments().containsKey("type") && getArguments().containsKey("vhcle")) {
+        if (getArguments() != null && getArguments().containsKey("type")) {
             type = getArguments().getString("type");
+        }
+        if (getArguments() != null  && getArguments().containsKey("vhcle")) {
             vhcle = getArguments().getString("vhcle");
         }
     }
@@ -63,7 +66,11 @@ public class HistoryRecordFragment extends TitlebarFragment implements View.OnCl
         progressDialogIndicator = new ProgressDialogIndicator(getContext());
         titlebarview1= getTitlebar();
         if(type!=null){
-            titlebarview1.setTitle(type);
+            if (Constents.CHECK_TYPE_FIRSTCHECK.equals(type)){
+                titlebarview1.setTitle("初检");
+            }else{
+                titlebarview1.setTitle("复检");
+            }
         }
         listview=  (ListView) rootView.findViewById(R.id.listview);
     }

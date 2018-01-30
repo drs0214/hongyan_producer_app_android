@@ -21,7 +21,6 @@ import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.CheckInfoActivity;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity;
-import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 import com.zh.drs.zxinglibrary.android.CaptureActivity;
 import com.zh.drs.zxinglibrary.bean.ZxingConfig;
@@ -65,7 +64,11 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
 
     private void initView() {
         titlebar = getTitlebar();
-        titlebar.setTitle(type);
+        if(Constents.CHECK_TYPE_FIRSTCHECK.equals(type)){
+            titlebar.setTitle("初检");
+        }else{
+            titlebar.setTitle("复检");
+        }
         ll_camera_scan = (LinearLayout) rootView.findViewById(R.id.ll_camera_scan);
         ll_hand_input = (LinearLayout) rootView.findViewById(R.id.ll_hand_input);
         et_num= (EditText) rootView.findViewById(R.id.et_num);
@@ -117,7 +120,7 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.ll_camera_scan:
-                if (type != null && "初检".equals(type)) {
+                if (type != null && Constents.CHECK_TYPE_FIRSTCHECK.equals(type)) {
                     scanpermission();
 
                 } else {
@@ -125,14 +128,14 @@ public class ScanFragment extends TitlebarFragment implements View.OnClickListen
                 }
                 break;
             case R.id.ll_hand_input:
-                if (type != null && "初检".equals(type)) {
+                if (type != null && Constents.CHECK_TYPE_FIRSTCHECK.equals(type)) {
                     Bundle bundle = new Bundle();
-                    bundle.putString("type","初检");
+                    bundle.putString("type",Constents.CHECK_TYPE_FIRSTCHECK);
                     startActivity(new Intent(getActivity(), HandInputActivity.class).putExtras(bundle));
 
                 } else {
                     Bundle bundle = new Bundle();
-                    bundle.putString("type","复检");
+                    bundle.putString("type",Constents.CHECK_TYPE_SECONDCHECK);
                     startActivity(new Intent(getContext(), HandInputActivity.class).putExtras(bundle));
                 }
                 break;

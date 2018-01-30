@@ -15,7 +15,6 @@ public class CheckInfoActivity extends TitlebarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getTitleBarView().setVisibility(View.GONE);
         if (savedInstanceState == null) {
             CheckInfoFragment fragment = new CheckInfoFragment();
             if (getIntent() != null && getIntent().getExtras() != null) {

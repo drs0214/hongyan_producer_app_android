@@ -15,7 +15,6 @@ public class HistoryRecordActivity extends TitlebarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getTitleBarView().setVisibility(View.GONE);
         if (savedInstanceState == null) {
             HistoryRecordFragment fragment = new HistoryRecordFragment();
             if (getIntent() != null && getIntent().getExtras() != null) {

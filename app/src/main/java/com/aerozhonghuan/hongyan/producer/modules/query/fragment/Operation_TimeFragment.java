@@ -1,25 +1,16 @@
 package com.aerozhonghuan.hongyan.producer.modules.query.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 
-import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
-import com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity;
 import com.aerozhonghuan.hongyan.producer.modules.query.adapter.QueryResultAdapter;
 import com.aerozhonghuan.hongyan.producer.modules.query.entity.QueryResultBean;
-import com.aerozhonghuan.hongyan.producer.modules.transportScan.adapter.ManyScanResultAdapter;
-import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.ManyScanResultBean;
-import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 
 import java.util.ArrayList;
 

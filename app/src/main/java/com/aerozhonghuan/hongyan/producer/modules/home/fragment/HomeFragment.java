@@ -16,6 +16,7 @@ import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
 import com.aerozhonghuan.hongyan.producer.modules.check.CheckActivity;
+import com.aerozhonghuan.hongyan.producer.modules.common.Constents;
 import com.aerozhonghuan.hongyan.producer.modules.common.WebviewActivity;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsBean;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
@@ -162,12 +163,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                 break;
             case R.id.ll_first_check:
                 Bundle bundle = new Bundle();
-                bundle.putString("type","初检");
+                bundle.putString("type", Constents.CHECK_TYPE_FIRSTCHECK);
                 startActivity(new Intent(getActivity(), CheckActivity.class).putExtras(bundle));
                 break;
             case R.id.ll_second_check:
                 Bundle bundle1 = new Bundle();
-                bundle1.putString("type","复检");
+                bundle1.putString("type",Constents.CHECK_TYPE_SECONDCHECK);
                 startActivity(new Intent(getActivity(), CheckActivity.class).putExtras(bundle1));
                 break;
         }

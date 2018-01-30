@@ -5,6 +5,6 @@ package com.aerozhonghuan.hongyan.producer.modules.common;
  */
 
 public class Constents {
-    public static final int CHECK_TYPE_FIRSTCHECK = 1;
-    public static final int CHECK_TYPE_SECONDCHECK = 2;
+    public static final String CHECK_TYPE_FIRSTCHECK = "1";
+    public static final String CHECK_TYPE_SECONDCHECK = "2";
 }

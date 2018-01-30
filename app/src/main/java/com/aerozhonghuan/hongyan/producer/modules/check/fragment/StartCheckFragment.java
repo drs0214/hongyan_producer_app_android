@@ -59,8 +59,12 @@ public class StartCheckFragment extends BaseFragment implements View.OnClickList
         if (PermissionsManager.isShowInspectionForceCheck()) {
             ll_check_lockcar.setVisibility(View.VISIBLE);
         }
-        if (type != null) {
-            titlebarview1.setTitle(type);
+        if(type!=null){
+            if (Constents.CHECK_TYPE_FIRSTCHECK.equals(type)){
+                titlebarview1.setTitle("初检");
+            }else{
+                titlebarview1.setTitle("复检");
+            }
         }
         bt_back= (Button) rootView.findViewById(R.id.bt_back);
         bt_end_check= (Button) rootView.findViewById(R.id.bt_end_check);
@@ -76,13 +80,13 @@ public class StartCheckFragment extends BaseFragment implements View.OnClickList
             bt_pass.setVisibility(View.GONE);
         }
         if(type!=null){
-            titlebarview1.setTitle(type);
-            if ("初检".equals(type)){
-                bt_back.setText("返回"+type+"扫描首页");
-                bt_end_check.setText("结束"+type);
+            if (Constents.CHECK_TYPE_FIRSTCHECK.equals(type)){
+                bt_back.setText("返回初检扫描首页");
+                bt_end_check.setText("结束初检");
+                bt_pass.setVisibility(View.GONE);
             }else{
-                bt_back.setText("返回"+type+"扫描首页");
-                bt_end_check.setText("结束"+type);
+                bt_back.setText("返回复检扫描首页");
+                bt_end_check.setText("结束复检");
                 if (PermissionsManager.isShowInspectionForcepass()) {
                     bt_pass.setVisibility(View.VISIBLE);
                 }

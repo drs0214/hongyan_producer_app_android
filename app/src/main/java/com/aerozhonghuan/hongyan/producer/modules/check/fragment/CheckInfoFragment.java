@@ -18,6 +18,7 @@ import com.aerozhonghuan.hongyan.producer.modules.check.activity.HistoryRecordAc
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.StartCheckActivity;
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.CarInfo;
 import com.aerozhonghuan.hongyan.producer.modules.check.logic.CheckHttpLoader;
+import com.aerozhonghuan.hongyan.producer.modules.common.Constents;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
 import com.aerozhonghuan.hongyan.producer.widget.ProgressDialogIndicator;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
@@ -44,8 +45,10 @@ public class CheckInfoFragment extends TitlebarFragment implements View.OnClickL
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null && getArguments().containsKey("type") && getArguments().containsKey("vhcle")) {
+        if (getArguments() != null && getArguments().containsKey("type")) {
             type = getArguments().getString("type");
+        }
+        if (getArguments() != null && getArguments().containsKey("vhcle")) {
             vhcle = getArguments().getString("vhcle");
         }
     }
@@ -68,14 +71,15 @@ public class CheckInfoFragment extends TitlebarFragment implements View.OnClickL
         bt_start_check= (Button) rootView.findViewById(R.id.bt_start_check);
         bt_bind= (Button) rootView.findViewById(R.id.bt_bind);
         titlebarview1 = getTitlebar();
-        if (!PermissionsManager.isShowDeviceBind()) {
-            bt_bind.setVisibility(View.GONE);
-        }
+//        if (!PermissionsManager.isShowDeviceBind()) {
+//            bt_bind.setVisibility(View.GONE);
+//        }
         if(type!=null){
-            titlebarview1.setTitle(type);
-            if ("初检".equals(type)){
+            if (Constents.CHECK_TYPE_FIRSTCHECK.equals(type)){
+                titlebarview1.setTitle("初检");
                 bt_start_check.setText("开始初检");
             }else{
+                titlebarview1.setTitle("复检");
                 bt_start_check.setText("开始复检");
             }
         }
