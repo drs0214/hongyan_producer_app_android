@@ -6,6 +6,7 @@ import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsBean;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.SessionBean;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.AppInfo;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.PhoneInfo;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.TransportScanDetailBean;
 
 import java.util.List;
 
@@ -73,4 +74,16 @@ public interface ApiService {
      */
     @GET("vehicle/inspection/v1/history")
     Observable<List<History_RecordBean>> getInspectioniHistory(@Query("vhcle") String vhcle);
+    /**
+     * 获得车辆信息与操作按钮
+     * @return
+     */
+    @GET("delivery/v1/getVehicleAndActions")
+    Observable<TransportScanDetailBean> getVehicleAndActions(@Query("vhcle") String vhcle);
+    /**
+     * 获得用户已授权的动作列表
+     * @return
+     */
+    @GET("delivery/v1/actions")
+    Observable<List<TransportScanDetailBean.ActionsBean>> actions();
 }

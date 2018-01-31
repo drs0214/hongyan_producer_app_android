@@ -1,1 +1,1 @@
-include ':app', ':rxretrofitlibrary', ':zxinglibrary'
+include ':app', ':rxretrofitlibrary', ':zxinglibrary', ':amaplibrary'

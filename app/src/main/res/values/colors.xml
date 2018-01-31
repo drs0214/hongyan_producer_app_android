@@ -55,5 +55,6 @@
 
     <color name="red_alert">#FC0D1B</color>
     <color name="pass_result">#88c91d</color>
+    <color name="text_blue">#3296fa</color>
 
 </resources>

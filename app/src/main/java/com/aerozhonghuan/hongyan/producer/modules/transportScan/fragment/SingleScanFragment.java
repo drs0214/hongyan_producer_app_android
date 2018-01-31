@@ -20,13 +20,22 @@ import android.widget.Toast;
 
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.CheckInfoActivity;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity;
+import com.aerozhonghuan.hongyan.producer.modules.check.entity.CarInfo;
+import com.aerozhonghuan.hongyan.producer.modules.check.entity.History_RecordBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportInfoActivity;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.TransportScanDetailBean;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.logic.Transport_ScanHttpLoader;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 import com.zh.drs.zxinglibrary.android.CaptureActivity;
 import com.zh.drs.zxinglibrary.bean.ZxingConfig;
 import com.zh.drs.zxinglibrary.common.Constant;
+
+import java.util.List;
+
+import rx.Subscription;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -171,7 +180,9 @@ public class SingleScanFragment extends BaseFragment implements View.OnClickList
                 String content = data.getStringExtra(Constant.CODED_CONTENT);
 //                et_num.setText(content);
                 Toast.makeText(getContext(), content, Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(), TransportInfoActivity.class));
+                Bundle bundle=new Bundle();
+                bundle.getString("vhcle",content);
+                startActivity(new Intent(getActivity(), TransportInfoActivity.class).putExtras(bundle));
                 //                result.setText("扫描结果为：" + content);
             }
         }

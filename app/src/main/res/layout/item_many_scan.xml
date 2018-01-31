@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/btn_blue_shape_2"
+    android:id="@+id/ll_root"
     android:layout_height="@dimen/margin44">
-    <TextView
+    <Button
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="下线"
+        android:background="@drawable/transport_scan_bg_selector_gray"
         android:gravity="center"
-        android:textColor="@color/white"
+        android:focusable="false"
+        android:text="测试"
+        android:clickable="true"
+        android:textColor="@drawable/transport_scan_textcolor_selector_gray"
         android:textSize="@dimen/text_size_14" />
 
 </LinearLayout>

@@ -27,4 +27,23 @@ public class TelephonyUtils {
         }
         return str;
     }
+    public static String getOperator_letter(Context context){
+        TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        String operator = telephonyManager.getSimOperator();
+        String str;
+        if (operator != null) {
+            if (operator.equals("46000") || operator.equals("46002")) {
+                str = "MOBILE";
+            } else if (operator.equals("46001")) {
+                str = "UNICOM";
+            } else if (operator.equals("46003")) {
+                str = "TELECOMU";
+            } else {
+                str = "无记录";
+            }
+        } else {
+            str = "无记录";
+        }
+        return str;
+    }
 }
