@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.ManyScanResultBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.ManyScanResultBean;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.Transport_Scan_OrderBean;
 
 import java.util.ArrayList;
 
@@ -21,9 +22,9 @@ import java.util.ArrayList;
  */
 public class ManyScanResultAdapter extends BaseAdapter {
     Context mContext;
-    ArrayList<ManyScanResultBean> manyscanlist=new ArrayList<ManyScanResultBean>();
+    ArrayList<Transport_Scan_OrderBean> manyscanlist=new ArrayList<Transport_Scan_OrderBean>();
 
-    public ManyScanResultAdapter(Context context,  ArrayList<ManyScanResultBean> manyscanlist) {
+    public ManyScanResultAdapter(Context context,  ArrayList<Transport_Scan_OrderBean> manyscanlist) {
         this.mContext = context;
         this.manyscanlist = manyscanlist;
     }
@@ -58,12 +59,12 @@ public class ManyScanResultAdapter extends BaseAdapter {
         }else{
             holder=(ViewHolder)convertView.getTag();
         }
-        ManyScanResultBean ManyScanResultBean = manyscanlist.get(position);
-        holder.tv_number.setText(ManyScanResultBean==null?"":ManyScanResultBean.getBianhao());
-        holder.tv_chassisnumber.setText(ManyScanResultBean==null?"":ManyScanResultBean.getDipanhao());
-        holder.tv_scan_type.setText(ManyScanResultBean==null?"":ManyScanResultBean.getSaomiaotype());
-        holder.tv_scan_result.setText(ManyScanResultBean==null?"":ManyScanResultBean.getScanresult());
-        holder.fail_cause.setText(ManyScanResultBean==null?"":ManyScanResultBean.getFailyuanyin());
+        Transport_Scan_OrderBean transport_scan_orderBean = manyscanlist.get(position);
+//        holder.tv_number.setText(transport_scan_orderBean==null?"":transport_scan_orderBean.getBianhao());
+//        holder.tv_chassisnumber.setText(transport_scan_orderBean==null?"":transport_scan_orderBean.getDipanhao());
+//        holder.tv_scan_type.setText(transport_scan_orderBean==null?"":transport_scan_orderBean.getSaomiaotype());
+//        holder.tv_scan_result.setText(transport_scan_orderBean==null?"":transport_scan_orderBean.getScanresult());
+//        holder.fail_cause.setText(transport_scan_orderBean==null?"":transport_scan_orderBean.getFailyuanyin());
         return convertView;
     }
 

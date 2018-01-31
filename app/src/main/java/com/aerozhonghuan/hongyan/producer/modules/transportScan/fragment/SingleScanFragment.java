@@ -11,6 +11,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -180,6 +181,7 @@ public class SingleScanFragment extends BaseFragment implements View.OnClickList
                 String content = data.getStringExtra(Constant.CODED_CONTENT);
 //                et_num.setText(content);
                 Toast.makeText(getContext(), content, Toast.LENGTH_SHORT).show();
+                Log.e("drs","二维码："+content);
                 Bundle bundle=new Bundle();
                 bundle.getString("vhcle",content);
                 startActivity(new Intent(getActivity(), TransportInfoActivity.class).putExtras(bundle));

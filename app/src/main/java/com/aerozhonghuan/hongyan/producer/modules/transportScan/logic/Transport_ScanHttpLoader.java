@@ -4,6 +4,7 @@ import com.aerozhonghuan.hongyan.producer.http.HttpLoader;
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.CarInfo;
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.History_RecordBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.TransportScanDetailBean;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.Transport_Scan_OrderBean;
 
 import java.util.List;
 
@@ -17,6 +18,9 @@ public class Transport_ScanHttpLoader extends HttpLoader {
 
     public Observable<TransportScanDetailBean> getVehicleAndActions(String vhcle){
         return observe(apiService.getVehicleAndActions(vhcle));
+    }
+    public Observable<List<Transport_Scan_OrderBean>> transportOrders(String vhcle){
+        return observe(apiService.transportOrders(vhcle));
     }
     public Observable<List<TransportScanDetailBean.ActionsBean>> actions(){
         return observe(apiService.actions());

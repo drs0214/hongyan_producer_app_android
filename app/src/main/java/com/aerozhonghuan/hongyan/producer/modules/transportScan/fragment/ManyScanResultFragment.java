@@ -7,6 +7,7 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +15,19 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportInfoActivity;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.adapter.ManyScanResultAdapter;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.ManyScanResultBean;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.TransportScanDetailBean;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.Transport_Scan_OrderBean;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.logic.Transport_ScanHttpLoader;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import rx.Subscription;
 
 /**
  * @author: drs
@@ -29,7 +37,7 @@ import java.util.ArrayList;
 public class ManyScanResultFragment extends TitlebarFragment {
     private View rootView;
     ListView listview;
-    ArrayList<ManyScanResultBean> manyscanresultlist=new ArrayList<ManyScanResultBean>();
+    ArrayList<Transport_Scan_OrderBean> manyscanresultlist=new ArrayList<Transport_Scan_OrderBean>();
     ManyScanResultAdapter adapter;
     EditText et_num;
     @Nullable
@@ -45,6 +53,18 @@ public class ManyScanResultFragment extends TitlebarFragment {
     }
     private void initData() {
         listview=  (ListView) rootView.findViewById(R.id.listview);
+        Transport_ScanHttpLoader transport_scanHttpLoader = new Transport_ScanHttpLoader();
+        Subscription subscription = transport_scanHttpLoader.transportOrders("0070231766").subscribe(new MySubscriber<List<Transport_Scan_OrderBean>>(getContext()) {
+            @Override
+            public void onNext(List<Transport_Scan_OrderBean> reslistdata) {
+                Log.e("drs","");
+                if(!reslistdata.isEmpty()){
+                    //                                manyscanlist.addAll(reslistdata);
+                    //                                adapter.notifyDataSetChanged();
+                }
+
+            }
+        });
 
     }
 
@@ -76,17 +96,29 @@ public class ManyScanResultFragment extends TitlebarFragment {
             public void afterTextChanged(Editable s) {
                 if (!TextUtils.isEmpty(s.toString())){
                     et_num.setText("");
-                    ManyScanResultBean manyScanResultBean=new ManyScanResultBean("05595949","HD54548787","交付","成功","操作不匹配");
+                   /* ManyScanResultBean manyScanResultBean=new ManyScanResultBean("05595949","HD54548787","交付","成功","操作不匹配");
                     manyscanresultlist.add(manyScanResultBean);
                     if(adapter!=null){
                         adapter.notifyDataSetChanged();
-                    }
+                    }*/
+                    Transport_ScanHttpLoader transport_scanHttpLoader = new Transport_ScanHttpLoader();
+                    Subscription subscription = transport_scanHttpLoader.transportOrders("0070231766").subscribe(new MySubscriber<List<Transport_Scan_OrderBean>>(getContext()) {
+                        @Override
+                        public void onNext(List<Transport_Scan_OrderBean> reslistdata) {
+                            Log.e("drs","");
+                            if(!reslistdata.isEmpty()){
+//                                manyscanlist.addAll(reslistdata);
+//                                adapter.notifyDataSetChanged();
+                            }
+
+                        }
+                    });
 
                 }
 
             }
         });
-        adapter=new ManyScanResultAdapter(getContext(),manyscanresultlist);
-        listview.setAdapter(adapter);
+//        adapter=new ManyScanResultAdapter(getContext(),manyscanresultlist);
+//        listview.setAdapter(adapter);
     }
 }
