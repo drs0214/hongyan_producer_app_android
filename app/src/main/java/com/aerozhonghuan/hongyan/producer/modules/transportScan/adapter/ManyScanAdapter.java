@@ -64,11 +64,10 @@ public class ManyScanAdapter extends BaseAdapter {
         holder.tv_name.setText(manyScanBean == null ? "" : manyScanBean.getLabel());
         if (manyScanBean.isEnabled()) {
             holder.tv_name.setBackgroundResource(R.drawable.transport_scan_bg_selector_blue);
-            holder.tv_name.setTextColor(ContextCompat.getColor(mContext,R.drawable.transport_scan_textcolor_selector_blue));
+            holder.tv_name.setTextColor(mContext.getResources().getColorStateList(R.drawable.transport_scan_textcolor_selector_blue));
         }else{
             holder.tv_name.setBackgroundResource(R.drawable.transport_scan_bg_selector_gray);
-            holder.tv_name.setTextColor(ContextCompat.getColor(mContext,R.drawable.transport_scan_textcolor_selector_gray));
-            holder.tv_name.setTextColor(R.drawable.transport_scan_textcolor_selector_gray);
+            holder.tv_name.setTextColor(mContext.getResources().getColorStateList(R.drawable.transport_scan_textcolor_selector_gray));
         }
 
         return convertView;

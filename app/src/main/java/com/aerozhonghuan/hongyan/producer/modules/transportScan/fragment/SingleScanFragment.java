@@ -185,7 +185,6 @@ public class SingleScanFragment extends BaseFragment implements View.OnClickList
                 Bundle bundle=new Bundle();
                 bundle.getString("vhcle",content);
                 startActivity(new Intent(getActivity(), TransportInfoActivity.class).putExtras(bundle));
-                //                result.setText("扫描结果为：" + content);
             }
         }
     }
