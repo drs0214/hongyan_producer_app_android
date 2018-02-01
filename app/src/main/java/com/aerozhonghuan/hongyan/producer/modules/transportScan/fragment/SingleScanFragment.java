@@ -21,22 +21,13 @@ import android.widget.Toast;
 
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
-import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
-import com.aerozhonghuan.hongyan.producer.modules.check.activity.CheckInfoActivity;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity;
-import com.aerozhonghuan.hongyan.producer.modules.check.entity.CarInfo;
-import com.aerozhonghuan.hongyan.producer.modules.check.entity.History_RecordBean;
+import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportInfoActivity;
-import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.TransportScanDetailBean;
-import com.aerozhonghuan.hongyan.producer.modules.transportScan.logic.Transport_ScanHttpLoader;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 import com.zh.drs.zxinglibrary.android.CaptureActivity;
 import com.zh.drs.zxinglibrary.bean.ZxingConfig;
 import com.zh.drs.zxinglibrary.common.Constant;
-
-import java.util.List;
-
-import rx.Subscription;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -98,7 +89,9 @@ public class SingleScanFragment extends BaseFragment implements View.OnClickList
         ll_camera_scan = (LinearLayout) rootView.findViewById(R.id.ll_camera_scan);
         et_num.setInputType(InputType.TYPE_NULL);
         et_num.requestFocus();
-
+        if (PermissionsManager.isShowTransportInputScan()) {
+            ll_hand_input.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

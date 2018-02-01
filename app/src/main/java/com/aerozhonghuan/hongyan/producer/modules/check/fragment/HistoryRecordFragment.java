@@ -12,16 +12,16 @@ import android.widget.ListView;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
-import com.aerozhonghuan.hongyan.producer.modules.check.activity.StartCheckActivity;
+import com.aerozhonghuan.hongyan.producer.modules.check.activity.HistoryRecordDetailActivity;
 import com.aerozhonghuan.hongyan.producer.modules.check.adapter.History_RecordAdapter;
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.History_RecordBean;
+import com.aerozhonghuan.hongyan.producer.modules.check.entity.InspectioniHistory;
 import com.aerozhonghuan.hongyan.producer.modules.check.logic.CheckHttpLoader;
 import com.aerozhonghuan.hongyan.producer.modules.common.Constents;
 import com.aerozhonghuan.hongyan.producer.widget.ProgressDialogIndicator;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author: drs
@@ -81,23 +81,27 @@ public class HistoryRecordFragment extends TitlebarFragment implements View.OnCl
             history_record_list.add(bean);
         }*/
         checkHttpLoader = new CheckHttpLoader();
-        checkHttpLoader.getInspectioniHistory(vhcle).subscribe(new MySubscriber<List<History_RecordBean>>(getContext(), progressDialogIndicator){
+        checkHttpLoader.getInspectioniHistory(vhcle).subscribe(new MySubscriber<InspectioniHistory>(getContext(), progressDialogIndicator){
             @Override
-            public void onNext(List<History_RecordBean> beans) {
-                history_record_list.addAll(beans);
+            public void onNext(InspectioniHistory inspectioniHistory) {
+                if (inspectioniHistory == null || inspectioniHistory.inspectioniHistory == null || inspectioniHistory.inspectioniHistory.size() == 0) {
+                    alert("暂无历史记录");
+                } else {
+                    history_record_list.addAll(inspectioniHistory.inspectioniHistory);
+                }
             }
         });
     }
 
     private void setListen() {
-         adapter=new History_RecordAdapter(getContext(),history_record_list);
+        adapter=new History_RecordAdapter(getContext(),history_record_list);
         listview.setAdapter(adapter);
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Bundle bundle = new Bundle();
-                bundle.putString("check_history_detail","1");//1是查核查历史详情
-                startActivity(new Intent(getActivity(), StartCheckActivity.class).putExtras(bundle));
+
+                startActivity(new Intent(getActivity(), HistoryRecordDetailActivity.class).putExtras(bundle));
             }
         });
     }

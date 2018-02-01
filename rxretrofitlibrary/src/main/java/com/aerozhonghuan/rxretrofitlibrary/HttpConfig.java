@@ -101,4 +101,5 @@ public class HttpConfig {
     public static void isEnableGzipRequest(boolean isEnable) {
         isEnableGzipRequest = isEnable;
     }
+
 }

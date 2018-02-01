@@ -1,5 +1,7 @@
 package com.aerozhonghuan.rxretrofitlibrary;
 
+import com.aerozhonghuan.rxretrofitlibrary.log.LoggerUtil;
+
 import rx.Subscriber;
 
 /**
@@ -13,7 +15,8 @@ public abstract class ErrorSubscriber<T> extends Subscriber<T> {
         if(e instanceof ApiException){
             onError((ApiException)e);
         }else{
-            onError(new ApiException(e,123));
+            LoggerUtil.d("非apiException异常::"+e.toString());
+            onError(new ApiException(e,1234));
         }
     }
 

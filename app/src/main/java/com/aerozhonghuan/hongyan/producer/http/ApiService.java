@@ -1,7 +1,9 @@
 package com.aerozhonghuan.hongyan.producer.http;
 
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.CarInfo;
-import com.aerozhonghuan.hongyan.producer.modules.check.entity.History_RecordBean;
+import com.aerozhonghuan.hongyan.producer.modules.check.entity.CheckStatusBean;
+import com.aerozhonghuan.hongyan.producer.modules.check.entity.InspectioniHistory;
+import com.aerozhonghuan.hongyan.producer.modules.check.entity.StartCheckStateBean;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsBean;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.SessionBean;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.AppInfo;
@@ -10,6 +12,7 @@ import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.Transport
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.Transport_Scan_OrderBean;
 
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.ResponseBody;
 import retrofit2.http.Body;
@@ -18,6 +21,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 import rx.Observable;
 
 /**
@@ -74,7 +78,22 @@ public interface ApiService {
      * @return
      */
     @GET("vehicle/inspection/v1/history")
-    Observable<List<History_RecordBean>> getInspectioniHistory(@Query("vhcle") String vhcle);
+    Observable<InspectioniHistory> getInspectioniHistory(@Query("vhcle") String vhcle);
+
+    /**
+     * 开始检测,如果返回成功进入检测页面
+     * @param vhcle
+     * @param type
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("vehicle/inspection/v1/start")
+    Observable<StartCheckStateBean> startCheck(@Field("vhcle") String vhcle, @Field("type") String type);
+
+
+    @GET("vehicle/inspection/v1/lastStatus")
+    Observable<CheckStatusBean> getLastStatus(@QueryMap Map<String, String> map);
+
     /**
      * 获得车辆信息与操作按钮
      * @return
@@ -93,4 +112,5 @@ public interface ApiService {
      */
     @GET("delivery/v1/actions")
     Observable<List<TransportScanDetailBean.ActionsBean>> actions();
+
 }

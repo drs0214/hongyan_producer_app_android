@@ -79,11 +79,15 @@ public class ExceptionEngine {
             ex = new ApiException(e, ERROR.PARSE_ERROR);
             ex.message = "解析错误";            //均视为解析错误
             return ex;
-        } else if(e instanceof ConnectException || e instanceof SocketTimeoutException){
+        } else if(e instanceof ConnectException){
             ex = new ApiException(e, ERROR.NETWORD_ERROR);
             ex.message = "网络中断，请检查您的网络状态";  //均视为网络错误
             return ex;
-        } else {
+        } else if(e instanceof SocketTimeoutException){
+            ex = new ApiException(e, ERROR.NETWORD_ERROR);
+            ex.message = "服务器异常";  //均视为网络错误
+            return ex;
+        }else {
             ex = new ApiException(e, ERROR.UNKNOWN);
             ex.message = "未知错误";
             return ex;

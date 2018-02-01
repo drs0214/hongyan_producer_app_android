@@ -1,6 +1,7 @@
 package com.aerozhonghuan.hongyan.producer.framework.base;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.aerozhonghuan.hongyan.producer.modules.common.logic.UserInfoManager;
@@ -44,7 +45,9 @@ public class MySubscriber<T> extends ErrorSubscriber<T> {
         if (progressDialogIndicator != null) {
             progressDialogIndicator.onProgressEnd();
         }
-        Toast.makeText(activityWeakReference.get().getApplicationContext(), ex.message, Toast.LENGTH_SHORT).show();
+        if (!TextUtils.isEmpty(ex.message)) {
+            Toast.makeText(activityWeakReference.get().getApplicationContext(), ex.message, Toast.LENGTH_SHORT).show();
+        }
         switch (ex.code){
             case ExceptionEngine.UNAUTHORIZED:
                 UserInfoManager.logout(activityWeakReference.get());

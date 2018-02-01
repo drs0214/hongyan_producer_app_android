@@ -128,4 +128,8 @@
     <!--switch控件-->
     <dimen name="switch_thumb_width">20dp</dimen>
     <dimen name="switch_thumb_height">20dp</dimen>
+
+    <!-- 检测页面 -->
+    <dimen name="startcheck_btn_width">50dp</dimen>
+    <dimen name="startcheck_btn_height">30dp</dimen>
 </resources>

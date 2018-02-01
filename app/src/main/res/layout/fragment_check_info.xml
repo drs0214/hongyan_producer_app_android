@@ -31,10 +31,11 @@
                 android:textSize="@dimen/text_size_14" />
 
             <TextView
+                android:id="@+id/tv_engineLockCtscDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test"
                 android:textColor="@color/text_nr"
+                android:layout_marginLeft="@dimen/margin5"
                 android:textSize="@dimen/text_size_14" />
 
     </LinearLayout>
@@ -54,10 +55,11 @@
                 android:textSize="@dimen/text_size_14" />
 
             <TextView
+                android:id="@+id/tv_engineLockIsActive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test"
                 android:textColor="@color/text_nr"
+                android:layout_marginLeft="@dimen/margin5"
                 android:textSize="@dimen/text_size_14" />
 
         </LinearLayout>
@@ -78,11 +80,12 @@
                 android:textSize="@dimen/text_size_14" />
 
             <TextView
+                android:id="@+id/tv_isbindcar"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="test"
                 android:textColor="@color/text_nr"
+                android:layout_marginLeft="@dimen/margin5"
                 android:textSize="@dimen/text_size_14" />
             <Button
                 android:id="@+id/bt_bind"
@@ -93,7 +96,9 @@
                 android:gravity="center"
                 android:text="绑定"
                 android:textColor="@color/white"
-                android:textSize="@dimen/text_size_14" />
+                android:textSize="@dimen/text_size_14"
+                android:visibility="gone"
+                />
 
         </LinearLayout>
 
@@ -112,10 +117,11 @@
                 android:textSize="@dimen/text_size_14" />
 
             <TextView
+                android:id="@+id/tv_vhcle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test"
                 android:textColor="@color/text_nr"
+                android:layout_marginLeft="@dimen/margin5"
                 android:textSize="@dimen/text_size_14" />
 
         </LinearLayout>
@@ -135,10 +141,11 @@
                 android:textSize="@dimen/text_size_14" />
 
             <TextView
+                android:id="@+id/tv_vhvin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test"
                 android:textColor="@color/text_nr"
+                android:layout_marginLeft="@dimen/margin5"
                 android:textSize="@dimen/text_size_14" />
 
         </LinearLayout>
@@ -158,10 +165,11 @@
                 android:textSize="@dimen/text_size_14" />
 
             <TextView
+                android:id="@+id/tv_ecuvin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test"
                 android:textColor="@color/text_nr"
+                android:layout_marginLeft="@dimen/margin5"
                 android:textSize="@dimen/text_size_14" />
 
         </LinearLayout>
@@ -181,10 +189,11 @@
                 android:textSize="@dimen/text_size_14" />
 
             <TextView
+                android:id="@+id/tv_deviceno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test"
                 android:textColor="@color/text_nr"
+                android:layout_marginLeft="@dimen/margin5"
                 android:textSize="@dimen/text_size_14" />
 
         </LinearLayout>
@@ -204,10 +213,11 @@
                 android:textSize="@dimen/text_size_14" />
 
             <TextView
+                android:id="@+id/tv_firstTestUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test"
                 android:textColor="@color/text_nr"
+                android:layout_marginLeft="@dimen/margin5"
                 android:textSize="@dimen/text_size_14" />
 
         </LinearLayout>
@@ -227,10 +237,11 @@
                 android:textSize="@dimen/text_size_14" />
 
             <TextView
+                android:id="@+id/tv_firstTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test"
                 android:textColor="@color/text_nr"
+                android:layout_marginLeft="@dimen/margin5"
                 android:textSize="@dimen/text_size_14" />
 
         </LinearLayout>
@@ -250,10 +261,11 @@
                 android:textSize="@dimen/text_size_14" />
 
             <TextView
+                android:id="@+id/tv_secondTestUsername"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test"
                 android:textColor="@color/text_nr"
+                android:layout_marginLeft="@dimen/margin5"
                 android:textSize="@dimen/text_size_14" />
 
         </LinearLayout>
@@ -273,10 +285,11 @@
                 android:textSize="@dimen/text_size_14" />
 
             <TextView
+                android:id="@+id/tv_secondTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="test"
                 android:textColor="@color/text_nr"
+                android:layout_marginLeft="@dimen/margin5"
                 android:textSize="@dimen/text_size_14" />
 
         </LinearLayout>

@@ -134,4 +134,9 @@
 
     <!-- 检查 -->
     <dimen name="check_startcheck">120dp</dimen>
+
+
+    <!-- 检测页面 -->
+    <dimen name="startcheck_btn_width">50dp</dimen>
+    <dimen name="startcheck_btn_height">30dp</dimen>
 </resources>

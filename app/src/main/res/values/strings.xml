@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">重卡汇产销版</string>
+    <string name="app_name">生产运输</string>
 
     <string name="title_activity_main">重卡汇</string>
     <string name="title_activity_login">登录</string>
@@ -11,6 +11,7 @@
     <!-- 初检 -->
     <string name="title_activity_firstcheck">初检</string>
     <string name="title_activity_handbind">手工绑定</string>
+    <string name="title_activity_historyrecorddetail">检查详情</string>
 
 
     <!-- 运输扫描 -->

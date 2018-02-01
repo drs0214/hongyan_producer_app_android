@@ -13,13 +13,15 @@ public class CarInfo implements Serializable {
     //车辆位置信息结构
     public VehicleInfo vehicleInfo;
 
-    class Vehicle{
+    public class Vehicle{
         //车辆内部编号
         public String vhcle;
         //17位底盘号
         public String vhvin;
         //8位底盘号
         public String vhvin8;
+        //ecuvin
+        public String ecuvin;
         //终端数据库唯一id
         public String deviceId;
         //终端自定义编号
@@ -27,13 +29,13 @@ public class CarInfo implements Serializable {
         //终端sim卡号
         public String simNo;
         //初检结果，0: 未测试; 1:未通过; 2:通过; 3:强制通过
-        public String firstTest;
+        public int firstTest;
         //初检时间
         public String firstTestDate;
         //初检人姓名
         public String firstTestUsername;
         //复检结果，0: 未测试; 1:未通过; 2:通过; 3:强制通过
-        public String secondTest;
+        public int secondTest;
         //复检时间
         public String secondTestDate;
         //复检人姓名
@@ -64,7 +66,7 @@ public class CarInfo implements Serializable {
         }
     }
 
-    class VehicleInfo{
+    public class VehicleInfo{
         //省
         public String province;
         //城市
@@ -73,8 +75,10 @@ public class CarInfo implements Serializable {
         public String district;
         //街道
         public String street;
+        //车联网功能
+        public String engineLockCtscDesc;
         //锁车功能是否开启
-        public String engineLockIsActive;
+        public boolean engineLockIsActive;
 
         @Override
         public String toString() {
@@ -83,6 +87,7 @@ public class CarInfo implements Serializable {
                     ", city='" + city + '\'' +
                     ", district='" + district + '\'' +
                     ", street='" + street + '\'' +
+                    ", engineLockCtscDesc='" + engineLockCtscDesc + '\'' +
                     ", engineLockIsActive='" + engineLockIsActive + '\'' +
                     '}';
         }

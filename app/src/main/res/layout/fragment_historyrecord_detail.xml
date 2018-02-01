@@ -44,14 +44,13 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/start_normal" />
 
-                    <Button
-                        android:layout_width="@dimen/startcheck_btn_width"
-                        android:layout_height="@dimen/startcheck_btn_height"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/margin5"
                         android:text="开启"
-                        android:textSize="@dimen/text_size_14"
-                        android:background="@drawable/check_start_lock_btn_selector"
-                        android:textColor="@color/startcheck_lock_color_selector"
-                        />
+                        android:textColor="@color/text_nr"
+                        android:textSize="@dimen/text_size_14" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -66,14 +65,13 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/close_normal" />
 
-                    <Button
-                        android:layout_width="@dimen/startcheck_btn_width"
-                        android:layout_height="@dimen/startcheck_btn_height"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin5"
                         android:text="关闭"
-                        android:textColor="@color/startcheck_lock_color_selector"
-                        android:textSize="@dimen/text_size_14"
-                        android:background="@drawable/check_start_lock_btn_selector"
-                        />
+                        android:textColor="@color/text_nr"
+                        android:textSize="@dimen/text_size_14" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -88,14 +86,13 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/lock_normal" />
 
-                    <Button
-                        android:layout_width="@dimen/startcheck_btn_width"
-                        android:layout_height="@dimen/startcheck_btn_height"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/margin5"
                         android:text="锁车"
-                        android:textSize="@dimen/text_size_14"
-                        android:textColor="@color/startcheck_lock_color_selector"
-                        android:background="@drawable/check_start_lock_btn_selector"
-                        />
+                        android:textColor="@color/text_nr"
+                        android:textSize="@dimen/text_size_14" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -110,14 +107,13 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/unlock_normal" />
 
-                    <Button
-                        android:layout_width="@dimen/startcheck_btn_width"
-                        android:layout_height="@dimen/startcheck_btn_height"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin5"
                         android:text="解锁"
-                        android:textColor="@color/startcheck_lock_color_selector"
-                        android:textSize="@dimen/text_size_14"
-                        android:background="@drawable/check_start_lock_btn_selector"
-                        />
+                        android:textColor="@color/text_nr"
+                        android:textSize="@dimen/text_size_14" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -156,7 +152,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/margin5"
                     android:text="制动"
-                    android:textColor="@color/main_text_color"
+                    android:textColor="@color/text_nr"
                     android:textSize="@dimen/text_size_14" />
             </LinearLayout>
 
@@ -177,7 +173,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin5"
                     android:text="车门"
-                    android:textColor="@color/main_text_color"
+                    android:textColor="@color/text_nr"
                     android:textSize="@dimen/text_size_14" />
             </LinearLayout>
 
@@ -198,7 +194,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/margin5"
                     android:text="左转灯"
-                    android:textColor="@color/main_text_color"
+                    android:textColor="@color/text_nr"
                     android:textSize="@dimen/text_size_14" />
             </LinearLayout>
 
@@ -219,7 +215,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin5"
                     android:text="右转灯"
-                    android:textColor="@color/main_text_color"
+                    android:textColor="@color/text_nr"
                     android:textSize="@dimen/text_size_14" />
             </LinearLayout>
         </LinearLayout>
@@ -233,7 +229,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/check_startcheck"
-                android:layout_marginTop="@dimen/margin20"
+                android:layout_marginTop="@dimen/margin40"
                 android:src="@drawable/first_checkfail" />
         </LinearLayout>
 
@@ -246,67 +242,4 @@
             android:textColor="@color/pass_result"
             android:textSize="@dimen/text_size_14" />
     </LinearLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin10"
-        android:layout_marginLeft="@dimen/margin20"
-        android:layout_marginRight="@dimen/margin20"
-        android:layout_alignParentBottom="true"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:id="@+id/ll_break_result"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="@dimen/margin10"
-                >
-
-                <Button
-                    android:id="@+id/bt_back"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/margin44"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_blue_shape"
-                    android:gravity="center"
-                    android:text="返回复检扫描页面"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_14"
-                    />
-
-                <Button
-                    android:id="@+id/bt_end_check"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/margin44"
-                    android:layout_marginLeft="@dimen/margin15"
-                    android:layout_weight="1"
-                    android:background="@drawable/btn_blue_shape"
-                    android:gravity="center"
-                    android:text="结束复检"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_size_14" />
-
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/bt_pass"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/margin44"
-                android:layout_below="@+id/ll_break_result"
-                android:background="@drawable/btn_blue_shape"
-                android:gravity="center"
-                android:text="强制通过"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_size_14"
-                android:visibility="gone"
-                />
-        </LinearLayout>
-    </RelativeLayout>
-
 </RelativeLayout>
