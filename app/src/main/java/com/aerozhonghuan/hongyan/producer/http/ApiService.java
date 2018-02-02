@@ -9,18 +9,22 @@ import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsBean;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.SessionBean;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.AppInfo;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.PhoneInfo;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.DoActionBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.TransportScanDetailBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.Transport_Scan_OrderBean;
 
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.ResponseBody;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
+import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 import rx.Observable;
 
 /**
@@ -144,5 +148,22 @@ public interface ApiService {
      */
     @GET("delivery/v1/actions")
     Observable<List<TransportScanDetailBean.ActionsBean>> actions();
+
+    /**
+     * 执行动作
+     * 注意:post请求需添加@FormUrlEncoded
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("delivery/v1/doAction")
+    Observable<DoActionBean> doAction(@FieldMap Map<String, String> doAction);
+    /**
+     * 执行撤销动作
+     * 注意:post请求需添加@FormUrlEncoded
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("delivery/v1/undoAction")
+    Observable<DoActionBean> undoAction(@Field("vhcle") String vhcle);
 
 }

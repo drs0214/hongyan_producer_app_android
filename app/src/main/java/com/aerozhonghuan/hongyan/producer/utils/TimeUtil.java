@@ -32,7 +32,15 @@ public class TimeUtil {
         date = sdf.format(time);
         return date;
     }
-
+    public static String getDate_yyyyMMddTHHmmss(long time) {
+        String date = "";
+        String date1 = "";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        date = sdf.format(time);
+        SimpleDateFormat sdf1 = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+        date1 = sdf1.format(time);
+        return date+"T"+date1;
+    }
     public static String getDate_yyyyMMddHHmm(long time) {
         String date = "";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault());

@@ -16,7 +16,6 @@ public class TransportInfoActivity extends TitlebarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getTitleBarView().setVisibility(View.GONE);
         if (savedInstanceState == null) {
             TransportInfoFragment fragment = new TransportInfoFragment();
                 showFragment(fragment, false);

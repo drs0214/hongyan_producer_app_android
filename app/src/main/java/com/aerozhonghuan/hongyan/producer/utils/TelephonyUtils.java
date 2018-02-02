@@ -39,10 +39,10 @@ public class TelephonyUtils {
             } else if (operator.equals("46003")) {
                 str = "TELECOMU";
             } else {
-                str = "无记录";
+                str = "";
             }
         } else {
-            str = "无记录";
+            str = "";
         }
         return str;
     }

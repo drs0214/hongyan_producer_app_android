@@ -18,6 +18,7 @@ package com.aerozhonghuan.hongyan.producer.modules.transportScan.fragment;
         import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.ManyScanBean;
         import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.TransportScanDetailBean;
         import com.aerozhonghuan.hongyan.producer.modules.transportScan.logic.Transport_ScanHttpLoader;
+        import com.aerozhonghuan.hongyan.producer.widget.ProgressDialogIndicator;
 
         import java.util.ArrayList;
         import java.util.List;
@@ -91,7 +92,7 @@ public class ManyScanFragment  extends BaseFragment {
         bean.setName("盘点");
         manyscanlist.add(bean);*/
         Transport_ScanHttpLoader transport_scanHttpLoader = new Transport_ScanHttpLoader();
-        Subscription subscription = transport_scanHttpLoader.actions().subscribe(new MySubscriber<List<TransportScanDetailBean.ActionsBean>>(getContext()) {
+        Subscription subscription = transport_scanHttpLoader.actions().subscribe(new MySubscriber<List<TransportScanDetailBean.ActionsBean>>(getContext(),progressDialogIndicator) {
             @Override
             public void onNext(List<TransportScanDetailBean.ActionsBean> reslistdata) {
                 if(!reslistdata.isEmpty()){
@@ -102,8 +103,9 @@ public class ManyScanFragment  extends BaseFragment {
             }
         });
     }
-
+    private ProgressDialogIndicator progressDialogIndicator;
     private void initView() {
+        progressDialogIndicator = new ProgressDialogIndicator(getContext());
         gridview=(GridView) rootView.findViewById(R.id.gridview);
         adapter=new Authorization_actionsAdapter(getContext(),manyscanlist);
         gridview.setAdapter(adapter);

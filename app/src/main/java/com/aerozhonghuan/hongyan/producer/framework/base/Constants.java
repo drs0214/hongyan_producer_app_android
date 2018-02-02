@@ -7,4 +7,5 @@ package com.aerozhonghuan.hongyan.producer.framework.base;
 
 public class Constants {
     public static final String NOT_OPEN_MOUDLE = "暂未开放，敬请期待";
+    public static final String COORTYPE = "gcj02";//高德定位坐标系
 }

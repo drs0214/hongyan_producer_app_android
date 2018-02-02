@@ -10,12 +10,11 @@ import java.io.Serializable;
 public class Transport_Scan_OrderBean implements Serializable{
 
     /**
-     * agent : ??????????
-     * customerName : ???????????????
-     * departure : ?????????b04? 401122 ??? cn 340
-     * destination : ????????????120?2?? 118300 ??? cn 0
-     * orderNo : 0100170260
-     * planShipTime : 2014-11-28T10:47:00
+     * agent : 重庆安吉物流有限公司
+     * departure : 重庆市经开区黄茅坪b04号 401122 重庆市 cn 340
+     * destination : 四川泸州市纳溪区蓝安路三段 646300 泸州市 cn 230
+     * orderNo : 0100170121
+     * planShipTime : 2014-11-26T10:33:00
      */
 
     public String agent;

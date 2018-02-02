@@ -184,23 +184,23 @@ public class MyApplication extends MultiDexApplication {
             if (null != location) {
                 mlocation=location;
                 if(location.getErrorCode() == 0) {
-                    Log.e("drs","省份===="+location.getProvince());
-                    Log.e("drs","城市===="+location.getCity());
-                    Log.e("drs","区县===="+location.getDistrict());
-                    Log.e("drs","街道地址或者详细地址===="+location.getAddress());
-                    Log.e("drs","经度===="+location.getLongitude());
-                    Log.e("drs","纬度===="+location.getLatitude());
-                    Log.e("drs","定位时间===="+ Utils.formatUTC(location.getTime(), "yyyy-MM-dd HH:mm:ss"));
+                    Log.e("location","省份===="+location.getProvince());
+                    Log.e("location","城市===="+location.getCity());
+                    Log.e("location","区县===="+location.getDistrict());
+                    Log.e("location","街道地址或者详细地址===="+location.getAddress());
+                    Log.e("location","经度===="+location.getLongitude());
+                    Log.e("location","纬度===="+location.getLatitude());
+                    Log.e("location","定位时间===="+ Utils.formatUTC(location.getTime(), "yyyy-MM-dd HH:mm:ss"));
                     if (location.getLocationType()==1){
-                        Log.e("drs","定位方式====GPS");
+                        Log.e("location","定位方式====GPS");
                     }else if (location.getLocationType()==5){
-                        Log.e("drs","定位方式====Wifi");
+                        Log.e("location","定位方式====Wifi");
                     }else if (location.getLocationType()==6){
-                        Log.e("drs","定位方式====基站");
+                        Log.e("location","定位方式====基站");
                     }else{
-                        Log.e("drs","定位方式====前次离线缓存");
+                        Log.e("drlocations","定位方式====前次离线缓存");
                     }
-                    Log.e("drs","定位精准度===="+location.getAccuracy()+"米");
+                    Log.e("location","定位精准度===="+location.getAccuracy()+"米");
 
                 }
             }

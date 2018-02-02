@@ -54,7 +54,7 @@ public class ManyScanAdapter extends BaseAdapter {
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_many_scan, null);
-            holder.tv_name = (Button) convertView.findViewById(R.id.tv_name);
+            holder.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
             holder.ll_root = (LinearLayout) convertView.findViewById(R.id.ll_root);
             convertView.setTag(holder);
         } else {
@@ -75,6 +75,6 @@ public class ManyScanAdapter extends BaseAdapter {
 
     private static class ViewHolder {
         LinearLayout ll_root;
-        Button tv_name;
+        TextView tv_name;
     }
 }

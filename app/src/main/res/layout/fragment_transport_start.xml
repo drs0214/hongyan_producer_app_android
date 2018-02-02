@@ -51,6 +51,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_car_in_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="test"
@@ -74,6 +75,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_terminal_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="test"
@@ -97,6 +99,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_plan_startcar_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="test"
@@ -120,6 +123,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_start_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="test"
@@ -143,6 +147,7 @@
             android:textSize="@dimen/text_size_14" />
 
         <TextView
+            android:id="@+id/tv_destination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="test"
@@ -150,4 +155,16 @@
             android:textSize="@dimen/text_size_14" />
 
     </LinearLayout>
+    <Button
+        android:id="@+id/bt_ok"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin44"
+        android:layout_marginLeft="@dimen/margin20"
+        android:layout_marginRight="@dimen/margin20"
+        android:layout_marginTop="@dimen/margin25"
+        android:background="@drawable/btn_blue_shape"
+        android:gravity="center"
+        android:text="确定"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_14" />
 </LinearLayout>
