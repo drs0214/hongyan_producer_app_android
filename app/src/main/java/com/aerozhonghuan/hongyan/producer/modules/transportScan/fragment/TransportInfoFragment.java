@@ -2,6 +2,7 @@ package com.aerozhonghuan.hongyan.producer.modules.transportScan.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,13 +14,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aerozhonghuan.foundation.base.BaseFragment;
+import com.aerozhonghuan.foundation.eventbus.EventBusEvent;
+import com.aerozhonghuan.foundation.eventbus.EventBusManager;
+import com.aerozhonghuan.foundation.log.LogUtil;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.Constants;
 import com.aerozhonghuan.hongyan.producer.framework.base.MyApplication;
 import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
+import com.aerozhonghuan.hongyan.producer.modules.common.Constents;
+import com.aerozhonghuan.hongyan.producer.modules.common.event.UserInfoChangedEvent;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportStartActivity;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.adapter.ManyScanAdapter;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.DoActionBean;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.OperationResultBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.TransportScanDetailBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.logic.Transport_ScanHttpLoader;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.view.OperationResultPop;
@@ -28,6 +35,9 @@ import com.aerozhonghuan.hongyan.producer.utils.TimeUtil;
 import com.aerozhonghuan.hongyan.producer.widget.ProgressDialogIndicator;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 import com.zh.location.drs.amaplibrary.Utils;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,7 +54,7 @@ import rx.Subscription;
 public class TransportInfoFragment extends BaseFragment implements View.OnClickListener {
     private View rootView;
     LinearLayout root_view;
-    String type, vhcle;
+    String type, vhcle, issuccess, msg;
     GridView gridview;
     ArrayList<TransportScanDetailBean.ActionsBean> manyscanlist = new ArrayList<TransportScanDetailBean.ActionsBean>();
     TextView tv_chassis_number, tv_car_in_num, tv_terminal_num, tv_last_time_operation_type, tv_last_time_operation_time, tv_last_time_operation_persion, tv_ecuvin;
@@ -53,12 +63,34 @@ public class TransportInfoFragment extends BaseFragment implements View.OnClickL
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBusManager.register(this);
         if (getArguments() != null && getArguments().containsKey("type")) {
             type = getArguments().getString("type");
         }
         if (getArguments() != null && getArguments().containsKey("vhcle")) {
             vhcle = getArguments().getString("vhcle");
         }
+        if (getArguments() != null && getArguments().containsKey("issuccess") && getArguments().containsKey("msg")) {
+            issuccess = getArguments().getString("issuccess");
+            msg = getArguments().getString("msg");
+        }
+    }
+
+    /**
+     * @param e
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    @SuppressWarnings("unused")
+    public void onEvent(OperationResultBean e) {
+        OperationResultPop pop = new OperationResultPop(getActivity(), e.getMsg(), e.isIssuccess());
+        pop.showpop_center(root_view);
+        delay(pop);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBusManager.unregister(this);
     }
 
     @Nullable
@@ -84,49 +116,43 @@ public class TransportInfoFragment extends BaseFragment implements View.OnClickL
         tv_last_time_operation_time = (TextView) rootView.findViewById(R.id.tv_last_time_operation_time);
         tv_last_time_operation_persion = (TextView) rootView.findViewById(R.id.tv_last_time_operation_persion);
         tv_ecuvin = (TextView) rootView.findViewById(R.id.tv_ecuvin);
-
+        if (issuccess != null && "1".equals(issuccess)) {
+            //从运输开始进来成功
+            OperationResultPop pop = new OperationResultPop(getActivity(), "操作成功", true);
+            pop.showpop_center(root_view);
+            //                        delay(pop);
+        } else if (issuccess != null && "2".equals(issuccess)) {
+            OperationResultPop pop = new OperationResultPop(getActivity(), "操作失败", false);
+            pop.showpop_center(root_view);
+            //                        delay(pop);
+        }
 
     }
+
     private ProgressDialogIndicator progressDialogIndicator;
+    Transport_ScanHttpLoader transport_scanHttpLoader = new Transport_ScanHttpLoader();
+
     private void initData() {
         adapter = new ManyScanAdapter(getContext(), manyscanlist);
         gridview.setAdapter(adapter);
-        //        TransportScanDetailBean.ActionsBean bean = new TransportScanDetailBean.ActionsBean();
-        //        bean.setName("下线");
-        //        manyscanlist.add(bean);
-        //
-        //        bean = new ActionsBean();
-        //        bean.setName("质检");
-        //        manyscanlist.add(bean);
-        //
-        //        bean = new ActionsBean();
-        //        bean.setName("入库");
-        //        manyscanlist.add(bean);
-        //        bean = new ActionsBean();
-        //        bean.setName("运输开始");
-        //        manyscanlist.add(bean);
-        //
-        //        bean = new ActionsBean();
-        //        bean.setName("运输结束");
-        //        manyscanlist.add(bean);
-        //
-        //        bean = new ActionsBean();
-        //        bean.setName("改装开始");
-        //        manyscanlist.add(bean);
-        //        bean = new ActionsBean();
-        //        bean.setName("改装开始");
-        //        manyscanlist.add(bean);
-        //
-        //        bean = new ActionsBean();
-        //        bean.setName("交付");
-        //        manyscanlist.add(bean);
-        //
-        //        bean = new ActionsBean();
-        //        bean.setName("盘点");
-        //        manyscanlist.add(bean);
 
-        Transport_ScanHttpLoader transport_scanHttpLoader = new Transport_ScanHttpLoader();
-        Subscription subscription = transport_scanHttpLoader.getVehicleAndActions(vhcle).subscribe(new MySubscriber<TransportScanDetailBean>(getContext(),progressDialogIndicator) {
+        loadcarinfoandaction();
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (hidden) {
+            //相当于Fragment的onPause
+            System.out.println("界面不可见");
+        } else {
+            // 相当于Fragment的onResume
+            System.out.println("界面可见");
+
+        }
+    }
+
+    private void loadcarinfoandaction() {
+        Subscription subscription = transport_scanHttpLoader.getVehicleAndActions(vhcle).subscribe(new MySubscriber<TransportScanDetailBean>(getContext(), progressDialogIndicator) {
             @Override
             public void onNext(TransportScanDetailBean transportScanDetailBean) {
                 vehicleBean = transportScanDetailBean.getVehicle();
@@ -140,10 +166,13 @@ public class TransportInfoFragment extends BaseFragment implements View.OnClickL
                 tv_ecuvin.setText(vehicleBean.ecuvin == null ? "" : vehicleBean.ecuvin);
                 actionslist = transportScanDetailBean.getActions();
                 if (!actionslist.isEmpty()) {
+                    if (manyscanlist != null) {
+                        manyscanlist.clear();
+                    }
                     manyscanlist.addAll(actionslist);
                     adapter.notifyDataSetChanged();
                 }
-                TransportScanDetailBean.ActionsBean bean=new TransportScanDetailBean.ActionsBean();
+                TransportScanDetailBean.ActionsBean bean = new TransportScanDetailBean.ActionsBean();
                 bean.setLabel("撤销");
                 bean.setEnabled(true);
                 bean.setName("撤销");
@@ -155,31 +184,32 @@ public class TransportInfoFragment extends BaseFragment implements View.OnClickL
 
     TransportScanDetailBean.VehicleBean vehicleBean;
     List<TransportScanDetailBean.ActionsBean> actionslist;
-    Transport_ScanHttpLoader transport_scanHttpLoader = new Transport_ScanHttpLoader();
+
     private void setListen() {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(!manyscanlist.isEmpty()&&"撤销".equals(manyscanlist.get(position).getLabel())){
-                    if(vehicleBean.getVhcle()!=null){
+                if (!manyscanlist.isEmpty() && "撤销".equals(manyscanlist.get(position).getLabel())) {
+                    if (vehicleBean.getVhcle() != null) {
                         undoAction();
                     }
 
-                }else{
+                } else {
                     doAction(position);
                 }
 
             }
         });
+
     }
 
     private void doAction(int position) {
         TransportScanDetailBean.ActionsBean bean = manyscanlist.get(position);
         if (bean != null && bean.getName() != null && "da:tp:start".equals(bean.getName())) {
-            Bundle bundle=new Bundle();
-            bundle.putString("vhcle",vehicleBean.getVhcle());
-            bundle.putString("action", "da:tp:start");
-            startActivity(new Intent(getContext(), TransportStartActivity.class),bundle);
+            Bundle bundle = new Bundle();
+            bundle.putString("vhcle", vehicleBean.getVhcle());
+            bundle.putString("action", Constents.ACTION_TRANSPORT_START);
+            startActivity(new Intent(getContext(), TransportStartActivity.class).putExtras(bundle));
         } else {
 
             Map<String, String> paramsmap = new HashMap<>();
@@ -203,25 +233,26 @@ public class TransportInfoFragment extends BaseFragment implements View.OnClickL
                     locationType = "前次离线缓存";
                 }
                 paramsmap.put("locationType", locationType);
-                paramsmap.put("radius", MyApplication.mlocation.getAccuracy()+"");
+                paramsmap.put("radius", MyApplication.mlocation.getAccuracy() + "");
             }
             paramsmap.put("operator", TelephonyUtils.getOperator_letter(getContext()));
-            Subscription subscription = transport_scanHttpLoader.doAction(paramsmap).subscribe(new MySubscriber<DoActionBean>(getContext(),progressDialogIndicator) {
+            Subscription subscription = transport_scanHttpLoader.doAction(paramsmap).subscribe(new MySubscriber<DoActionBean>(getContext(), progressDialogIndicator) {
                 @Override
                 public void onNext(DoActionBean doActionBean) {
-                    String result="";
+                    String result = "";
                     if (doActionBean.isSuccess()) {
                         alert("操作成功");
-                        result="操作成功";
-                        OperationResultPop pop=new OperationResultPop(getActivity(),result);
-                        pop.showAtDropDownCenter(root_view);
-
+                        result = "操作成功";
+                        OperationResultPop pop = new OperationResultPop(getActivity(), result, true);
+                        pop.showpop_center(root_view);
+                        delay(pop);
                     } else {
                         alert("操作失败");
-                        result="操作失败";
+                        result = "操作失败";
                         alert(doActionBean.getMessage());
-                        OperationResultPop pop=new OperationResultPop(getActivity(),result);
+                        OperationResultPop pop = new OperationResultPop(getActivity(), result, false);
                         pop.showpop_center(root_view);
+                        delay(pop);
                     }
                 }
             });
@@ -229,25 +260,35 @@ public class TransportInfoFragment extends BaseFragment implements View.OnClickL
     }
 
     private void undoAction() {
-        Subscription subscription = transport_scanHttpLoader.undoAction(vehicleBean.getVhcle()).subscribe(new MySubscriber<DoActionBean>(getContext(),progressDialogIndicator) {
+        Subscription subscription = transport_scanHttpLoader.undoAction(vehicleBean.getVhcle()).subscribe(new MySubscriber<DoActionBean>(getContext(), progressDialogIndicator) {
             @Override
             public void onNext(DoActionBean doActionBean) {
-                String result="";
+                String result = "";
                 if (doActionBean.isSuccess()) {
                     alert("操作成功");
-                    result="操作成功";
-                    OperationResultPop pop=new OperationResultPop(getActivity(),result);
-                    pop.showAtDropDownCenter(root_view);
-
+                    result = "操作成功";
+                    final OperationResultPop pop = new OperationResultPop(getActivity(), result, true);
+                    pop.showpop_center(root_view);
+                    delay(pop);
                 } else {
                     alert("操作失败");
-                    result="操作失败";
+                    result = "操作失败";
                     alert(doActionBean.getMessage());
-                    OperationResultPop pop=new OperationResultPop(getActivity(),result);
+                    final OperationResultPop pop = new OperationResultPop(getActivity(), result, false);
                     pop.showpop_center(root_view);
+                    delay(pop);
                 }
             }
         });
+    }
+
+    private void delay(final OperationResultPop pop) {
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+                pop.dismiss();
+                loadcarinfoandaction();
+            }
+        }, 3000);
     }
 
     @Override

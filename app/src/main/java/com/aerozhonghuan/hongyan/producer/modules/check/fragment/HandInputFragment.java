@@ -7,10 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.CheckInfoActivity;
+import com.aerozhonghuan.hongyan.producer.modules.common.Constents;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportInfoActivity;
 
 /**
@@ -22,7 +24,8 @@ public class HandInputFragment extends TitlebarFragment implements View.OnClickL
     private View rootView;
     String type;
     Button bt_ok;
-    String transport_scan;
+    EditText et_hand_input;
+    String hand_input_type;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,8 +33,8 @@ public class HandInputFragment extends TitlebarFragment implements View.OnClickL
         if (getArguments() != null && getArguments().containsKey("type")) {
             type = getArguments().getString("type");
         }
-        if (getArguments() != null && getArguments().containsKey("transport_scan")) {
-            transport_scan = getArguments().getString("transport_scan");
+        if (getArguments() != null && getArguments().containsKey("hand_input_type")) {
+            hand_input_type = getArguments().getString("hand_input_type");//3从运输扫描模块进入的
         }
     }
 
@@ -49,6 +52,7 @@ public class HandInputFragment extends TitlebarFragment implements View.OnClickL
 
     private void initView() {
         bt_ok = (Button) rootView.findViewById(R.id.bt_ok);
+        et_hand_input = (EditText) rootView.findViewById(R.id.et_hand_input);
     }
 
     private void initData() {
@@ -62,8 +66,10 @@ public class HandInputFragment extends TitlebarFragment implements View.OnClickL
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bt_ok:
-                if (transport_scan != null && "1".equals(transport_scan)) {
-                    startActivity(new Intent(getActivity(), TransportInfoActivity.class));
+                if (hand_input_type != null && Constents.HAND_INPUT_TYPE.equals(hand_input_type)) {
+                    Bundle bundle=new Bundle();
+                    bundle.putString("vhcle",et_hand_input.getText().toString());
+                    startActivity(new Intent(getActivity(), TransportInfoActivity.class).putExtras(bundle));
                 } else {
                     Bundle bundle = new Bundle();
                     bundle.putString("type", type);

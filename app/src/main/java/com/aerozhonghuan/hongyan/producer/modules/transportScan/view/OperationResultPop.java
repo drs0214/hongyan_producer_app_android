@@ -7,6 +7,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
@@ -20,13 +21,16 @@ import com.aerozhonghuan.hongyan.producer.R;
  */
 public class OperationResultPop extends PopupWindow{
     private View conentView;
+    private ImageView iv_operation_result;
     private Activity context;
     TextView tv_result;
     String result;
-    public OperationResultPop(final Activity context,String result) {
+    boolean issuccess;
+    public OperationResultPop(final Activity context,String result,boolean issuccess) {
         super(context);
         this.context = context;
         this.result = result;
+        this.issuccess=issuccess;
         this.initPopupWindow();
 
     }
@@ -37,6 +41,12 @@ public class OperationResultPop extends PopupWindow{
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         conentView = inflater.inflate(R.layout.pop_operation_result, null);
         tv_result= (TextView) conentView.findViewById(R.id.tv_result);
+        iv_operation_result= (ImageView) conentView.findViewById(R.id.iv_operation_result);
+        if (issuccess){
+            iv_operation_result.setImageResource(R.drawable.operation_success);
+        }else{
+            iv_operation_result.setImageResource(R.drawable.ic_camera);
+        }
         tv_result.setText(result);
         //获取popupwindow的高度与宽度
         int h = context.getWindowManager().getDefaultDisplay().getHeight();
@@ -155,7 +165,7 @@ public class OperationResultPop extends PopupWindow{
         }
     }
     /**   第四种
-     * 显示在控件的下左方
+     * 屏幕正中间
      *
      * @param parent parent
      */

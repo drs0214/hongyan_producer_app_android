@@ -18,7 +18,9 @@ public class TransportInfoActivity extends TitlebarActivity {
         super.onCreate(savedInstanceState);
         if (savedInstanceState == null) {
             TransportInfoFragment fragment = new TransportInfoFragment();
-                showFragment(fragment, false);
+            if (getIntent() != null && getIntent().getExtras() != null) {
+                showFragment(fragment, false, new Bundle(getIntent().getExtras()));
+            }
         }
     }
 }

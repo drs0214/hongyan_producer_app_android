@@ -11,18 +11,23 @@ public class Transport_Scan_OrderBean implements Serializable{
 
     /**
      * agent : 重庆安吉物流有限公司
+     * customerName : 丹东金路通汽车销售服务有限公司
      * departure : 重庆市经开区黄茅坪b04号 401122 重庆市 cn 340
-     * destination : 四川泸州市纳溪区蓝安路三段 646300 泸州市 cn 230
-     * orderNo : 0100170121
-     * planShipTime : 2014-11-26T10:33:00
+     * destination : 东港市前阳镇石佛村李家堡120号2号楼 118300 辽宁省 cn 0
+     * deviceNo : 64696253987
+     * orderNo : 0100170260
+     * planShipTime : 2014-11-28 10:47:00
+     * vhcle : 0070231880
      */
 
     public String agent;
     public String customerName;
     public String departure;
     public String destination;
+    public String deviceNo;
     public String orderNo;
     public String planShipTime;
+    public String vhcle;
 
     public String getAgent() {
         return agent;
@@ -56,6 +61,14 @@ public class Transport_Scan_OrderBean implements Serializable{
         this.destination = destination;
     }
 
+    public String getDeviceNo() {
+        return deviceNo;
+    }
+
+    public void setDeviceNo(String deviceNo) {
+        this.deviceNo = deviceNo;
+    }
+
     public String getOrderNo() {
         return orderNo;
     }
@@ -70,5 +83,13 @@ public class Transport_Scan_OrderBean implements Serializable{
 
     public void setPlanShipTime(String planShipTime) {
         this.planShipTime = planShipTime;
+    }
+
+    public String getVhcle() {
+        return vhcle;
+    }
+
+    public void setVhcle(String vhcle) {
+        this.vhcle = vhcle;
     }
 }

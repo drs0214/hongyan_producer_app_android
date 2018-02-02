@@ -17,7 +17,10 @@ public class TransportStartActivity extends TitlebarActivity {
         getTitleBarView().setTitle("运输扫描");
         if (savedInstanceState == null) {
             TransportStartFragment fragment = new TransportStartFragment();
-            showFragment(fragment, false);
+            if (getIntent() != null && getIntent().getExtras() != null) {
+                showFragment(fragment, false, new Bundle(getIntent().getExtras()));
+            }
+
         }
     }
 }

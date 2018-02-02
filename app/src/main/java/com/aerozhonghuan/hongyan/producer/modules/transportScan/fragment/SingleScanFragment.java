@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.modules.check.activity.HandInputActivity;
+import com.aerozhonghuan.hongyan.producer.modules.common.Constents;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsManager;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportInfoActivity;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
@@ -99,7 +100,7 @@ public class SingleScanFragment extends BaseFragment implements View.OnClickList
         switch (v.getId()) {
             case R.id.ll_hand_input:
                 Bundle bundle = new Bundle();
-                bundle.putString("transport_scan", "1");//1运输扫描
+                bundle.putString("hand_input_type", Constents.HAND_INPUT_TYPE);//1运输扫描
                 startActivity(new Intent(getActivity(), HandInputActivity.class).putExtras(bundle));
                 break;
             case R.id.ll_camera_scan:
@@ -176,7 +177,7 @@ public class SingleScanFragment extends BaseFragment implements View.OnClickList
                 Toast.makeText(getContext(), content, Toast.LENGTH_SHORT).show();
                 Log.e("drs","二维码："+content);
                 Bundle bundle=new Bundle();
-                bundle.getString("vhcle",content);
+                bundle.putString("vhcle",content);
                 startActivity(new Intent(getActivity(), TransportInfoActivity.class).putExtras(bundle));
             }
         }

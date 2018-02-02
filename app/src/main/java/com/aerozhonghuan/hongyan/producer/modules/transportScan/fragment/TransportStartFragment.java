@@ -1,5 +1,6 @@
 package com.aerozhonghuan.hongyan.producer.modules.transportScan.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -12,13 +13,16 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.aerozhonghuan.foundation.eventbus.EventBusManager;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.Constants;
 import com.aerozhonghuan.hongyan.producer.framework.base.MyApplication;
 import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
 import com.aerozhonghuan.hongyan.producer.modules.common.Constents;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportInfoActivity;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.DoActionBean;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.OperationResultBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.Transport_Scan_OrderBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.logic.Transport_ScanHttpLoader;
 import com.aerozhonghuan.hongyan.producer.utils.TelephonyUtils;
@@ -72,29 +76,24 @@ public class TransportStartFragment extends TitlebarFragment implements View.OnC
 
     private void initData() {
         list = new ArrayList<String>();
-        list.add("032626465");
-        list.add("125465062");
-        list.add("154888528");
-        list.add("031548195");
-        list.add("597826123");
         adapter = new ArrayAdapter<String>(getContext(),
                 android.R.layout.simple_spinner_item, list);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp_number.setAdapter(adapter);
         Transport_ScanHttpLoader transport_scanHttpLoader = new Transport_ScanHttpLoader();
-        Subscription subscription = transport_scanHttpLoader.transportOrders("0070231798").subscribe(new MySubscriber<List<Transport_Scan_OrderBean>>(getContext()) {
+        Subscription subscription = transport_scanHttpLoader.transportOrders(vhcle).subscribe(new MySubscriber<List<Transport_Scan_OrderBean>>(getContext()) {
             @Override
             public void onNext(List<Transport_Scan_OrderBean> reslistdata) {
                 Log.e("drs", "");
-              /*  if(!reslistdata.isEmpty()){
-                    for (int i = 0; i <reslistdata.size() ; i++) {
-                         String orderNo = reslistdata.get(i).getOrderNo();
+                if (!reslistdata.isEmpty()) {
+                    for (int i = 0; i < reslistdata.size(); i++) {
+                        String orderNo = reslistdata.get(i).getOrderNo();
                         list.add(orderNo);
                         adapter.notifyDataSetChanged();
                     }
                     listdata.addAll(reslistdata);
                 }
-*/
+
             }
         });
 
@@ -118,11 +117,11 @@ public class TransportStartFragment extends TitlebarFragment implements View.OnC
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 //                private TextView tv_car_in_num,tv_terminal_num,tv_plan_startcar_time,tv_start_address,tv_destination;
                 Transport_Scan_OrderBean transport_scan_orderBean = listdata.get(position);
-                //                tv_car_in_num.setText(transport_scan_orderBean.get);
-                //                tv_terminal_num.setText(transport_scan_orderBean.get);
-                //                tv_plan_startcar_time.setText(transport_scan_orderBean.get);
-                //                tv_start_address.setText(transport_scan_orderBean.get);
-                //                tv_destination.setText(transport_scan_orderBean.get);
+                tv_car_in_num.setText(transport_scan_orderBean.getVhcle() == null ? "" : transport_scan_orderBean.getVhcle());
+                tv_terminal_num.setText(transport_scan_orderBean.getDeviceNo() == null ? "" : transport_scan_orderBean.getDeviceNo());
+                tv_plan_startcar_time.setText(transport_scan_orderBean.getPlanShipTime() == null ? "" : transport_scan_orderBean.getPlanShipTime());
+                tv_start_address.setText(transport_scan_orderBean.getDeparture() == null ? "" : transport_scan_orderBean.getDeparture());
+                tv_destination.setText(transport_scan_orderBean.getDestination() == null ? "" : transport_scan_orderBean.getDestination());
 
             }
 
@@ -166,10 +165,22 @@ public class TransportStartFragment extends TitlebarFragment implements View.OnC
                     public void onNext(DoActionBean doActionBean) {
                         if (doActionBean.isSuccess()) {
                             alert("操作成功");
+//                            Bundle bundle=new Bundle();
+//                            bundle.putString("issuccess","1");
+//                            bundle.putString("vhcle",vhcle);
+//                            bundle.putString("msg","操作成功");
+//                            startActivity(new Intent(getActivity(), TransportInfoActivity.class).putExtras(bundle));
+                            EventBusManager.post(new OperationResultBean(true,"操作成功"));
                             getActivity().finish();
                         } else {
                             alert("操作失败");
                             alert(doActionBean.getMessage());
+//                            Bundle bundle=new Bundle();
+//                            bundle.putString("issuccess","2");
+//                            bundle.putString("vhcle",vhcle);
+//                            bundle.putString("msg",doActionBean.getMessage());
+//                            startActivity(new Intent(getActivity(), TransportInfoActivity.class).putExtras(bundle));
+                            EventBusManager.post(new OperationResultBean(false,"操作失败"));
                             getActivity().finish();
                         }
                     }

@@ -1,55 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:gravity="center"
+    android:layout_height="match_parent"
     android:background="#66000000"
-    android:layout_height="match_parent">
+    android:gravity="center">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:gravity="center"
+        android:layout_marginLeft="@dimen/margin20"
+        android:layout_marginRight="@dimen/margin20"
+        android:gravity="center_horizontal"
+        android:paddingBottom="@dimen/margin20"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/text_blue"
-            android:paddingLeft="@dimen/margin10"
+            android:layout_marginTop="@dimen/margin20"
+            android:gravity="center"
             android:text="操作结果"
-            android:textColor="@color/white"
-            android:textSize="@dimen/margin18" />
+            android:textColor="@color/text_nr"
+            android:textSize="@dimen/margin15" />
 
+        <ImageView
+            android:id="@+id/iv_operation_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/operation_success"
+            android:layout_marginTop="@dimen/margin25"
 
-        <RelativeLayout
+            />
+        <TextView
+            android:id="@+id/tv_result"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/margin230">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin110"
-                    android:paddingLeft="@dimen/margin10"
-                    android:text="提示："
-                    android:textColor="@color/text_tj"
-                    android:textSize="@dimen/margin15" />
-
-                <TextView
-                    android:id="@+id/tv_result"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/margin150"
-                    android:text="操作结果"
-                    android:textColor="@color/text_nr"
-                    android:textSize="@dimen/margin15" />
-            </LinearLayout>
-        </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/margin20"
+            android:text="操作成功"
+            android:textColor="@color/text_success"
+            android:textSize="@dimen/margin14" />
     </LinearLayout>
 </RelativeLayout>

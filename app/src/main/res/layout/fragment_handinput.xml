@@ -43,6 +43,7 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/et_hand_input"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="请输入编号"

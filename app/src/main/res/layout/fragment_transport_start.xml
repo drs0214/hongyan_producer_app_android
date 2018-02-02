@@ -31,6 +31,7 @@
             android:layout_width="@dimen/margin220"
             android:layout_height="@dimen/margin40"
             android:text="test"
+            android:background="@drawable/btn_blue_shape_2_stroke"
             android:textColor="@color/text_nr"
             android:textSize="@dimen/text_size_14" />
 
@@ -127,6 +128,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="test"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:textColor="@color/text_nr"
             android:textSize="@dimen/text_size_14" />
 
@@ -150,6 +153,8 @@
             android:id="@+id/tv_destination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:text="test"
             android:textColor="@color/text_nr"
             android:textSize="@dimen/text_size_14" />
