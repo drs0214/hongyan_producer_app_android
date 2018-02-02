@@ -72,7 +72,9 @@ public class SingleScanFragment extends BaseFragment implements View.OnClickList
             @Override
             public void afterTextChanged(Editable s) {
                 if (!TextUtils.isEmpty(s.toString())){
-                    startActivity(new Intent(getActivity(), TransportInfoActivity.class));
+                    Bundle bundle=new Bundle();
+                    bundle.putString("vhcle",s.toString());
+                    startActivity(new Intent(getActivity(), TransportInfoActivity.class).putExtras(bundle));
                     et_num.setText("");
                 }
 

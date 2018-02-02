@@ -9,6 +9,7 @@ import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsBean;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.SessionBean;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.AppInfo;
 import com.aerozhonghuan.hongyan.producer.modules.home.entity.PhoneInfo;
+import com.aerozhonghuan.hongyan.producer.modules.query.entity.Query_ResultBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.DoActionBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.TransportScanDetailBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.Transport_Scan_OrderBean;
@@ -142,6 +143,12 @@ public interface ApiService {
      */
     @GET("delivery/v1/transportOrders")
     Observable<List<Transport_Scan_OrderBean>>transportOrders(@Query("vhcle") String vhcle);
+    /**
+     * 获得车辆信息与操作按钮
+     * @return
+     */
+    @GET("delivery/v1/query")
+    Observable<List<Query_ResultBean>>query(@QueryMap Map<String, String> querymap);
     /**
      * 获得用户已授权的动作列表
      * @return

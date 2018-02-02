@@ -1,22 +1,30 @@
 package com.aerozhonghuan.hongyan.producer.modules.query.activity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarActivity;
 import com.aerozhonghuan.hongyan.producer.modules.query.entity.OperationTypeBean;
+import com.aerozhonghuan.hongyan.producer.modules.query.entity.Query_ResultBean;
 import com.aerozhonghuan.hongyan.producer.modules.query.fragment.Operation_TimeFragment;
 import com.aerozhonghuan.hongyan.producer.modules.query.fragment.Operation_TypeFragment;
+import com.aerozhonghuan.hongyan.producer.modules.query.logic.QueryHttpLoader;
 import com.aerozhonghuan.hongyan.producer.modules.query.view.OperationTime;
 import com.aerozhonghuan.hongyan.producer.modules.query.view.OperationType;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import rx.Subscription;
 
 /**
  * @author: drs
@@ -96,6 +104,14 @@ public class Query_Transport_Scan_HistoryActivity extends TitlebarActivity imple
         ll_many_scan.setOnClickListener(this);
         ll_operation_time.setOnClickListener(this);
         ll_operation_type.setOnClickListener(this);
+        QueryHttpLoader queryHttpLoader=new QueryHttpLoader();
+        Map<String,String> querymap=new HashMap();
+        Subscription subscription =  queryHttpLoader.query(querymap).subscribe(new MySubscriber<List<Query_ResultBean>>(getContext()) {
+            @Override
+            public void onNext(List<Query_ResultBean> query_resultBeans) {
+                Log.e("drs","查询接口测试");
+            }
+        } );
     }
 
 

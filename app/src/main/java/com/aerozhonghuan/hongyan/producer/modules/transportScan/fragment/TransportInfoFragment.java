@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aerozhonghuan.foundation.base.BaseFragment;
-import com.aerozhonghuan.foundation.eventbus.EventBusEvent;
 import com.aerozhonghuan.foundation.eventbus.EventBusManager;
-import com.aerozhonghuan.foundation.log.LogUtil;
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.Constants;
 import com.aerozhonghuan.hongyan.producer.framework.base.MyApplication;
 import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
 import com.aerozhonghuan.hongyan.producer.modules.common.Constents;
-import com.aerozhonghuan.hongyan.producer.modules.common.event.UserInfoChangedEvent;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportStartActivity;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.adapter.ManyScanAdapter;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.DoActionBean;
@@ -33,8 +29,6 @@ import com.aerozhonghuan.hongyan.producer.modules.transportScan.view.OperationRe
 import com.aerozhonghuan.hongyan.producer.utils.TelephonyUtils;
 import com.aerozhonghuan.hongyan.producer.utils.TimeUtil;
 import com.aerozhonghuan.hongyan.producer.widget.ProgressDialogIndicator;
-import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
-import com.zh.location.drs.amaplibrary.Utils;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
