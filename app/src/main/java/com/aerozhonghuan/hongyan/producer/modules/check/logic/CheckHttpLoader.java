@@ -3,11 +3,13 @@ package com.aerozhonghuan.hongyan.producer.modules.check.logic;
 import com.aerozhonghuan.hongyan.producer.http.HttpLoader;
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.CarInfo;
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.CheckStatusBean;
+import com.aerozhonghuan.hongyan.producer.modules.check.entity.EngineLockBean;
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.InspectioniHistory;
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.StartCheckStateBean;
 
-import java.util.Map;
+import java.util.List;
 
+import okhttp3.ResponseBody;
 import rx.Observable;
 
 /**
@@ -29,8 +31,20 @@ public class CheckHttpLoader extends HttpLoader {
         return observe(apiService.startCheck(vhcle, type));
     }
 
-    public Observable<CheckStatusBean> getLastStatus(Map<String, String> map){
-        return observe(apiService.getLastStatus(map));
+    public Observable<CheckStatusBean> getLastStatus(String inspectionId, List<Integer> cids){
+        return observe(apiService.getLastStatus(inspectionId, cids));
+    }
+
+    public Observable<ResponseBody> finishCheck(String inspectionId){
+        return observe(apiService.finishCheck(inspectionId));
+    }
+
+    public Observable<ResponseBody> forceFinishCheck(String inspectionId, boolean force, String reason){
+        return observe(apiService.forceFinishCheck(inspectionId, force, reason));
+    }
+
+    public Observable<EngineLockBean> engineLock(String inspectionId, int action){
+        return observe(apiService.engineLock(inspectionId, action));
     }
 
 }

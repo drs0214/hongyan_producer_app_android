@@ -2,6 +2,7 @@ package com.aerozhonghuan.hongyan.producer.http;
 
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.CarInfo;
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.CheckStatusBean;
+import com.aerozhonghuan.hongyan.producer.modules.check.entity.EngineLockBean;
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.InspectioniHistory;
 import com.aerozhonghuan.hongyan.producer.modules.check.entity.StartCheckStateBean;
 import com.aerozhonghuan.hongyan.producer.modules.common.entity.PermissionsBean;
@@ -12,7 +13,6 @@ import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.Transport
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.Transport_Scan_OrderBean;
 
 import java.util.List;
-import java.util.Map;
 
 import okhttp3.ResponseBody;
 import retrofit2.http.Body;
@@ -21,7 +21,6 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
-import retrofit2.http.QueryMap;
 import rx.Observable;
 
 /**
@@ -74,7 +73,7 @@ public interface ApiService {
 
 
     /**
-     * 获取车辆信息
+     * 获取检测历史
      * @return
      */
     @GET("vehicle/inspection/v1/history")
@@ -90,9 +89,42 @@ public interface ApiService {
     @POST("vehicle/inspection/v1/start")
     Observable<StartCheckStateBean> startCheck(@Field("vhcle") String vhcle, @Field("type") String type);
 
+    /**
+     * 结束检测
+     * @param inspectionId
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("vehicle/inspection/v1/finish")
+    Observable<ResponseBody> finishCheck(@Field("inspectionId") String inspectionId);
 
+    /**
+     * 强制通过检测
+     * @param inspectionId
+     * @param force
+     * @param reason
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("vehicle/inspection/v1/finish")
+    Observable<ResponseBody> forceFinishCheck(@Field("inspectionId") String inspectionId,@Field("force") boolean force, @Field("reason") String reason);
+
+    /**
+     * 锁车命令
+     * @param inspectionId
+     * @param action
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("vehicle/inspection/v1/engineLock")
+    Observable<EngineLockBean> engineLock(@Field("inspectionId") String inspectionId, @Field("action") int action);
+
+    /**
+     * 检测结果
+     * @return
+     */
     @GET("vehicle/inspection/v1/lastStatus")
-    Observable<CheckStatusBean> getLastStatus(@QueryMap Map<String, String> map);
+    Observable<CheckStatusBean> getLastStatus(@Query("inspectionId") String inspectionId, @Query("cid") List<Integer> cids);
 
     /**
      * 获得车辆信息与操作按钮

@@ -156,10 +156,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
             @Override
             public void onNext(ResponseBody responseBody) {
-                ResponseBody responseBody1 = responseBody;
                 try {
                     String string = responseBody.string();
-
+                    LogUtil.d(TAG,string);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
