@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -30,10 +31,15 @@ public class OperationTime extends PopupWindow {
     private TextView tv_start_time;
     private TextView reset,ok;
     private TextView tv_end_time;
+    TextView tv_operation_time;
     LayoutInflater inflater1;
     WheelMain wheelMain;
     int year, month, day, hour, min;
-    public OperationTime(final Activity context) {
+    Activity context;
+    public OperationTime(final Activity context, final TextView tv_operation_time) {
+        this.context = context;
+        this.tv_operation_time = tv_operation_time;
+        tv_operation_time.setTextColor(context.getResources().getColor(R.color.chujian_blue));
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         contentView = inflater.inflate(R.layout.popup_operation_time, null);
         Calendar calendar = Calendar.getInstance();
@@ -103,6 +109,7 @@ public class OperationTime extends PopupWindow {
             public void onClick(View v) {
                 Toast.makeText(context, "重置", Toast.LENGTH_SHORT).show();
                 OperationTime.this.dismiss();
+                tv_operation_time.setTextColor(context.getResources().getColor(R.color.text_tj));
             }
         });
         ok.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +117,7 @@ public class OperationTime extends PopupWindow {
             public void onClick(View v) {
                 OperationTime.this.dismiss();
                 Toast.makeText(context, "确定", Toast.LENGTH_SHORT).show();
+                tv_operation_time.setTextColor(context.getResources().getColor(R.color.text_tj));
             }
         });
         int h = context.getWindowManager().getDefaultDisplay().getHeight();
@@ -120,15 +128,15 @@ public class OperationTime extends PopupWindow {
         ColorDrawable dw = new ColorDrawable(00000000);
         this.setBackgroundDrawable(dw);
         this.setFocusable(true);
-        this.setOutsideTouchable(true);
+        this.setOutsideTouchable(false);
         this.update();
-
     }
 
     public void showoperationtimePopup(View parent) {
         if (!this.isShowing()) {
             this.showAsDropDown(parent);
         } else {
+            tv_operation_time.setTextColor(context.getResources().getColor(R.color.text_tj));
             this.dismiss();
         }
     }

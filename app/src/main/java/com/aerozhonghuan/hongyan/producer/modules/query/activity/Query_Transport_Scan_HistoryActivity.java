@@ -36,13 +36,14 @@ public class Query_Transport_Scan_HistoryActivity extends TitlebarActivity imple
     FrameLayout fl_content;
     private OperationType mOperationType;
     private OperationTime mOperationTime;
-    LinearLayout ll_single_scan,ll_many_scan,ll_operation_type,ll_operation_time;
-    TextView tv_single_scan,tv_many_scan;
-    View view_single,view_many;
+    LinearLayout ll_single_scan, ll_many_scan, ll_operation_type, ll_operation_time;
+    TextView tv_single_scan, tv_many_scan;
+    View view_single, view_many;
     Operation_TimeFragment singleScanFragment;
     Operation_TypeFragment manyScanFragment;
     View line;
     private List<OperationTypeBean> data = new ArrayList<OperationTypeBean>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,23 +54,23 @@ public class Query_Transport_Scan_HistoryActivity extends TitlebarActivity imple
     }
 
     private void initView() {
-        titleBar = (TitleBarView)findViewById(R.id.titlebarview1);
+        titleBar = (TitleBarView) findViewById(R.id.titlebarview1);
         titleBar.setTitle(getResources().getString(R.string.transport_scan));
-        line=findViewById(R.id.line);
-        fl_content= (FrameLayout) findViewById(R.id.fl_content);
-        ll_single_scan= (LinearLayout) findViewById(R.id.ll_single_scan);
-        ll_many_scan= (LinearLayout) findViewById(R.id.ll_many_scan);
-        ll_operation_time= (LinearLayout) findViewById(R.id.ll_operation_time);
-        ll_operation_type= (LinearLayout) findViewById(R.id.ll_operation_type);
-        tv_single_scan= (TextView) findViewById(R.id.tv_single_scan);
-        tv_many_scan= (TextView) findViewById(R.id.tv_many_scan);
-        view_single= (View) findViewById(R.id.view_single);
-        view_many= (View) findViewById(R.id.view_many);
+        line = findViewById(R.id.line);
+        fl_content = (FrameLayout) findViewById(R.id.fl_content);
+        ll_single_scan = (LinearLayout) findViewById(R.id.ll_single_scan);
+        ll_many_scan = (LinearLayout) findViewById(R.id.ll_many_scan);
+        ll_operation_time = (LinearLayout) findViewById(R.id.ll_operation_time);
+        ll_operation_type = (LinearLayout) findViewById(R.id.ll_operation_type);
+        tv_single_scan = (TextView) findViewById(R.id.tv_single_scan);
+        tv_many_scan = (TextView) findViewById(R.id.tv_many_scan);
+        view_single = (View) findViewById(R.id.view_single);
+        view_many = (View) findViewById(R.id.view_many);
     }
 
     private void initData() {
-        if (singleScanFragment==null){
-            singleScanFragment=new Operation_TimeFragment();
+        if (singleScanFragment == null) {
+            singleScanFragment = new Operation_TimeFragment();
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, singleScanFragment).commit();
         OperationTypeBean vo1 = new OperationTypeBean();
@@ -104,24 +105,24 @@ public class Query_Transport_Scan_HistoryActivity extends TitlebarActivity imple
         ll_many_scan.setOnClickListener(this);
         ll_operation_time.setOnClickListener(this);
         ll_operation_type.setOnClickListener(this);
-        QueryHttpLoader queryHttpLoader=new QueryHttpLoader();
-        Map<String,String> querymap=new HashMap();
-        Subscription subscription =  queryHttpLoader.query(querymap).subscribe(new MySubscriber<List<Query_ResultBean>>(getContext()) {
+        QueryHttpLoader queryHttpLoader = new QueryHttpLoader();
+        Map<String, String> querymap = new HashMap();
+        Subscription subscription = queryHttpLoader.query(querymap).subscribe(new MySubscriber<List<Query_ResultBean>>(getContext()) {
             @Override
             public void onNext(List<Query_ResultBean> query_resultBeans) {
-                Log.e("drs","查询接口测试");
+                Log.e("drs", "查询接口测试");
             }
-        } );
+        });
     }
 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             //单辆扫描
             case R.id.ll_single_scan:
-                if (singleScanFragment==null){
-                    singleScanFragment=new Operation_TimeFragment();
+                if (singleScanFragment == null) {
+                    singleScanFragment = new Operation_TimeFragment();
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, singleScanFragment).commit();
                 tv_single_scan.setTextColor(getResources().getColor(R.color.chujian_blue));
@@ -132,8 +133,8 @@ public class Query_Transport_Scan_HistoryActivity extends TitlebarActivity imple
                 break;
             //批量扫描
             case R.id.ll_many_scan:
-                if (manyScanFragment==null){
-                    manyScanFragment=new Operation_TypeFragment();
+                if (manyScanFragment == null) {
+                    manyScanFragment = new Operation_TypeFragment();
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, manyScanFragment).commit();
                 tv_many_scan.setTextColor(getResources().getColor(R.color.chujian_blue));
@@ -144,14 +145,14 @@ public class Query_Transport_Scan_HistoryActivity extends TitlebarActivity imple
             //操作类型筛选
             case R.id.ll_operation_type:
                 // 价格点击监听
-                mOperationType = new OperationType(Query_Transport_Scan_HistoryActivity.this, data);
-                mOperationType.showoperationtypePopup(line, data);
+//                mOperationType = new OperationType(Query_Transport_Scan_HistoryActivity.this, data);
+//                mOperationType.showoperationtypePopup(line, data);
                 break;
             //操作时间筛选
             case R.id.ll_operation_time:
                 // 价格点击监听
-                mOperationTime = new OperationTime(Query_Transport_Scan_HistoryActivity.this);
-                mOperationTime.showoperationtimePopup(line);
+//                mOperationTime = new OperationTime(Query_Transport_Scan_HistoryActivity.this);
+//                mOperationTime.showoperationtimePopup(line);
                 break;
 
         }

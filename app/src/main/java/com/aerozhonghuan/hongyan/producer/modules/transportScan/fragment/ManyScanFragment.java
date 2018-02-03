@@ -51,8 +51,10 @@ public class ManyScanFragment  extends BaseFragment {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TransportScanDetailBean.ActionsBean manyScanBean = manyscanlist.get(position);
-                startActivity(new Intent(getContext(),ManyScanResultActivity.class));
+                TransportScanDetailBean.ActionsBean actionsBean = manyscanlist.get(position);
+                Bundle bundle=new Bundle();
+                bundle.putString("action",actionsBean.getName());
+                startActivity(new Intent(getContext(),ManyScanResultActivity.class).putExtras(bundle));
             }
         });
     }
@@ -99,7 +101,6 @@ public class ManyScanFragment  extends BaseFragment {
                     manyscanlist.addAll(reslistdata);
                     adapter.notifyDataSetChanged();
                 }
-
             }
         });
     }

@@ -133,18 +133,6 @@ public class TransportInfoFragment extends BaseFragment implements View.OnClickL
         loadcarinfoandaction();
     }
 
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        if (hidden) {
-            //相当于Fragment的onPause
-            System.out.println("界面不可见");
-        } else {
-            // 相当于Fragment的onResume
-            System.out.println("界面可见");
-
-        }
-    }
-
     private void loadcarinfoandaction() {
         Subscription subscription = transport_scanHttpLoader.getVehicleAndActions(vhcle).subscribe(new MySubscriber<TransportScanDetailBean>(getContext(), progressDialogIndicator) {
             @Override

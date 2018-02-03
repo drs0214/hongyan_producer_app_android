@@ -44,8 +44,10 @@ public class OperationResultPop extends PopupWindow{
         iv_operation_result= (ImageView) conentView.findViewById(R.id.iv_operation_result);
         if (issuccess){
             iv_operation_result.setImageResource(R.drawable.operation_success);
+            tv_result.setTextColor(context.getResources().getColor(R.color.text_success));
         }else{
-            iv_operation_result.setImageResource(R.drawable.ic_camera);
+            iv_operation_result.setImageResource(R.drawable.operation_fail);
+            tv_result.setTextColor(context.getResources().getColor(R.color.text_fail));
         }
         tv_result.setText(result);
         //获取popupwindow的高度与宽度

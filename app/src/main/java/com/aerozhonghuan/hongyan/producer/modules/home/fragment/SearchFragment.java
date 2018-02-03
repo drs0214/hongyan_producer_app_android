@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 
 import com.aerozhonghuan.foundation.base.BaseFragment;
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.modules.query.activity.Query_HistoryActivity;
 import com.aerozhonghuan.hongyan.producer.modules.query.activity.Query_Transport_Scan_HistoryActivity;
 import com.aerozhonghuan.hongyan.producer.widget.TitleBarView;
 
@@ -55,7 +56,7 @@ public class SearchFragment extends BaseFragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.ll_query:
-                startActivity(new Intent(getContext(), Query_Transport_Scan_HistoryActivity.class));
+                startActivity(new Intent(getContext(), Query_HistoryActivity.class));
                 break;
         }
     }

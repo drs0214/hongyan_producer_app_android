@@ -17,7 +17,10 @@ public class ManyScanResultActivity extends TitlebarActivity{
         getTitleBarView().setTitle("运输扫描");
         if (savedInstanceState == null) {
             ManyScanResultFragment fragment = new ManyScanResultFragment();
-            showFragment(fragment, false);
+            if (getIntent() != null && getIntent().getExtras() != null) {
+                showFragment(fragment, false, new Bundle(getIntent().getExtras()));
+            }
+
         }
     }
 }

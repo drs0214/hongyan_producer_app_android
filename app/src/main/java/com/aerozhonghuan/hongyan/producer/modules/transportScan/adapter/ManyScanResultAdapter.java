@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.DoActionBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.ManyScanResultBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.ManyScanResultBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.Transport_Scan_OrderBean;
@@ -22,13 +23,12 @@ import java.util.ArrayList;
  */
 public class ManyScanResultAdapter extends BaseAdapter {
     Context mContext;
-    ArrayList<Transport_Scan_OrderBean> manyscanlist=new ArrayList<Transport_Scan_OrderBean>();
+    ArrayList<DoActionBean> manyscanlist=new ArrayList<DoActionBean>();
 
-    public ManyScanResultAdapter(Context context,  ArrayList<Transport_Scan_OrderBean> manyscanlist) {
+    public ManyScanResultAdapter(Context context,  ArrayList<DoActionBean> manyscanlist) {
         this.mContext = context;
         this.manyscanlist = manyscanlist;
     }
-
     @Override
     public int getCount() {
         return manyscanlist.size();
@@ -59,12 +59,16 @@ public class ManyScanResultAdapter extends BaseAdapter {
         }else{
             holder=(ViewHolder)convertView.getTag();
         }
-        Transport_Scan_OrderBean transport_scan_orderBean = manyscanlist.get(position);
-//        holder.tv_number.setText(transport_scan_orderBean==null?"":transport_scan_orderBean.getBianhao());
-//        holder.tv_chassisnumber.setText(transport_scan_orderBean==null?"":transport_scan_orderBean.getDipanhao());
-//        holder.tv_scan_type.setText(transport_scan_orderBean==null?"":transport_scan_orderBean.getSaomiaotype());
-//        holder.tv_scan_result.setText(transport_scan_orderBean==null?"":transport_scan_orderBean.getScanresult());
-//        holder.fail_cause.setText(transport_scan_orderBean==null?"":transport_scan_orderBean.getFailyuanyin());
+        DoActionBean doActionBean = manyscanlist.get(position);
+        holder.tv_number.setText(doActionBean.getVhcle()==null?"":doActionBean.getVhcle());
+        holder.tv_chassisnumber.setText(doActionBean.getVhvin8()==null?"":doActionBean.getVhvin8());
+        holder.tv_scan_type.setText(doActionBean.getActionText()==null?"":doActionBean.getActionText());
+        if (doActionBean.isSuccess()){
+            holder.tv_scan_result.setText("成功");
+        }else{
+            holder.tv_scan_result.setText("失败");
+        }
+        holder.fail_cause.setText(doActionBean.getMessage()==null?"":doActionBean.getMessage());
         return convertView;
     }
 

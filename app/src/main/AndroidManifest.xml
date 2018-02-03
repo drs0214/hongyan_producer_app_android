@@ -238,6 +238,11 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden"
             />
+        <activity android:name="com.aerozhonghuan.hongyan.producer.modules.query.activity.Query_HistoryActivity"
+            android:label="@string/string_tab_search"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            />
         <activity
             android:name="com.zh.drs.zxinglibrary.android.CaptureActivity"
             android:configChanges="orientation|screenSize"

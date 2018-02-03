@@ -120,8 +120,17 @@ public class TransportScanDetailBean implements Serializable{
 
         public String description;
         public boolean enabled;
+        public boolean checked;
         public String label;
         public String name;
+
+        public boolean isChecked() {
+            return checked;
+        }
+
+        public void setChecked(boolean checked) {
+            this.checked = checked;
+        }
 
         public String getDescription() {
             return description;

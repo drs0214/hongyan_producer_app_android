@@ -1,6 +1,5 @@
 package com.aerozhonghuan.hongyan.producer.modules.transportScan.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.Editable;
@@ -15,17 +14,23 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import com.aerozhonghuan.hongyan.producer.R;
+import com.aerozhonghuan.hongyan.producer.framework.base.Constants;
+import com.aerozhonghuan.hongyan.producer.framework.base.MyApplication;
 import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
-import com.aerozhonghuan.hongyan.producer.modules.transportScan.activity.TransportInfoActivity;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.adapter.ManyScanResultAdapter;
-import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.ManyScanResultBean;
-import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.TransportScanDetailBean;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.DoActionBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.Transport_Scan_OrderBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.logic.Transport_ScanHttpLoader;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.view.OperationResultPop;
+import com.aerozhonghuan.hongyan.producer.utils.TelephonyUtils;
+import com.aerozhonghuan.hongyan.producer.utils.TimeUtil;
+import com.aerozhonghuan.hongyan.producer.widget.ProgressDialogIndicator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import rx.Subscription;
 
@@ -37,9 +42,19 @@ import rx.Subscription;
 public class ManyScanResultFragment extends TitlebarFragment {
     private View rootView;
     ListView listview;
-    ArrayList<Transport_Scan_OrderBean> manyscanresultlist=new ArrayList<Transport_Scan_OrderBean>();
+    ArrayList<DoActionBean> listData = new ArrayList<DoActionBean>();
     ManyScanResultAdapter adapter;
     EditText et_num;
+    String action;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null && getArguments().containsKey("action")) {
+            action = getArguments().getString("action");
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -51,34 +66,20 @@ public class ManyScanResultFragment extends TitlebarFragment {
         }
         return rootView;
     }
+
     private void initData() {
-        listview=  (ListView) rootView.findViewById(R.id.listview);
-        Transport_ScanHttpLoader transport_scanHttpLoader = new Transport_ScanHttpLoader();
-        Subscription subscription = transport_scanHttpLoader.transportOrders("0070231766").subscribe(new MySubscriber<List<Transport_Scan_OrderBean>>(getContext()) {
-            @Override
-            public void onNext(List<Transport_Scan_OrderBean> reslistdata) {
-                Log.e("drs","");
-                if(!reslistdata.isEmpty()){
-                    //                                manyscanlist.addAll(reslistdata);
-                    //                                adapter.notifyDataSetChanged();
-                }
-
-            }
-        });
-
+        adapter=new ManyScanResultAdapter(getContext(),listData);
+        listview.setAdapter(adapter);
     }
 
     private void initView() {
-        et_num= (EditText) rootView.findViewById(R.id.et_num);
+        progressDialogIndicator = new ProgressDialogIndicator(getContext());
+        listview = (ListView) rootView.findViewById(R.id.listview);
+        et_num = (EditText) rootView.findViewById(R.id.et_num);
         et_num.setInputType(InputType.TYPE_NULL);
         et_num.requestFocus();
-       /* for (int i = 0; i < 10; i++) {
-            ManyScanResultBean manyScanResultBean=new ManyScanResultBean("05595949","HD54548787","交付","成功","操作不匹配");
-            manyscanresultlist.add(manyScanResultBean);
-        }*/
-
-
     }
+
     private void setListen() {
 
         et_num.addTextChangedListener(new TextWatcher() {
@@ -94,31 +95,49 @@ public class ManyScanResultFragment extends TitlebarFragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (!TextUtils.isEmpty(s.toString())){
+                if (!TextUtils.isEmpty(s.toString())) {
+                    doAction(s.toString());
                     et_num.setText("");
-                   /* ManyScanResultBean manyScanResultBean=new ManyScanResultBean("05595949","HD54548787","交付","成功","操作不匹配");
-                    manyscanresultlist.add(manyScanResultBean);
-                    if(adapter!=null){
-                        adapter.notifyDataSetChanged();
-                    }*/
-                    Transport_ScanHttpLoader transport_scanHttpLoader = new Transport_ScanHttpLoader();
-                    Subscription subscription = transport_scanHttpLoader.transportOrders("0070231766").subscribe(new MySubscriber<List<Transport_Scan_OrderBean>>(getContext()) {
-                        @Override
-                        public void onNext(List<Transport_Scan_OrderBean> reslistdata) {
-                            Log.e("drs","");
-                            if(!reslistdata.isEmpty()){
-//                                manyscanlist.addAll(reslistdata);
-//                                adapter.notifyDataSetChanged();
-                            }
-
-                        }
-                    });
-
                 }
 
             }
         });
-//        adapter=new ManyScanResultAdapter(getContext(),manyscanresultlist);
-//        listview.setAdapter(adapter);
+    }
+
+    Transport_ScanHttpLoader transport_scanHttpLoader = new Transport_ScanHttpLoader();
+    private ProgressDialogIndicator progressDialogIndicator;
+
+    private void doAction(String vhcle) {
+        Map<String, String> paramsmap = new HashMap<>();
+        paramsmap.put("vhcle", vhcle);
+        if (action != null) {
+            paramsmap.put("action", action);
+        }
+        if (MyApplication.mlocation != null) {
+            paramsmap.put("lon", MyApplication.mlocation.getLongitude() + "");
+            paramsmap.put("lat", MyApplication.mlocation.getLatitude() + "");
+            paramsmap.put("coorType", Constants.COORTYPE);
+            paramsmap.put("locationTime", TimeUtil.getDate_yyyyMMddTHHmmss(MyApplication.mlocation.getTime()));
+            String locationType = "";
+            if (MyApplication.mlocation.getLocationType() == 1) {
+                locationType = "GPS";
+            } else if (MyApplication.mlocation.getLocationType() == 5) {
+                locationType = "Wifi";
+            } else if (MyApplication.mlocation.getLocationType() == 6) {
+                locationType = "基站";
+            } else {
+                locationType = "前次离线缓存";
+            }
+            paramsmap.put("locationType", locationType);
+            paramsmap.put("radius", MyApplication.mlocation.getAccuracy() + "");
+        }
+        paramsmap.put("operator", TelephonyUtils.getOperator_letter(getContext()));
+        Subscription subscription = transport_scanHttpLoader.doAction(paramsmap).subscribe(new MySubscriber<DoActionBean>(getContext(), progressDialogIndicator) {
+            @Override
+            public void onNext(DoActionBean doActionBean) {
+                listData.add(doActionBean);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 }

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.modules.query.entity.OperationTypeBean;
+import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.TransportScanDetailBean;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 public class PopupAdapter extends BaseAdapter {
 
     private Context context;
-    private List<OperationTypeBean> data = new ArrayList<OperationTypeBean>();
+    private List<TransportScanDetailBean.ActionsBean> data = new ArrayList<TransportScanDetailBean.ActionsBean>();
 
     public PopupAdapter(Context context) {
         this.context = context;
@@ -52,7 +53,7 @@ public class PopupAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) view.getTag();
         }
         if (data != null && data.size() > 0) {
-            viewHolder.tv1.setText(data.get(i).getStr1());
+            viewHolder.tv1.setText(data.get(i).getLabel());
             if (data.get(i).isChecked()){
 //                viewHolder.tv1.setBackgroundResource(R.drawable.goods_attr_selected_shape);
                 viewHolder.tv1.setTextColor(context.getResources().getColor(R.color.chujian_blue));
@@ -73,7 +74,7 @@ public class PopupAdapter extends BaseAdapter {
         super.notifyDataSetChanged();
     }
 
-    public void notifyDataSetChanged(List<OperationTypeBean> tempData) {
+    public void notifyDataSetChanged(List<TransportScanDetailBean.ActionsBean> tempData) {
         if (tempData == null || tempData.size() == 0) {
             return;
         }

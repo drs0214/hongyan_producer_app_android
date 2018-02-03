@@ -5,18 +5,13 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <com.aerozhonghuan.hongyan.producer.widget.TitleBarView
-        android:id="@+id/titlebarview1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/margin45"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/ll_single_scan"
+            android:id="@+id/ll_operation_time"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -27,15 +22,14 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tv_single_scan"
+                    android:id="@+id/tv_operation_time"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="操作时间"
-                    android:textColor="@color/chujian_blue"
+                    android:textColor="@color/text_tj"
                     android:textSize="@dimen/text_size_15" />
                 <LinearLayout
-                    android:id="@+id/ll_operation_time"
                     android:layout_width="@dimen/margin60"
                     android:layout_alignParentRight="true"
                     android:gravity="center"
@@ -52,6 +46,7 @@
                     android:id="@+id/view_single"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin2"
+                    android:visibility="gone"
                     android:layout_alignParentBottom="true"
                     android:background="@color/chujian_blue"></View>
             </RelativeLayout>
@@ -59,7 +54,7 @@
 
 
         <LinearLayout
-            android:id="@+id/ll_many_scan"
+            android:id="@+id/ll_operation_type"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -70,7 +65,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tv_many_scan"
+                    android:id="@+id/tv_operation_type"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -78,7 +73,6 @@
                     android:textColor="@color/text_tj"
                     android:textSize="@dimen/text_size_15" />
                 <LinearLayout
-                    android:id="@+id/ll_operation_type"
                     android:layout_width="@dimen/margin60"
                     android:layout_alignParentRight="true"
                     android:gravity="center"
@@ -96,6 +90,7 @@
                     android:id="@+id/view_many"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/margin2"
+                    android:visibility="gone"
                     android:layout_alignParentBottom="true"
                     android:background="@color/white"></View>
             </RelativeLayout>
