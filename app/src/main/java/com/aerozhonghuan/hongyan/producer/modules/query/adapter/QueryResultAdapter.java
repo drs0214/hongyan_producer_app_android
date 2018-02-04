@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.modules.query.entity.QueryResultBean;
+import com.aerozhonghuan.hongyan.producer.modules.query.entity.Query_ResultBean;
 
 import java.util.ArrayList;
 
@@ -20,9 +21,9 @@ import java.util.ArrayList;
  */
 public class QueryResultAdapter extends BaseAdapter {
     Context mContext;
-    ArrayList<QueryResultBean> manyscanlist=new ArrayList<QueryResultBean>();
+    ArrayList<Query_ResultBean> manyscanlist=new ArrayList<Query_ResultBean>();
 
-    public QueryResultAdapter(Context context, ArrayList<QueryResultBean> manyscanlist) {
+    public QueryResultAdapter(Context context, ArrayList<Query_ResultBean> manyscanlist) {
         this.mContext = context;
         this.manyscanlist = manyscanlist;
     }
@@ -50,6 +51,7 @@ public class QueryResultAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.item_query_result, null);
             holder.tv_number = (TextView) convertView.findViewById(R.id.tv_number);
             holder.tv_chassisnumber = (TextView) convertView.findViewById(R.id.tv_chassisnumber);
+            holder.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
             holder.tv_operationtime = (TextView) convertView.findViewById(R.id.tv_operationtime);
             holder.tv_operationtype = (TextView) convertView.findViewById(R.id.tv_operationtype);
             holder.tv_department = (TextView) convertView.findViewById(R.id.tv_department);
@@ -57,17 +59,18 @@ public class QueryResultAdapter extends BaseAdapter {
         }else{
             holder=(ViewHolder)convertView.getTag();
         }
-        QueryResultBean QueryResultBean = manyscanlist.get(position);
-        holder.tv_number.setText(QueryResultBean==null?"":QueryResultBean.getBianhao());
-        holder.tv_chassisnumber.setText(QueryResultBean==null?"":QueryResultBean.getDipanhao());
-        holder.tv_operationtime.setText(QueryResultBean==null?"":QueryResultBean.getOperation_time());
-        holder.tv_operationtype.setText(QueryResultBean==null?"":QueryResultBean.getOperation_type());
-        holder.tv_department.setText(QueryResultBean==null?"":QueryResultBean.getTv_department());
+        Query_ResultBean query_resultBean = manyscanlist.get(position);
+        holder.tv_number.setText(query_resultBean.getVhcle()==null?"":query_resultBean.getVhcle());
+        holder.tv_chassisnumber.setText(query_resultBean.getVhvin()==null?"":query_resultBean.getVhvin());
+        holder.tv_name.setText(query_resultBean.getCreateUsername()==null?"":query_resultBean.getCreateUsername());
+        holder.tv_operationtime.setText(query_resultBean.getActionDate()==null?"":query_resultBean.getActionDate());
+        holder.tv_operationtype.setText(query_resultBean.getActionText()==null?"":query_resultBean.getActionText());
+//        holder.tv_department.setText(query_resultBean==null?"":query_resultBean.getTv_department());//操作人所属部门
         return convertView;
     }
 
     private static class ViewHolder {
 
-        TextView tv_number,tv_chassisnumber,tv_operationtime,tv_operationtype,tv_department;
+        TextView tv_number,tv_chassisnumber,tv_name,tv_operationtime,tv_operationtype,tv_department;
     }
 }

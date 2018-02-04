@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,9 +19,12 @@ import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.modules.home.MainActivity;
 import com.aerozhonghuan.hongyan.producer.modules.query.adapter.PopupAdapter;
 import com.aerozhonghuan.hongyan.producer.modules.query.entity.OperationTypeBean;
+import com.aerozhonghuan.hongyan.producer.modules.query.entity.Query_Constans;
 import com.aerozhonghuan.hongyan.producer.modules.query.view.time.ScreenInfo;
 import com.aerozhonghuan.hongyan.producer.modules.query.view.time.WheelMain;
+import com.aerozhonghuan.hongyan.producer.utils.TimeUtil;
 
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.List;
 
@@ -36,6 +40,8 @@ public class OperationTime extends PopupWindow {
     WheelMain wheelMain;
     int year, month, day, hour, min;
     Activity context;
+     String starttime="";
+     String endtime="";
     public OperationTime(final Activity context, final TextView tv_operation_time) {
         this.context = context;
         this.tv_operation_time = tv_operation_time;
@@ -74,6 +80,12 @@ public class OperationTime extends PopupWindow {
                                     public void onClick(DialogInterface dialog,
                                                         int which) {
                                         tv_start_time.setText(wheelMain.getTime());
+                                        try {
+                                            long l=TimeUtil.stringToLong(wheelMain.getTime(),"yyyy-MM-dd HH:mm");
+                                             starttime = TimeUtil.getDate_yyyyMMddTHHmmss(l);
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
                                     }
                                 }).setNegativeButton("取消", null).show();
 
@@ -99,6 +111,12 @@ public class OperationTime extends PopupWindow {
                                     public void onClick(DialogInterface dialog,
                                                         int which) {
                                         tv_end_time.setText(wheelMain.getTime());
+                                        try {
+                                            long l=TimeUtil.stringToLong(wheelMain.getTime(),"yyyy-MM-dd HH:mm");
+                                             endtime = TimeUtil.getDate_yyyyMMddTHHmmss(l);
+                                        } catch (Exception e) {
+                                            e.printStackTrace();
+                                        }
                                     }
                                 }).setNegativeButton("取消", null).show();
 
@@ -107,17 +125,22 @@ public class OperationTime extends PopupWindow {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "重置", Toast.LENGTH_SHORT).show();
-                OperationTime.this.dismiss();
-                tv_operation_time.setTextColor(context.getResources().getColor(R.color.text_tj));
+                tv_start_time.setText("");
+                tv_end_time.setText("");
+                starttime="";
+                endtime="";
             }
         });
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OperationTime.this.dismiss();
-                Toast.makeText(context, "确定", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, tv_start_time.getText().toString()+tv_end_time.getText().toString(), Toast.LENGTH_SHORT).show();
                 tv_operation_time.setTextColor(context.getResources().getColor(R.color.text_tj));
+                Query_Constans.start_time=starttime;
+                Query_Constans.end_time=endtime;
+                Query_Constans.isok_time=true;
+                OperationTime.this.dismiss();
+
             }
         });
         int h = context.getWindowManager().getDefaultDisplay().getHeight();

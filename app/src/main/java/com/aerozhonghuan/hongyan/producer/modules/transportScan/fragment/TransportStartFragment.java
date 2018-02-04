@@ -165,21 +165,11 @@ public class TransportStartFragment extends TitlebarFragment implements View.OnC
                     public void onNext(DoActionBean doActionBean) {
                         if (doActionBean.isSuccess()) {
                             alert("操作成功");
-//                            Bundle bundle=new Bundle();
-//                            bundle.putString("issuccess","1");
-//                            bundle.putString("vhcle",vhcle);
-//                            bundle.putString("msg","操作成功");
-//                            startActivity(new Intent(getActivity(), TransportInfoActivity.class).putExtras(bundle));
                             EventBusManager.post(new OperationResultBean(true,"操作成功"));
                             getActivity().finish();
                         } else {
                             alert("操作失败");
                             alert(doActionBean.getMessage());
-//                            Bundle bundle=new Bundle();
-//                            bundle.putString("issuccess","2");
-//                            bundle.putString("vhcle",vhcle);
-//                            bundle.putString("msg",doActionBean.getMessage());
-//                            startActivity(new Intent(getActivity(), TransportInfoActivity.class).putExtras(bundle));
                             EventBusManager.post(new OperationResultBean(false,"操作失败"));
                             getActivity().finish();
                         }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
@@ -15,7 +16,9 @@ import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
 import com.aerozhonghuan.hongyan.producer.framework.base.TitlebarFragment;
 import com.aerozhonghuan.hongyan.producer.modules.query.activity.Query_Transport_Scan_HistoryActivity;
+import com.aerozhonghuan.hongyan.producer.modules.query.adapter.QueryResultAdapter;
 import com.aerozhonghuan.hongyan.producer.modules.query.entity.OperationTypeBean;
+import com.aerozhonghuan.hongyan.producer.modules.query.entity.Query_Constans;
 import com.aerozhonghuan.hongyan.producer.modules.query.entity.Query_ResultBean;
 import com.aerozhonghuan.hongyan.producer.modules.query.logic.QueryHttpLoader;
 import com.aerozhonghuan.hongyan.producer.modules.query.view.OperationTime;
@@ -39,13 +42,17 @@ import rx.Subscription;
 public class Query_HistoryFragment extends TitlebarFragment implements View.OnClickListener {
 
     private View rootView;
-    FrameLayout fl_content;
     private OperationType mOperationType;
     private OperationTime mOperationTime;
-    LinearLayout  ll_operation_type, ll_operation_time;
+    LinearLayout ll_operation_type, ll_operation_time;
     TextView tv_operation_time, tv_operation_type;
     View view_single, view_many;
     View line;
+    ArrayList<Query_ResultBean> listData = new ArrayList<>();
+    QueryResultAdapter adapter;
+    ListView listview;
+    QueryHttpLoader queryHttpLoader = new QueryHttpLoader();
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,29 +72,45 @@ public class Query_HistoryFragment extends TitlebarFragment implements View.OnCl
 
     private void initView() {
         line = rootView.findViewById(R.id.line);
-        fl_content = (FrameLayout) rootView.findViewById(R.id.fl_content);
-        ll_operation_time = (LinearLayout)rootView. findViewById(R.id.ll_operation_time);
+        ll_operation_time = (LinearLayout) rootView.findViewById(R.id.ll_operation_time);
         ll_operation_type = (LinearLayout) rootView.findViewById(R.id.ll_operation_type);
         tv_operation_time = (TextView) rootView.findViewById(R.id.tv_operation_time);
         tv_operation_type = (TextView) rootView.findViewById(R.id.tv_operation_type);
         view_single = (View) rootView.findViewById(R.id.view_single);
         view_many = (View) rootView.findViewById(R.id.view_many);
+        listview = (ListView) rootView.findViewById(R.id.listview);
+
+        adapter = new QueryResultAdapter(getContext(), listData);
+        listview.setAdapter(adapter);
     }
 
     private void initData() {
+        loadquery();
+    }
+
+    private void loadquery() {
+        Map<String, String> querymap = new HashMap();
+        querymap.put("action", Query_Constans.type);
+        querymap.put("start", Query_Constans.start_time);
+        querymap.put("end", Query_Constans.end_time);
+        Subscription subscription = queryHttpLoader.query(querymap).subscribe(new MySubscriber<List<Query_ResultBean>>(getContext()) {
+            @Override
+            public void onNext(List<Query_ResultBean> query_resultBeans) {
+                if (!query_resultBeans.isEmpty()) {
+                    if (listData != null) {
+                        listData.clear();
+                    }
+                    listData.addAll(query_resultBeans);
+                    adapter.notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     private void setListen() {
         ll_operation_time.setOnClickListener(this);
         ll_operation_type.setOnClickListener(this);
-        QueryHttpLoader queryHttpLoader = new QueryHttpLoader();
-        Map<String, String> querymap = new HashMap();
-        Subscription subscription = queryHttpLoader.query(querymap).subscribe(new MySubscriber<List<Query_ResultBean>>(getContext()) {
-            @Override
-            public void onNext(List<Query_ResultBean> query_resultBeans) {
-                Log.e("drs", "查询接口测试");
-            }
-        });
+
     }
 
     @Override
@@ -99,18 +122,25 @@ public class Query_HistoryFragment extends TitlebarFragment implements View.OnCl
                 Subscription subscription = transport_scanHttpLoader.actions().subscribe(new MySubscriber<List<TransportScanDetailBean.ActionsBean>>(getContext()) {
                     @Override
                     public void onNext(List<TransportScanDetailBean.ActionsBean> reslistdata) {
-                        if(!reslistdata.isEmpty()){
-                            // 价格点击监听
-                            mOperationType = new OperationType(getActivity(), reslistdata,tv_operation_type);
-                            if(mOperationType!=null&&!mOperationType.isShowing()){
-                                mOperationType.showoperationtypePopup(line, reslistdata);
-                            }else{
+                        if (!reslistdata.isEmpty()) {
+                            if (mOperationType == null) {
+                                mOperationType = new OperationType(getActivity(), reslistdata, tv_operation_type);//去重
+                            }
+                            if (mOperationType != null && !mOperationType.isShowing()) {
+                                mOperationType.showoperationtypePopup(line, tv_operation_type);
+                            } else {
                                 mOperationType.dismiss();
                             }
                             mOperationType.setOnDismissListener(new PopupWindow.OnDismissListener() {
                                 @Override
                                 public void onDismiss() {
                                     tv_operation_type.setTextColor(getContext().getResources().getColor(R.color.text_tj));
+                                    if (Query_Constans.isok_type) {
+                                        Query_Constans.isok_type = false;
+                                        loadquery();
+                                    }
+
+                                    Log.e("", Query_Constans.type);
                                 }
                             });
                         }
@@ -121,17 +151,33 @@ public class Query_HistoryFragment extends TitlebarFragment implements View.OnCl
             //操作时间筛选
             case R.id.ll_operation_time:
                 // 价格点击监听
-                mOperationTime = new OperationTime(getActivity(),tv_operation_time);
+                if (mOperationTime==null){
+                    mOperationTime = new OperationTime(getActivity(), tv_operation_time);
+                }
+                tv_operation_time.setTextColor(getContext().getResources().getColor(R.color.chujian_blue));
                 mOperationTime.showoperationtimePopup(line);
-
                 mOperationTime.setOnDismissListener(new PopupWindow.OnDismissListener() {
                     @Override
                     public void onDismiss() {
                         tv_operation_time.setTextColor(getContext().getResources().getColor(R.color.text_tj));
+                        if (Query_Constans.isok_time) {
+                            Query_Constans.isok_time = false;
+                            loadquery();
+                        }
                     }
                 });
                 break;
 
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Query_Constans.isok_type=false;
+        Query_Constans.isok_time=false;
+        Query_Constans.type="";
+        Query_Constans.start_time="";
+        Query_Constans.end_time="";
     }
 }

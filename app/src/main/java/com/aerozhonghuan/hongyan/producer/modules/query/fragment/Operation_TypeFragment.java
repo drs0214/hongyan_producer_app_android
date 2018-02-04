@@ -49,7 +49,7 @@ public class Operation_TypeFragment extends TitlebarFragment {
 
     }
     private void setListen() {
-        adapter=new QueryResultAdapter(getContext(),queryresultlist);
-        listview.setAdapter(adapter);
+//        adapter=new QueryResultAdapter(getContext(),queryresultlist);
+//        listview.setAdapter(adapter);
     }
 }

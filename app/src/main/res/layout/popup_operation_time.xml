@@ -25,11 +25,10 @@
                 android:textSize="@dimen/text_size_14" />
             <TextView
                 android:id="@+id/tv_start_time"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/margin45"
                 android:layout_marginLeft="@dimen/margin20"
                 android:gravity="center"
-                android:text="2018-1-28"
                 android:background="@color/white"
                 android:textColor="@color/desc_text_color"
                 android:textSize="@dimen/text_size_14" />
@@ -53,11 +52,10 @@
                 android:textSize="@dimen/text_size_14" />
             <TextView
                 android:id="@+id/tv_end_time"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="@dimen/margin45"
                 android:layout_marginLeft="@dimen/margin20"
                 android:gravity="center"
-                android:text="2018-2-1"
                 android:background="@color/white"
                 android:textColor="@color/desc_text_color"
                 android:textSize="@dimen/text_size_14" />

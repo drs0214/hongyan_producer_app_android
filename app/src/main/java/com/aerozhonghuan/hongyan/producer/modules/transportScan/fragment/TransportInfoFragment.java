@@ -48,7 +48,7 @@ import rx.Subscription;
 public class TransportInfoFragment extends BaseFragment implements View.OnClickListener {
     private View rootView;
     LinearLayout root_view;
-    String type, vhcle, issuccess, msg;
+    String type, vhcle;
     GridView gridview;
     ArrayList<TransportScanDetailBean.ActionsBean> manyscanlist = new ArrayList<TransportScanDetailBean.ActionsBean>();
     TextView tv_chassis_number, tv_car_in_num, tv_terminal_num, tv_last_time_operation_type, tv_last_time_operation_time, tv_last_time_operation_persion, tv_ecuvin;
@@ -63,10 +63,6 @@ public class TransportInfoFragment extends BaseFragment implements View.OnClickL
         }
         if (getArguments() != null && getArguments().containsKey("vhcle")) {
             vhcle = getArguments().getString("vhcle");
-        }
-        if (getArguments() != null && getArguments().containsKey("issuccess") && getArguments().containsKey("msg")) {
-            issuccess = getArguments().getString("issuccess");
-            msg = getArguments().getString("msg");
         }
     }
 
@@ -110,16 +106,6 @@ public class TransportInfoFragment extends BaseFragment implements View.OnClickL
         tv_last_time_operation_time = (TextView) rootView.findViewById(R.id.tv_last_time_operation_time);
         tv_last_time_operation_persion = (TextView) rootView.findViewById(R.id.tv_last_time_operation_persion);
         tv_ecuvin = (TextView) rootView.findViewById(R.id.tv_ecuvin);
-        if (issuccess != null && "1".equals(issuccess)) {
-            //从运输开始进来成功
-            OperationResultPop pop = new OperationResultPop(getActivity(), "操作成功", true);
-            pop.showpop_center(root_view);
-            //                        delay(pop);
-        } else if (issuccess != null && "2".equals(issuccess)) {
-            OperationResultPop pop = new OperationResultPop(getActivity(), "操作失败", false);
-            pop.showpop_center(root_view);
-            //                        delay(pop);
-        }
 
     }
 

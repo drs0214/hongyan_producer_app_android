@@ -16,6 +16,7 @@ import com.aerozhonghuan.hongyan.producer.R;
 import com.aerozhonghuan.hongyan.producer.framework.base.MySubscriber;
 import com.aerozhonghuan.hongyan.producer.modules.query.adapter.PopupAdapter;
 import com.aerozhonghuan.hongyan.producer.modules.query.entity.OperationTypeBean;
+import com.aerozhonghuan.hongyan.producer.modules.query.entity.Query_Constans;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.entity.TransportScanDetailBean;
 import com.aerozhonghuan.hongyan.producer.modules.transportScan.logic.Transport_ScanHttpLoader;
 
@@ -54,32 +55,38 @@ public class OperationType extends PopupWindow {
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                 mOperationTypeBean = data.get(position);
-                data.get(position).setChecked(!data.get(position).isChecked());
+             mOperationTypeBean = data.get(position);
+                    data.get(position).setChecked(!data.get(position).isChecked());
                 for (int i = 0; i < data.size(); i++) {
                     if (i == position) {
                         continue;
                     }
                     data.get(i).setChecked(false);
                 }
-                Toast.makeText(context, data.get(position).getLabel(), Toast.LENGTH_SHORT).show();
                 adapter.notifyDataSetChanged(data);
             }
         });
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OperationType.this.dismiss();
-//                Toast.makeText(context, "重置", Toast.LENGTH_SHORT).show();
-                tv_operation_type.setTextColor(context.getResources().getColor(R.color.text_tj));
+                for (int i = 0; i < listData.size(); i++) {
+                    listData.get(i).setChecked(false);
+                }
+                adapter.notifyDataSetChanged(listData);
             }
         });
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                OperationType.this.dismiss();
                 tv_operation_type.setTextColor(context.getResources().getColor(R.color.text_tj));
-//                Toast.makeText(context, mOperationTypeBean==null?"确定":mOperationTypeBean.getLabel(), Toast.LENGTH_SHORT).show();
+                if(mOperationTypeBean.isChecked()){
+                    Query_Constans.type=mOperationTypeBean.getName();
+                }else{
+                    Query_Constans.type="";
+                }
+                Query_Constans.isok_type=true;
+                Toast.makeText(context, mOperationTypeBean==null?"确定": Query_Constans.type, Toast.LENGTH_SHORT).show();
+                OperationType.this.dismiss();
             }
         });
     }
@@ -107,10 +114,11 @@ public class OperationType extends PopupWindow {
         this.update();
     }
 
-    public void showoperationtypePopup(View parent, final List<TransportScanDetailBean.ActionsBean> data) {
+    public void showoperationtypePopup(View parent,TextView tv_operation_type) {
         if (!this.isShowing()) {
+            adapter.notifyDataSetChanged(listData);
             this.showAsDropDown(parent);
-            adapter.notifyDataSetChanged(data);
+            tv_operation_type.setTextColor(context.getResources().getColor(R.color.chujian_blue));
         } else {
             tv_operation_type.setTextColor(context.getResources().getColor(R.color.text_tj));
             this.dismiss();
