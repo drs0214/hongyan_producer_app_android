@@ -47,6 +47,16 @@ public class ManyScanAdapter extends BaseAdapter {
         return position;
     }
 
+    @Override
+    public boolean isEnabled(int position) {
+        if (manyscanlist.get(position).isEnabled()) {
+            return true;
+        }else{
+            return false;
+        }
+
+    }
+
     @SuppressLint("ResourceType")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -68,6 +78,8 @@ public class ManyScanAdapter extends BaseAdapter {
         }else{
             holder.tv_name.setBackgroundResource(R.drawable.transport_scan_bg_selector_gray);
             holder.tv_name.setTextColor(mContext.getResources().getColorStateList(R.drawable.transport_scan_textcolor_selector_gray));
+//            holder.ll_root.setClickable(false);
+//            holder.ll_root.setEnabled(false);
         }
 
         return convertView;
