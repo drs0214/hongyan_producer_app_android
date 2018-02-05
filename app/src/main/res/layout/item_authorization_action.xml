@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:id="@+id/ll_root"
-    android:background="@drawable/transport_scan_bg_selector_blue"
+    android:background="@drawable/transport_scan_bg_selector_blue_bg_white"
     android:descendantFocusability="blocksDescendants"
     android:layout_height="@dimen/margin44">
     <TextView

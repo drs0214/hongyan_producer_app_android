@@ -33,7 +33,7 @@
             android:layout_width="@dimen/margin220"
             android:layout_height="@dimen/margin40"
             android:text="test"
-            android:background="@drawable/btn_blue_shape_2_stroke"
+            android:background="@drawable/btn_blue_shape_2_stroke_bg_white"
             android:textColor="@color/text_nr"
             android:textSize="@dimen/text_size_14" />
             <ImageView

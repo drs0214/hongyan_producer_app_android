@@ -79,8 +79,10 @@ public class OperationType extends PopupWindow {
             @Override
             public void onClick(View v) {
                 tv_operation_type.setTextColor(context.getResources().getColor(R.color.text_tj));
-                if(mOperationTypeBean.isChecked()){
-                    Query_Constans.type=mOperationTypeBean.getName();
+                if(mOperationTypeBean!=null&&mOperationTypeBean.isChecked()){
+                    if(mOperationTypeBean.getName()!=null){
+                        Query_Constans.type=mOperationTypeBean.getName();
+                    }
                 }else{
                     Query_Constans.type="";
                 }

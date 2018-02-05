@@ -60,6 +60,7 @@ public class OperationTime extends PopupWindow {
         tv_end_time = (TextView) contentView.findViewById(R.id.tv_end_time);
         reset = (TextView) contentView.findViewById(R.id.tv_reset);
         ok = (TextView) contentView.findViewById(R.id.tv_ok);
+        ok.setBackgroundResource(R.color.chujian_blue);
        tv_start_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
